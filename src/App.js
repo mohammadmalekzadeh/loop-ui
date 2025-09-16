@@ -12,6 +12,7 @@ import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
 import ScrollToTop from "./components/common/ScrollToTop";
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
     <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />
     </Routes>
     <Analytics />
+    <SpeedInsights />
     </>
   );
 }

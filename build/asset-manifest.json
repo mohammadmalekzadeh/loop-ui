@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7ffefdf8.css",
+    "main.js": "/static/js/main.64446f2b.js",
+    "static/media/Morabba-ExtraBold.woff": "/static/media/Morabba-ExtraBold.45ad7ed2bc22f4cf655f.woff",
+    "static/media/Morabba-Bold.woff": "/static/media/Morabba-Bold.167064a7d858f4ab8848.woff",
+    "static/media/Morabba-Regular.woff": "/static/media/Morabba-Regular.cdc78626106bd40e227c.woff",
+    "static/media/Morabba-Medium.woff": "/static/media/Morabba-Medium.fd1f2ccc7729e06afd78.woff",
+    "static/media/Morabba-SemiBold.woff": "/static/media/Morabba-SemiBold.5849ca4dee74c476dfd9.woff",
+    "static/media/Morabba-Black.woff": "/static/media/Morabba-Black.56de405e556c5693fb11.woff",
+    "static/media/Morabba-Light.woff": "/static/media/Morabba-Light.c9c75e5a4ba03f74b482.woff",
+    "static/media/Morabba-Heavy.woff": "/static/media/Morabba-Heavy.f4ba267a956ecb9f2bfb.woff",
+    "static/media/Morabba-UltraLight.woff": "/static/media/Morabba-UltraLight.a669f7282ae609c5a8d5.woff",
+    "static/media/Morabba-ExtraBold.woff2": "/static/media/Morabba-ExtraBold.e8814ce4fec5890d82c1.woff2",
+    "static/media/Morabba-SemiBold.woff2": "/static/media/Morabba-SemiBold.d97f35c87e719d222bcb.woff2",
+    "static/media/Morabba-Bold.woff2": "/static/media/Morabba-Bold.c2226cdf6963e1c9d6a3.woff2",
+    "static/media/Morabba-Regular.woff2": "/static/media/Morabba-Regular.c74e272164829c25c110.woff2",
+    "static/media/Morabba-Medium.woff2": "/static/media/Morabba-Medium.f43b343a3fdab75d4ad7.woff2",
+    "static/media/Morabba-Black.woff2": "/static/media/Morabba-Black.c93ac10fd45061290b3c.woff2",
+    "static/media/Morabba-Light.woff2": "/static/media/Morabba-Light.c98a9f827e3473976008.woff2",
+    "static/media/Morabba-Heavy.woff2": "/static/media/Morabba-Heavy.4c88121bee16c447ff85.woff2",
+    "static/media/Morabba-UltraLight.woff2": "/static/media/Morabba-UltraLight.999293a36d687936fa21.woff2",
+    "index.html": "/index.html",
+    "main.7ffefdf8.css.map": "/static/css/main.7ffefdf8.css.map",
+    "main.64446f2b.js.map": "/static/js/main.64446f2b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7ffefdf8.css",
+    "static/js/main.64446f2b.js"
+  ]
+}

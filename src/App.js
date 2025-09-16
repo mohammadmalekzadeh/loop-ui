@@ -1,0 +1,35 @@
+import { Routes, Route } from "react-router-dom";
+import MainLayout from "./components/layout/MainLayout";
+import Home from "./pages/home/Home";
+import Login from "./pages/auth/Login";
+import Signup from "./pages/auth/Signup";
+import Products from "./pages/product/Product";
+import NotFound from "./pages/NotFound";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Settings from "./pages/dashboard/Settings";
+import Request from "./pages/requests/Request";
+import About from "./pages/about/About";
+import Contact from "./pages/contact/Contact";
+import ScrollToTop from "./components/common/ScrollToTop";
+
+function App() {
+  return (
+    <>
+    <ScrollToTop />
+    <Routes>
+    <Route path="/" element={<MainLayout><Home /></MainLayout>} />
+    <Route path="/login" element={<MainLayout><Login /></MainLayout>} />
+    <Route path="/signup" element={<MainLayout><Signup /></MainLayout>} />
+    <Route path="/products" element={<MainLayout><Products /></MainLayout>} />
+    <Route path="/dashboard" element={<MainLayout><Dashboard /></MainLayout>} />
+    <Route path="/dashboard/settings" element={<MainLayout><Settings /></MainLayout>} />
+    <Route path="/dashboard/requests" element={<MainLayout><Request /></MainLayout>} />
+    <Route path="/about-us" element={<MainLayout><About /></MainLayout>} />
+    <Route path="/contact-us" element={<MainLayout><Contact /></MainLayout>} />
+    <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />
+    </Routes>
+    </>
+  );
+}
+
+export default App;

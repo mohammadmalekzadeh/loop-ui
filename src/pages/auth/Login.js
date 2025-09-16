@@ -12,7 +12,7 @@ export default function Login() {
               <div className="flex">
                 <span className="inline-flex items-center px-3 bg-gray-200 rounded-l-lg">+۹۸</span>
                 <input autoFocus
-                  type="number"
+                  type="tel"
                   placeholder="۹۱۲۳۴۵۶۷۸۹"
                   required
                   pattern="\d{10}"

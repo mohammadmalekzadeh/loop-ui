@@ -32,33 +32,6 @@ export default function About() {
         <br />
         <span className="text-green-900">با محیط زیست مهربان باشیم :)</span>
         </p>
-        {/* Founder Info */}
-        <div className="mb-6 p-4 bg-white bg-opacity-70 rounded-xl shadow flex items-center gap-6 right-farsi">
-            <div className="w-28 h-28">
-              <img
-                src="/profile/founder/prcof.jpg"
-                alt="پدرام رفیعیان"
-                className="w-28 h-28 object-cover rounded-full border"
-              />
-            </div>
-            <div className="flex flex-col justify-center items-center">
-              <h3 className="text-xl font-bold text-gray-800 mb-2">پدرام رفیعیان</h3>
-              <p className="text-blue-600 font-medium">هم بنیان‌گذار</p>
-            </div>
-          </div>
-                  <div className="mb-6 p-4 bg-white bg-opacity-70 rounded-xl shadow flex items-center gap-6 right-farsi">
-            <div className="w-28 h-28">
-              <img
-                src="/profile/founder/mmcto.jpg"
-                alt="محمد ملک زاده"
-                className="w-28 h-28 object-cover rounded-full border"
-              />
-            </div>
-            <div className="flex flex-col justify-center items-center">
-              <h3 className="text-xl font-bold text-gray-800 mb-2">محمد ملک زاده</h3>
-              <p className="text-blue-600 font-medium">هم بنیان‌گذار و توسعه‌دهنده</p>
-            </div>
-          </div>
       </div>
     </div>
   );

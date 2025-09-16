@@ -64,8 +64,8 @@ const customer_requests = [
 ];
 
 export default function Request() {
-  // const userRole = "vendors";
-  const userRole = "customer";
+  const userRole = "vendors";
+  // const userRole = "customer";
 
   return (
     <div className="font-myfont min-h-screen bg-gray-100 p-6">
@@ -93,7 +93,7 @@ export default function Request() {
                       {/* پیام برای فروشنده */}
                       {req.status === "pending" && (
                         <p className="text-sm text-blue-600 mt-2 font-semibold">
-                          همین امروز تحویل داده شود! - حوالی ساعت ۱۸ تا ۲۲
+                        در اسرع وقت تحویل داده شود!
                         </p>
                       )}
                     </div>
@@ -142,7 +142,7 @@ export default function Request() {
                       {/* پیام برای مشتری */}
                       {req.status === "pending" && (
                         <p className="text-sm text-green-600 mt-2 font-semibold">
-                          همین امروز تحویل بگیرید! - حوالی ساعت ۱۸ تا ۲۲
+                          در اسرع وقت تحویل گرفته شود!
                         </p>
                       )}
                     </div>

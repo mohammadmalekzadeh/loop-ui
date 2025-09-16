@@ -11,6 +11,7 @@ import Request from "./pages/requests/Request";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
 import ScrollToTop from "./components/common/ScrollToTop";
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
     <Route path="/contact-us" element={<MainLayout><Contact /></MainLayout>} />
     <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />
     </Routes>
+    <Analytics />
     </>
   );
 }

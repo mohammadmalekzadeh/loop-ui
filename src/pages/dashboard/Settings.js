@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaTrash } from "react-icons/fa";
 import { enToFaNum, faToEnNum } from "../../utlis/NumConvertor";
 
 // Mock data برای تست
@@ -123,6 +123,13 @@ export default function Settings({ user = mockUserVendor }) {
           </button>
         </div>
       </form>
+      {/* Delete Account Button */}
+        <div className="mt-10 flex justify-center right-farsi">
+          <button className="flex items-center justify-center w-screen gap-2 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
+            <FaTrash />
+            حذف حساب کاربری
+          </button>
+        </div>
     </div>
   );
 }

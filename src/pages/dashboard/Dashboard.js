@@ -191,14 +191,6 @@ export default function Dashboard() {
             </div>
           ) : null}
         </div>
-
-        {/* Delete Account Button */}
-        <div className="mt-10 flex justify-center right-farsi">
-          <button className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
-            <FaTrash />
-            حذف حساب کاربری
-          </button>
-        </div>
       </main>
       <AddProductModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>

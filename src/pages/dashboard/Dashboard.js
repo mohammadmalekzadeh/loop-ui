@@ -11,6 +11,10 @@ const vendors_mockup_data = [
     name: "علی کاظمی",
     phonenumber: 9123456789,
     role: "vendors",
+    start_day: "شنبه",
+    end_day: "پنج‌شنبه",
+    start_time: "08:00",
+    end_time: "22:00",
     sell_items: [
       { id: 1, name: "محصول A", type: "نوع A", price: 120000 },
       { id: 2, name: "محصول X", type: "نوع X", price: 75000 },
@@ -73,18 +77,23 @@ export default function Dashboard() {
             <div>
               <h2 className="text-2xl font-bold">{user.name}</h2>
               <p className="text-gray-600 left-num">+۹۸ {enToFaNum(user.phonenumber)}</p>
+
             </div>
           </div>
-
           {/* Right: Edit Info Button */}
           <Link
             to="/dashboard/settings"
             className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition right-farsi"
-          >
+            >
             <FaCog />
             ویرایش اطلاعات
           </Link>
         </div>
+
+            <div className="bg-white shadow rounded-lg p-6 flex items-center justify-between mb-8 right-farsi font-semibold transition responsive">
+            <p className="text-gray-800 right-farsi">از روز {user.start_day} تا روز {user.end_day}</p>
+            <p className="text-gray-800 left-num">از ساعت {enToFaNum(user.start_time)} تا ساعت {enToFaNum(user.end_time)}</p>
+            </div>
 
         {/* Cards area */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

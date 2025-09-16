@@ -11,6 +11,10 @@ const mockUserVendor = {
   nationCode: "0123456789",
   shopName: "علی شاپ",
   shopAddress: "اصفهان، نجف آباد، میدان باغملی",
+  start_day: "شنبه",
+  end_day: "پنج‌شنبه",
+  start_time: "08:00",
+  end_time: "22:00",
 };
 
 const mockUserCustomer = {
@@ -105,11 +109,63 @@ export default function Settings({ user = mockUserVendor }) {
             </div>
           </>
         )}
+        {/* زمان کاری فروشنده */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 right-farsi">
+              <div>
+                <label className="block text-gray-700 right-farsi">روز شروع</label>
+                <select
+                  defaultValue={formData.start_day}
+                  className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 right-farsi"
+                >
+                  <option>شنبه</option>
+                  <option>یکشنبه</option>
+                  <option>دوشنبه</option>
+                  <option>سه‌شنبه</option>
+                  <option>چهارشنبه</option>
+                  <option>پنج‌شنبه</option>
+                  <option>جمعه</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-gray-700 right-farsi">روز پایان</label>
+                <select
+                  defaultValue={formData.end_day}
+                  className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 right-farsi"
+                >
+                  <option>شنبه</option>
+                  <option>یکشنبه</option>
+                  <option>دوشنبه</option>
+                  <option>سه‌شنبه</option>
+                  <option>چهارشنبه</option>
+                  <option>پنج‌شنبه</option>
+                  <option>جمعه</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 right-farsi">
+              <div>
+                <label className="block text-gray-700 right-farsi">ساعت باز شدن</label>
+                <input
+                  type="time"
+                  defaultValue={formData.start_time}
+                  className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 right-farsi">ساعت بسته شدن</label>
+                <input
+                  type="time"
+                  defaultValue={formData.end_time}
+                  className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+            </div>
 
         {/* Save & Back Buttons */}
         <div className="pt-4 flex gap-3">
           <button
-            type="submit"
+            type="button"
             className="flex-1 bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition right-farsi"
           >
             ذخیره تغییرات!

@@ -43,16 +43,6 @@ export default function Footer() {
           <span>Telegram</span>
           {/* <span> تلگرام </span> */}
         </a>
-        <a
-          href="https://github.com/mohammadmalekzadeh/loop-startup"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center space-x-2 hover:text-blue-400 transition"
-        >
-          <FaGithub className="text-lg" />
-          <span>Github</span>
-          {/* <span> تلگرام </span> */}
-        </a>
       </div>
     </footer>
   );

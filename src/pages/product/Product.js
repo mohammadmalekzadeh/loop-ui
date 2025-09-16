@@ -34,7 +34,7 @@ export default function Products() {
           type="success"
           message={alertMessage}
           onClose={() => setAlertMessage(null)}
-        >درخواست شما ثبت شد ✅ همین امروز حوالی ساعت ۱۸ تا ۲۲ تحویل بگیرید</Alert>
+        >درخواست شما ثبت شد ✅ در اسرع وقت تحویل گرفته شود!</Alert>
       </div>
     )}
       

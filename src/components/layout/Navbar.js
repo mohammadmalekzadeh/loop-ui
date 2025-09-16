@@ -29,7 +29,7 @@ export default function Navbar() {
             <Link to="/dashboard/requests" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaClipboardList /> درخواست ها</Link>
             <Link to="/dashboard" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaTachometerAlt /> داشبورد</Link>
             <Link to="/products" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaBoxOpen /> محصولات</Link>
-            <Link to="/login" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaSignInAlt /> ورود</Link>
+            <Link to="/signup" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaSignInAlt /> ثبت نام</Link>
             <Link to="/" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaHome /> خانه</Link>
           </div>
 
@@ -45,7 +45,7 @@ export default function Navbar() {
         {isOpen && (
           <div className="md:hidden mt-4 flex flex-col space-y-3 bg-black bg-opacity-90 p-4 rounded-md">
             <Link to="/" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaHome /> خانه</Link>
-            <Link to="/login" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaSignInAlt /> ورود</Link>
+            <Link to="/signup" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaSignInAlt /> ثبت نام</Link>
             <Link to="/products" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaBoxOpen /> محصولات</Link>
             <Link to="/dashboard" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaTachometerAlt /> داشبورد</Link>
             <Link to="/dashboard/requests" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaClipboardList /> درخواست ها</Link>

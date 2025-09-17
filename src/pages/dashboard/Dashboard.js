@@ -89,19 +89,34 @@ export default function Dashboard() {
             ویرایش اطلاعات
           </Link>
         </div>
-
+        <div>
+          {user.role === "vendors" ? (
+            <>
             <div className="bg-white shadow rounded-lg p-6 flex items-center justify-between mb-8 right-farsi font-semibold transition responsive">
             <p className="text-gray-800 right-farsi">از روز {user.start_day} تا روز {user.end_day}</p>
             <p className="text-gray-800 left-num">از ساعت {enToFaNum(user.start_time)} تا ساعت {enToFaNum(user.end_time)}</p>
             </div>
-
+            </>
+            ) : ("")}
+        </div>
         {/* Cards area */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Left column: Sell items (if vendor) OR Bought items (if customer) */}
           <div className="bg-white shadow rounded-lg p-6">
             {user.role === "vendors" ? (
               <>
+              <div className="flex right-farsi items-center justify-between">
                 <h3 className="text-lg font-bold mb-4 right-farsi">محصولاتی که داری می فروشی</h3>
+                {/* Add New Product Button */}
+                <div className="mt-6">
+                  <button
+                   onClick={() => setIsModalOpen(true)}
+                   className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition right-farsi">
+                    <FaPlus />
+                    محصول جدیدت رو اضافه کن
+                  </button>
+                </div>
+                </div>
                 {Array.isArray(user.sell_items) && user.sell_items.length > 0 ? (
                   <div className="space-y-4">
                     {user.sell_items.map((it) => (
@@ -128,15 +143,6 @@ export default function Dashboard() {
                   <p className="text-gray-500 right-farsi">هنوز کالایی برای فروش وجود ندارد.</p>
                 )}
 
-                {/* Add New Product Button */}
-                <div className="mt-6">
-                  <button
-                   onClick={() => setIsModalOpen(true)}
-                   className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition right-farsi">
-                    <FaPlus />
-                    محصول جدیدت رو اضافه کن
-                  </button>
-                </div>
               </>
             ) : (
               <>

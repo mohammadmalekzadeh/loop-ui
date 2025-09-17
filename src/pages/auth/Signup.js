@@ -70,140 +70,6 @@ export default function Signup() {
             </div>
           </div>
 
-          {/* Nation Code (only for vendors) */}
-          {role === "vendor" && (
-            <div>
-              <label className="block text-gray-700 right-farsi">کد ملی</label>
-              <input
-                type="text"
-                placeholder="۰۱۲۳۴۵۶۷۸۹"
-                required
-                pattern="\d{10}"
-                title="کد ملی باید ۱۰ رقمی باشد"
-                className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-          )}
-          {role === "vendor" && (
-            <div>
-              <label className="block text-gray-700 right-farsi">نام فروشگاه</label>
-              <input
-                type="text"
-                placeholder="برای مثال: علی مال"
-                required
-                title="Shop Name should be more than 3 charackter"
-                className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 right-farsi"
-              />
-            </div>
-          )}
-          {role === "vendor" && (
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1 right-farsi">
-              آدرس فروشگاه
-              </label>
-              <textarea
-                name="shopAddress"
-                defaultValue="اصفهان، نجف آباد، "
-                required
-                rows={3}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 right-farsi x"
-              />
-            </div>
-          )}
-          {role === "vendor" && (
-          <>
-            {/* کد ملی */}
-            <div>
-              <label className="block text-gray-700 right-farsi">کد ملی</label>
-              <input
-                type="text"
-                placeholder="۰۱۲۳۴۵۶۷۸۹"
-                required
-                pattern="\d{10}"
-                title="کد ملی باید ۱۰ رقمی باشد"
-                className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-
-            {/* نام فروشگاه */}
-            <div>
-              <label className="block text-gray-700 right-farsi">نام فروشگاه</label>
-              <input
-                type="text"
-                placeholder="برای مثال: علی مال"
-                required
-                className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 right-farsi"
-              />
-            </div>
-
-            {/* آدرس فروشگاه */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1 right-farsi">
-                آدرس فروشگاه
-              </label>
-              <textarea
-                name="shopAddress"
-                defaultValue="اصفهان، نجف آباد، "
-                rows={3}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 right-farsi"
-              />
-            </div>
-
-            {/* زمان کاری فروشنده */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 right-farsi">
-              <div>
-                <label className="block text-gray-700 right-farsi">روز شروع</label>
-                <select
-                  defaultValue="شنبه"
-                  className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 right-farsi"
-                >
-                  <option>شنبه</option>
-                  <option>یکشنبه</option>
-                  <option>دوشنبه</option>
-                  <option>سه‌شنبه</option>
-                  <option>چهارشنبه</option>
-                  <option>پنج‌شنبه</option>
-                  <option>جمعه</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-gray-700 right-farsi">روز پایان</label>
-                <select
-                  defaultValue="پنج‌شنبه"
-                  className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 right-farsi"
-                >
-                  <option>شنبه</option>
-                  <option>یکشنبه</option>
-                  <option>دوشنبه</option>
-                  <option>سه‌شنبه</option>
-                  <option>چهارشنبه</option>
-                  <option>پنج‌شنبه</option>
-                  <option>جمعه</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 right-farsi">
-              <div>
-                <label className="block text-gray-700 right-farsi">ساعت باز شدن</label>
-                <input
-                  type="time"
-                  defaultValue="09:00"
-                  className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              <div>
-                <label className="block text-gray-700 right-farsi">ساعت بسته شدن</label>
-                <input
-                  type="time"
-                  defaultValue="22:00"
-                  className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-            </div>
-          </>
-        )}
-
           {/* Submit */}
           <button
             type="submit"
@@ -212,11 +78,9 @@ export default function Signup() {
             ثبت نام
           </button>
         </form>
-        {role === "vendor" && (
         <p className="mt-4 text-sm text-gray-500 text-center font-semibold right-farsi">
           اطلاعات شما نزد ما محفوظ نگه داشته می‌شود!
         </p>
-        )}
         <p className="text-center text-gray-600 mt-6 right-farsi">
         حساب کاربری دارید؟{" "}
           <Link to="/login" className="text-blue-600 hover:underline">

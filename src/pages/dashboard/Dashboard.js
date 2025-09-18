@@ -1,70 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaUser, FaCog, FaTrash, FaPlus, FaDirections } from "react-icons/fa";
 import AddProductModal from "../../components/popups/AddProductModal";
 import { enToFaNum, faToEnNum } from "../../utlis/NumConvertor";
-
-// Mock data (now with arrays)
-const vendors_mockup_data = [
-  {
-    id: 1,
-    name: "علی کاظمی",
-    phonenumber: 9123456789,
-    role: "vendors",
-    start_day: "شنبه",
-    end_day: "پنج‌شنبه",
-    start_time: "08:00",
-    end_time: "22:00",
-    sell_items: [
-      { id: 1, name: "محصول A", type: "نوع A", price: 120000 },
-      { id: 2, name: "محصول X", type: "نوع X", price: 75000 },
-    ],
-    buy_items: [
-      {
-        id: 2,
-        name: "محصول B",
-        type: "نوع B",
-        price: 45000,
-        shop: "ممد",
-        buy_date: "2025-09-08",
-      },
-      {
-        id: 3,
-        name: "محصول Y",
-        type: "نوع Y",
-        price: 56000,
-        shop: "علی",
-        buy_date: "2025-08-30",
-      },
-    ],
-  },
-];
-
-const customer_mockup_data = [
-  {
-    id: 1,
-    name: "علی کاظمی",
-    phonenumber: 9123456789,
-    role: "customer",
-    buy_items: [
-      {
-        id: 1,
-        name: "محصول C",
-        type: "نوع C",
-        price: 45000,
-        shop: "فروشگاه C",
-        buy_date: "2025-09-08",
-      },
-    ],
-  },
-];
+import { getCurrentUser } from "../../utlis/currentUser";
 
 export default function Dashboard() {
-  // change this to test roles:
-  const user = vendors_mockup_data[0];
-  // const user = customer_mockup_data[0];
-
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    async function fetchUser() {
+      try {
+        const data = await getCurrentUser();
+        setUser(data);
+      } catch (err) {
+        console.error("Failed to fetch user:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchUser();
+  }, []);
+
+  if (loading) return <p className="p-6">در حال بارگذاری...</p>;
+  if (!user) return <p className="p-6">کاربر یافت نشد یا وارد نشده‌اید.</p>;
 
   return (
     <div className="flex min-h-screen bg-gray-100">
@@ -76,7 +37,7 @@ export default function Dashboard() {
           <div className="flex items-center">
             <div>
               <h2 className="text-2xl font-bold">{user.name}</h2>
-              <p className="text-gray-600 left-num">+۹۸ {enToFaNum(user.phonenumber)}</p>
+              <p className="text-gray-600 left-num">+۹۸ {enToFaNum(user.phone)}</p>
 
             </div>
           </div>

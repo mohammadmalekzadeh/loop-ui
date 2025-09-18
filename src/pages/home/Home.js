@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FaSignInAlt } from "react-icons/fa";
 import { enToFaNum } from "../../utlis/NumConvertor";
 
 export default function Home() {
@@ -20,9 +21,9 @@ export default function Home() {
             به <span className="text-blue-500">لووپ</span> خوش آمدید!
           </h1>
 
-          <Link to="/login">
-            <button className="px-6 py-3 bg-blue-600 rounded-lg text-lg hover:bg-blue-700 transition">
-              ورود
+          <Link to="/login" className="mt-10 flex justify-center right-farsi">
+            <button className="flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 rounded-lg text-lg hover:bg-blue-700 transition right-farsi">
+              <FaSignInAlt /> ورود
             </button>
           </Link>
         </div>

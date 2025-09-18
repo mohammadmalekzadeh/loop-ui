@@ -32,7 +32,7 @@ export default function Signup() {
       const res = await verify(phone, otp);
       localStorage.setItem("token", res.access_token);
       alert("ثبت نام موفق!");
-      navigate("/dashboard");
+      navigate("/dashboard/settings");
     } catch (err) {
       alert("کد وارد شده اشتباه است");
       console.error(err);

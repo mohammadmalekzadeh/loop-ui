@@ -5,6 +5,7 @@ const API_URL = process.env.REACT_APP_API_URL
 export async function apiGet(endpoint, token = null) {
   const res = await fetch(`${API_URL}${endpoint}`, {
     method: "GET",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
       ...(token && { Authorization: `Bearer ${token}` }),
@@ -22,6 +23,7 @@ export async function apiGet(endpoint, token = null) {
 export async function apiPost(endpoint, data, token = null) {
   const res = await fetch(`${API_URL}${endpoint}`, {
     method: "POST",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
       ...(token && { Authorization: `Bearer ${token}` }),

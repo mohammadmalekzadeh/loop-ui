@@ -29,8 +29,12 @@ export default function Login() {
       console.log("Access Token:", res.access_token);
       navigate("/dashboard");
     } catch (err) {
+      if (err.message.includes("404")) {
+        alert("کاربری با این شماره قبلا ثبت نشده است!");
+      } else {
       alert("کد وارد شده اشتباه است");
       console.error(err);
+      }
     }
   };
 
@@ -40,7 +44,7 @@ export default function Login() {
         <h2 className="text-3xl font-bold text-center text-blue-600 mb-6">صفحه ورود</h2>
 
         {!otpSent ? (
-          <form className="space-y-4" onSubmit={handleLogin}>
+          <form className="space-y-4" onSubmit={handleLogin} method="post" action={"auth/login"}>
             <div>
               <label className="block text-gray-700 right-farsi">شماره تلفن</label>
               <div className="flex">

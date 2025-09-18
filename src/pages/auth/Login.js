@@ -30,10 +30,11 @@ export default function Login() {
       navigate("/dashboard");
     } catch (err) {
       if (err.message.includes("404")) {
+        console.log(err);
         alert("کاربری با این شماره قبلا ثبت نشده است!");
       } else {
-      alert("کد وارد شده اشتباه است");
-      console.error(err);
+        alert("کد وارد شده اشتباه است");
+        console.error(err);
       }
     }
   };

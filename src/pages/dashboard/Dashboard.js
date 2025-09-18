@@ -24,8 +24,8 @@ export default function Dashboard() {
     fetchUser();
   }, []);
 
-  if (loading) return <p className="p-6 right-farsi">در حال بارگذاری...</p>;
-  if (!user) return <p className="p-6 right-farsi">کاربر یافت نشد یا وارد نشده‌اید.</p>;
+  if (loading) return <p className="text-center mt-6 right-farsi">در حال بارگذاری...</p>;
+  if (!user) return <p className="text-center mt-6 text-red-600 right-farsi">کاربر یافت نشد یا وارد نشده‌اید.</p>;
 
   return (
     <div className="flex min-h-screen bg-gray-100">

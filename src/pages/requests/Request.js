@@ -42,7 +42,7 @@ export default function Request() {
       <div className="bg-white shadow rounded-lg p-6">
         <h2 className="text-2xl font-bold mb-6 text-center">درخواست های شما</h2>
 
-        {user.role === "vendors" ? (
+        {userRole === "vendors" ? (
           <>
             {requests.length > 0 ? (
               <div className="space-y-4">

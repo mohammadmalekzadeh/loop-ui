@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { enToFaNum } from "../../utlis/NumConvertor";
 import { getRequests } from "../../routes/request/request";
 import { getCurrentUser } from "../../utlis/currentUser";
@@ -11,6 +12,7 @@ export default function Request() {
   const [customerRequests, setCustomerRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState("");
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function fetchData() {
@@ -37,13 +39,8 @@ export default function Request() {
     fetchData();
   }, []);
 
-  if (loading) {
-    return <p className="text-center mt-6 right-farsi">در حال بارگذاری...</p>;
-  }
-
-  if (!user) {
-    return <p className="text-center mt-6 text-red-600 right-farsi">کاربر یافت نشد یا وارد نشده‌اید</p>;
-  }
+  if (loading) return <p className="text-center mt-6 right-farsi">در حال بارگذاری...</p>;
+  if (!user) return navigate("/login");
 
   return (
     <div className="font-myfont min-h-screen bg-gray-100 p-6">

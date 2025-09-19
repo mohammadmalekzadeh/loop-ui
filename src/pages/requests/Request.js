@@ -8,8 +8,7 @@ import { getCurrentUser } from "../../utlis/currentUser";
 export default function Request() {
 
   const [user, setUser] = useState(null);
-  const [vendorRequests, setVendorRequests] = useState([]);
-  const [customerRequests, setCustomerRequests] = useState([]);
+  const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState("");
   const navigate = useNavigate()
@@ -23,12 +22,8 @@ export default function Request() {
         const token = localStorage.getItem("token");
         const requests = await getRequests(token);
         setUserRole(currentUser.role)
-
-        if (currentUser.role === "vendors") {
-          setVendorRequests(requests);
-        } else {
-          setCustomerRequests(requests);
-        }
+        setRequests(requests);
+        console.log(requests)
       } catch (err) {
         console.error("Error fetching requests:", err);
       } finally {
@@ -49,9 +44,9 @@ export default function Request() {
 
         {user.role === "vendors" ? (
           <>
-            {vendorRequests.length > 0 ? (
+            {requests.length > 0 ? (
               <div className="space-y-4">
-                {vendorRequests.map((req) => (
+                {requests.map((req) => (
                   <div key={req.id} className="p-4 border rounded-lg flex justify-between items-center right-farsi">
                     <div>
                       <p className="font-semibold">
@@ -83,9 +78,9 @@ export default function Request() {
           </>
         ) : (
           <>
-            {customerRequests.length > 0 ? (
+            {requests.length > 0 ? (
               <div className="space-y-4">
-                {customerRequests.map((req) => (
+                {requests.map((req) => (
                   <div key={req.id} className="p-4 border rounded-lg flex justify-between items-center right-farsi">
                     <div>
                       <p className="font-semibold">

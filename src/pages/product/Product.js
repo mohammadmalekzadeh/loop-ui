@@ -1,43 +1,48 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { FaClipboardCheck } from "react-icons/fa";
 import { enToFaNum, faToEnNum } from "../../utlis/NumConvertor";
-import Alert from "../../components/ui/Alert";
+import { createRequest } from "../../routes/request/request";
+import { useNavigate } from "react-router-dom";
 
 const products = [
-  { id: 1, name: "محصول 1", type: "نوع 1", vendor: "فروشنده 1", shop: "فروشگاه 1", address: "آدرس 1", price: 120000 },
-  { id: 2, name: "محصول 2", type: "نوع 2", vendor: "فروشنده 2", shop: "فروشگاه 2", address: "آدرس 2", price: 80000 },
-  { id: 3, name: "محصول 3", type: "نوع 3", vendor: "فروشنده 3", shop: "فروشگاه 3", address: "آدرس 3", price: 45000 },
-  { id: 3, name: "محصول 4", type: "نوع 4", vendor: "فروشنده 4", shop: "فروشگاه 4", address: "آدرس 4", price: 105000 },
+  { id: 1, name: "محصول 1", type: "نوع 1", vendor: "فروشنده 1", shop: "فروشگاه 1", address: "آدرس 1", price: 120000, vendors_id: 1 },
+  { id: 2, name: "محصول 2", type: "نوع 2", vendor: "فروشنده 2", shop: "فروشگاه 2", address: "آدرس 2", price: 80000, vendors_id: 2 },
+  { id: 3, name: "محصول 3", type: "نوع 3", vendor: "فروشنده 3", shop: "فروشگاه 3", address: "آدرس 3", price: 45000, vendors_id: 3 },
+  { id: 4, name: "محصول 4", type: "نوع 4", vendor: "فروشنده 4", shop: "فروشگاه 4", address: "آدرس 4", price: 105000, vendors_id: 4 },
 ];
 
 export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [alertMessage, setAlertMessage] = useState(null);
+  const [count, setCount] = useState(1);
+  const navigate = useNavigate()
 
-    const handleConfirm = () => {
-    setSelectedProduct(null);
-    setAlertMessage("a");
+  const handleConfirm = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("لطفا ابتدا وارد شوید");
+        navigate("/login");
+        return;
+      }
 
-    setTimeout(() => {
-      setAlertMessage(null);
-    }, 5000);
+      const data = {
+        product_id: selectedProduct.id,
+        vendors_id: selectedProduct.vendors_id,
+        count: count,
+      };
+
+      const res = await createRequest(data, token);
+      alert(`درخواست با موفقیت ثبت شد ✅ | کد درخواست: ${res.code}`);
+      setSelectedProduct(null);
+    } catch (err) {
+      console.error(err);
+      alert("خطا در ثبت درخواست ❌");
+    }
   };
 
   return (
     
     <div className="min-h-screen bg-gray-100 py-10 px-5 md:px-10">
-      
-    {alertMessage && (
-      <div className="fixed top-5 right-5 z-50 w-80">
-        <Alert
-          type="success"
-          message={alertMessage}
-          onClose={() => setAlertMessage(null)}
-        >درخواست شما ثبت شد ✅ در اسرع وقت تحویل گرفته شود!</Alert>
-      </div>
-    )}
-      
       <h1 className="text-4xl font-bold text-center mb-10"></h1>
       {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 right-farsi"> */}
       <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
@@ -62,8 +67,11 @@ export default function Products() {
               {enToFaNum(product.price.toLocaleString())} تومان
             </p>
             <button
-              onClick={() => setSelectedProduct(product)}
               className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+              onClick={ () => {
+                setSelectedProduct(product);
+                setCount(1);
+              }}
             >
               <FaClipboardCheck />
               ثبت درخواست
@@ -88,7 +96,8 @@ export default function Products() {
               <input
                 type="number"
                 min="1"
-                defaultValue={1}
+                value={count}
+                onChange={(e) => setCount(Number(e.target.value))}
                 className="w-full border rounded-lg p-2 text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>

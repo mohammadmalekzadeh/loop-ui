@@ -37,3 +37,22 @@ export async function apiPost(endpoint, data, token = null) {
     }
   return res.json();
 }
+
+// فانکشن عمومی PUT
+export async function apiPut(endpoint, data, token = null) {
+  const res = await fetch(`${API_URL}${endpoint}`, {
+    method: "PUT",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+      ...(token && { Authorization: `Bearer ${token}` }),
+    },
+    body: JSON.stringify(data),
+  });
+    if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        console.error("API Error:", res.status, errorData);
+        throw new Error(`Error: ${res.status}`);
+    }
+  return res.json();
+}

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { enToFaNum } from "../../utlis/NumConvertor";
 import { getRequests } from "../../routes/request/request";
 import { getCurrentUser } from "../../utlis/currentUser";
+import { updateRequestStatus } from "../../routes/request/request";
 
 export default function Request() {
 
@@ -34,6 +35,22 @@ export default function Request() {
     fetchData();
   }, []);
 
+  const handleUpdateStatus = async (id, newStatus) => {
+    try {
+      const token = localStorage.getItem("token");
+      await updateRequestStatus(id, newStatus, token);
+
+      setRequests((prev) =>
+        prev.map((r) =>
+          r.id === id ? { ...r, status: newStatus } : r
+        )
+      );
+    } catch (err) {
+      alert("خطا در تغییر وضعیت");
+      console.error(err);
+    }
+  };
+
   if (loading) return <p className="text-center mt-6 right-farsi">در حال بارگذاری...</p>;
   if (!user) return navigate("/login");
 
@@ -63,7 +80,7 @@ export default function Request() {
                       {req.status === "pending" ? (
                         <span className="flex items-center gap-2">
                           <span className="text-yellow-600 font-semibold">در انتظار تحویل</span>
-                          <button className="px-3 py-1 bg-yellow-500 text-white rounded">تحویل دادی؟</button>
+                          <button onClick={() => handleUpdateStatus(req.id, "accepted")} className="px-3 py-1 bg-yellow-500 text-white rounded">تحویل دادی؟</button>
                         </span>
                       ) : (
                         <span className="px-3 py-1 rounded text-white bg-green-600">تحویل داده شده</span>
@@ -97,7 +114,7 @@ export default function Request() {
                     {req.status === "pending" ? (
                       <span className="flex items-center gap-2">
                         <span className="text-yellow-600 font-semibold">در انتظار تحویل</span>
-                        <button className="px-3 py-1 bg-yellow-500 text-white rounded">تحویل گرفتی؟</button>
+                        <button onClick={() => handleUpdateStatus(req.id, "accepted")} className="px-3 py-1 bg-yellow-500 text-white rounded">تحویل گرفتی؟</button>
                       </span>
                     ) : (
                       <span className="px-3 py-1 rounded text-white bg-green-600">تحویل گرفته شده</span>

@@ -96,9 +96,9 @@ export default function Signup() {
                   <input
                     type="radio"
                     name="role"
-                    value="vendor"
-                    checked={role === "vendor"}
-                    onChange={() => setRole("vendor")}
+                    value="vendors"
+                    checked={role === "vendors"}
+                    onChange={() => setRole("vendors")}
                     className="text-blue-600"
                   />
                   فروشنده

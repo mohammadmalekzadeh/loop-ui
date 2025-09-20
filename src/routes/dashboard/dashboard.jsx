@@ -5,9 +5,9 @@ export async function getUserDashboard(token) {
 }
 
 export async function updateUserInfo(data, token) {
-  return apiPut("update/user", data, token);
+  return apiPut("profile/update/user", data, token);
 }
 
 export async function updateVendorsInfo(data, token) {
-  return apiPut("update/vendors", data, token);
+  return apiPut("profile/update/vendors", data, token);
 }

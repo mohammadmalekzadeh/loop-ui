@@ -13,6 +13,7 @@ export default function Dashboard() {
   const [request, setRequest] = useState({});
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
   
   useEffect(() => {
     async function fetchUser() {
@@ -20,8 +21,8 @@ export default function Dashboard() {
         const currentUser = await getCurrentUser();
         setUser(currentUser);
 
-        const token = localStorage.getItem("token");
         const data = await getUserDashboard(token);
+        console.log("Dashboard data:", data);
         setRequest(data);
       } catch (err) {
         console.error("Failed to fetch user:", err);
@@ -30,7 +31,7 @@ export default function Dashboard() {
       }
     }
     fetchUser();
-  }, []);
+  }, [token]);
 
   if (loading) return <p className="text-center mt-6 right-farsi">در حال بارگذاری...</p>;
   if (!user) return navigate("/login");

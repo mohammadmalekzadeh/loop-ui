@@ -19,7 +19,7 @@ export default function Navbar() {
               className="w-10 h-10 rounded-2xl"
             />
             <h1 className="text-2xl font-bold text-blue-300">
-              <Link to="/">LOOP</Link>
+              <Link to="/">lLOOP</Link>
             </h1>
           </div>
           {/* Desktop Link*/}

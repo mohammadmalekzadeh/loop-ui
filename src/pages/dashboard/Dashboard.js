@@ -5,18 +5,24 @@ import { FaUser, FaCog, FaTrash, FaPlus, FaDirections } from "react-icons/fa";
 import AddProductModal from "../../components/popups/AddProductModal";
 import { enToFaNum, faToEnNum } from "../../utlis/NumConvertor";
 import { getCurrentUser } from "../../utlis/currentUser";
+import { getUserDashboard } from "../../routes/dashboard/dashboard";
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [user, setUser] = useState(null);
+  const [request, setRequest] = useState({});
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   
   useEffect(() => {
     async function fetchUser() {
       try {
-        const data = await getCurrentUser();
-        setUser(data);
+        const currentUser = await getCurrentUser();
+        setUser(currentUser);
+
+        const token = localStorage.getItem("token");
+        const data = await getUserDashboard(token);
+        setRequest(data);
       } catch (err) {
         console.error("Failed to fetch user:", err);
       } finally {
@@ -31,6 +37,7 @@ export default function Dashboard() {
 
   return (
     <div className="flex min-h-screen bg-gray-100">
+      {request}
       {/* Main Content */}
       <main className="flex-1 p-6">
         {/* Profile Card */}
@@ -38,8 +45,8 @@ export default function Dashboard() {
           {/* Left: Avatar + Info */}
           <div className="flex items-center">
             <div>
-              <h2 className="text-2xl font-bold">{user.name}</h2>
-              <p className="text-gray-600 left-num">+۹۸ {enToFaNum(user.phone)}</p>
+              <h2 className="text-2xl font-bold">{request.name}</h2>
+              <p className="text-gray-600 left-num">+۹۸ {enToFaNum(request.phone)}</p>
 
             </div>
           </div>
@@ -53,11 +60,11 @@ export default function Dashboard() {
           </Link>
         </div>
         <div>
-          {user.role === "vendors" ? (
+          {request.role === "vendors" ? (
             <>
             <div className="bg-white shadow rounded-lg p-6 flex items-center justify-between mb-8 right-farsi font-semibold transition responsive">
-            <p className="text-gray-800 right-farsi">از روز {user.start_day} تا روز {user.end_day}</p>
-            <p className="text-gray-800 left-num">از ساعت {enToFaNum(user.start_time)} تا ساعت {enToFaNum(user.end_time)}</p>
+            <p className="text-gray-800 right-farsi">از روز {request.start_day} تا روز {request.end_day}</p>
+            <p className="text-gray-800 left-num">از ساعت {enToFaNum(request.start_time)} تا ساعت {enToFaNum(request.end_time)}</p>
             </div>
             </>
             ) : ("")}
@@ -66,7 +73,7 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Left column: Sell items (if vendor) OR Bought items (if customer) */}
           <div className="bg-white shadow rounded-lg p-6">
-            {user.role === "vendors" ? (
+            {request.role === "vendors" ? (
               <>
               <div className="flex right-farsi items-center justify-between">
                 <h3 className="text-lg font-bold mb-4 right-farsi">محصولاتی که داری می فروشی</h3>
@@ -80,9 +87,9 @@ export default function Dashboard() {
                   </button>
                 </div>
                 </div>
-                {Array.isArray(user.sell_items) && user.sell_items.length > 0 ? (
+                {Array.isArray(request.sell_items) && request.sell_items.length > 0 ? (
                   <div className="space-y-4">
-                    {user.sell_items.map((it) => (
+                    {request.sell_items.map((it) => (
                       <div
                         key={it.id}
                         className="flex items-center justify-between p-3 border rounded right-farsi"
@@ -110,9 +117,9 @@ export default function Dashboard() {
             ) : (
               <>
                 <h3 className="text-lg font-bold mb-4 right-farsi">محصولاتی که خریدی</h3>
-                {Array.isArray(user.buy_items) && user.buy_items.length > 0 ? (
+                {Array.isArray(request.buy_items) && request.buy_items.length > 0 ? (
                   <div className="space-y-4">
-                    {user.buy_items.map((it) => (
+                    {request.buy_items.map((it) => (
                       <div
                         key={it.id}
                         className="flex items-center justify-between p-3 border rounded right-farsi"
@@ -139,12 +146,12 @@ export default function Dashboard() {
           </div>
 
           {/* Right column: if vendor show bought items; if customer hide this column */}
-          {user.role === "vendors" ? (
+          {request.role === "vendors" ? (
             <div className="bg-white shadow rounded-lg p-6">
               <h3 className="text-lg font-bold mb-4 right-farsi">محصولاتی که فروختی</h3>
-              {Array.isArray(user.buy_items) && user.buy_items.length > 0 ? (
+              {Array.isArray(request.buy_items) && request.buy_items.length > 0 ? (
                 <div className="space-y-4">
-                  {user.buy_items.map((it) => (
+                  {request.buy_items.map((it) => (
                     <div
                       key={it.id}
                       className="flex items-center justify-between p-3 border rounded right-farsi"

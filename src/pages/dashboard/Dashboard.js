@@ -37,7 +37,6 @@ export default function Dashboard() {
 
   return (
     <div className="flex min-h-screen bg-gray-100">
-      {request}
       {/* Main Content */}
       <main className="flex-1 p-6">
         {/* Profile Card */}

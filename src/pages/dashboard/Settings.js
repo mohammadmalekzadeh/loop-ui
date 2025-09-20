@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaHome, FaTrash, FaSignOutAlt } from "react-icons/fa";
 import { enToFaNum, faToEnNum } from "../../utlis/NumConvertor";
 import { updateUserInfo, updateVendorsInfo, getUserDashboard } from "../../routes/dashboard/dashboard";
@@ -7,8 +7,9 @@ import { getCurrentUser } from "../../utlis/currentUser";
 
 export default function Settings() {
   const token = localStorage.getItem("token");
-  const [formData, setFormData] = useState("");
+  const [formData, setFormData] = useState({});
   const [user, setUser] = useState("");
+  const navigate = useNavigate();
 
    useEffect(() => {
     const fetchData = async () => {
@@ -35,13 +36,16 @@ export default function Settings() {
   };
 
   const handleSave = async () => {
+    console.log(formData)
     try {
       if (formData.role === "vendors") {
         await updateVendorsInfo(
           {
-            nation_code: formData.nationCode,
-            shop_name: formData.shopName,
-            shop_address: formData.shopAddress,
+            name: formData.name,
+            phone: formData.phone,
+            nation_code: formData.nation_code,
+            shop_name: formData.shop_name,
+            shop_address: formData.shop_address,
             start_day: formData.start_day,
             end_day: formData.end_day,
             start_time: formData.start_time,
@@ -63,10 +67,16 @@ export default function Settings() {
       setUser(updatedUser);
       setFormData(updatedUser);
     } catch (err) {
+      if (err.message.includes("422")) {
+        alert("کد ملی نامعتبر است!")
+      } else {
+        alert("مشکلی پیش اومد ❌");
+      }
       console.error("خطا در ذخیره تغییرات:", err);
-      alert("مشکلی پیش اومد ❌");
     }
   };
+
+  if (!user) return navigate("/login");
 
   return (
     <div className="max-w-2xl mx-auto bg-white shadow-md rounded-xl p-6">
@@ -81,7 +91,7 @@ export default function Settings() {
           <input
             type="text"
             name="name"
-            defaultValue={formData.name}
+            value={formData.name || ""}
             onChange={handleChange}
             className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 right-farsi"
           />
@@ -99,7 +109,7 @@ export default function Settings() {
             <input
               type="tel"
               name="phone"
-              defaultValue={formData.phone}
+              value={formData.phone || ""}
               onChange={handleChange}
               pattern="\d{10}"
               title="شماره تلفن جدید خود را بدون صفر وارد کنید"
@@ -117,9 +127,10 @@ export default function Settings() {
             <input
               type="text"
               name="nation_code"
-              defaultValue={enToFaNum(formData.nation_code)}
-              disabled
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 bg-gray-100 cursor-not-allowed"
+              value={formData.nation_code || ""}
+              onChange={handleChange}
+              pattern="\d{10}"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
         )}
@@ -134,7 +145,7 @@ export default function Settings() {
               <input
                 type="text"
                 name="shop_name"
-                defaultValue={formData.shop_name}
+                value={formData.shop_name || ""}
                 onChange={handleChange}
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 right-farsi"
               />
@@ -147,7 +158,8 @@ export default function Settings() {
               </label>
               <textarea
                 name="shop_address"
-                defaultValue={formData.shop_address}
+                value={formData.shop_address || ""}
+                placeholder="اصفهان، نجف آباد، ..."
                 onChange={handleChange}
                 rows={3}
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 right-farsi"
@@ -161,7 +173,8 @@ export default function Settings() {
               <div>
                 <label className="block text-gray-700 right-farsi">روز شروع</label>
                 <select
-                  defaultValue={formData.start_day}
+                  name="start_day"
+                  value={formData.start_day || ""}
                   onChange={handleChange}
                   className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 right-farsi"
                 >
@@ -177,7 +190,8 @@ export default function Settings() {
               <div>
                 <label className="block text-gray-700 right-farsi">روز پایان</label>
                 <select
-                  defaultValue={formData.end_day}
+                  name="end_day"
+                  value={formData.end_day || ""}
                   onChange={handleChange}
                   className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 right-farsi"
                 >
@@ -197,8 +211,9 @@ export default function Settings() {
               <div>
                 <label className="block text-gray-700 right-farsi">ساعت باز شدن</label>
                 <input
+                  name="start_time"
                   type="time"
-                  defaultValue={formData.start_time}
+                  value={formData.start_time || ""}
                   onChange={handleChange}
                   className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
@@ -206,8 +221,9 @@ export default function Settings() {
               <div>
                 <label className="block text-gray-700 right-farsi">ساعت بسته شدن</label>
                 <input
+                  name="end_time"
                   type="time"
-                  defaultValue={formData.end_time}
+                  value={formData.end_time || ""}
                   onChange={handleChange}
                   className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />

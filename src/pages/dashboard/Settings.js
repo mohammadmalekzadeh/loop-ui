@@ -178,6 +178,7 @@ export default function Settings() {
                   onChange={handleChange}
                   className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 right-farsi"
                 >
+                  <option>---</option>
                   <option>شنبه</option>
                   <option>یکشنبه</option>
                   <option>دوشنبه</option>
@@ -195,6 +196,7 @@ export default function Settings() {
                   onChange={handleChange}
                   className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 right-farsi"
                 >
+                  <option>---</option>
                   <option>شنبه</option>
                   <option>یکشنبه</option>
                   <option>دوشنبه</option>

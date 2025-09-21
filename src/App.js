@@ -8,6 +8,8 @@ import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Settings from "./pages/dashboard/Settings";
 import Request from "./pages/requests/Request";
+import Vendors from "./pages/vendors/Vendors";
+import VendorsProducts from "./pages/vendors/VendorsProducts";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
 import ScrollToTop from "./components/common/ScrollToTop";
@@ -26,9 +28,12 @@ function App() {
     <Route path="/dashboard" element={<MainLayout><Dashboard /></MainLayout>} />
     <Route path="/dashboard/settings" element={<MainLayout><Settings /></MainLayout>} />
     <Route path="/dashboard/requests" element={<MainLayout><Request /></MainLayout>} />
+    <Route path="/vendors" element={<MainLayout><Vendors /></MainLayout>} />
+    <Route path="/vendors/:vendorsId" element={<MainLayout><VendorsProducts /></MainLayout>} />
     <Route path="/about-us" element={<MainLayout><About /></MainLayout>} />
     <Route path="/contact-us" element={<MainLayout><Contact /></MainLayout>} />
     <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />
+    <Route path="/404" element={<MainLayout><NotFound /></MainLayout>} />
     </Routes>
     <Analytics />
     <SpeedInsights />

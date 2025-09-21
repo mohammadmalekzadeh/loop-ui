@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaTimes, FaHome, FaSignInAlt, FaBoxOpen, FaTachometerAlt, FaClipboardList, FaPhoneAlt, FaInfoCircle, FaSignOutAlt } from "react-icons/fa";
+import { FaBars, FaTimes, FaHome, FaSignInAlt, FaBoxOpen, FaTachometerAlt, FaClipboardList, FaPhoneAlt, FaInfoCircle, FaSignOutAlt, FaStore } from "react-icons/fa";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,6 +29,7 @@ export default function Navbar() {
             <Link to="/contact-us" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaPhoneAlt /> تماس با ما</Link>
             <Link to="/dashboard/requests" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaClipboardList /> درخواست ها</Link>
             <Link to="/dashboard" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaTachometerAlt /> داشبورد</Link>
+            <Link to="/vendors" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaStore /> فروشندگان</Link>
             <Link to="/products" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaBoxOpen /> محصولات</Link>
             <Link to="/signup" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaSignInAlt /> ثبت نام</Link>
             <Link to="/" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaHome /> خانه</Link>
@@ -48,6 +49,7 @@ export default function Navbar() {
             <Link to="/" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaHome /> خانه</Link>
             <Link to="/signup" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaSignInAlt /> ثبت نام</Link>
             <Link to="/products" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaBoxOpen /> محصولات</Link>
+            <Link to="/vendors" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaStore /> فروشندگان</Link>
             <Link to="/dashboard" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaTachometerAlt /> داشبورد</Link>
             <Link to="/dashboard/requests" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaClipboardList /> درخواست ها</Link>
             <Link to="/contact-us" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaPhoneAlt /> تماس با ما</Link>

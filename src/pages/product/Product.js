@@ -1,25 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaClipboardCheck } from "react-icons/fa";
 import { enToFaNum, faToEnNum } from "../../utlis/NumConvertor";
 import { createRequest } from "../../routes/request/request";
 import { useNavigate } from "react-router-dom";
-
-const products = [
-  { id: 1, name: "محصول 1", type: "نوع 1", vendor: "فروشنده 1", shop: "فروشگاه 1", address: "آدرس 1", price: 120000, vendors_id: 1 },
-  { id: 2, name: "محصول 2", type: "نوع 2", vendor: "فروشنده 2", shop: "فروشگاه 2", address: "آدرس 2", price: 80000, vendors_id: 2 },
-  { id: 3, name: "محصول 3", type: "نوع 3", vendor: "فروشنده 3", shop: "فروشگاه 3", address: "آدرس 3", price: 45000, vendors_id: 3 },
-  { id: 4, name: "محصول 4", type: "نوع 4", vendor: "فروشنده 4", shop: "فروشگاه 4", address: "آدرس 4", price: 105000, vendors_id: 4 },
-];
+import { getCurrentUser } from "../../utlis/currentUser"; 
+import { getProducts } from "../../routes/product/product";
 
 export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [count, setCount] = useState(1);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  const [user, setUser] = useState(null);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true)
+
+      useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const data = await getProducts();
+            setProducts(data);
+          } catch (err) {
+            console.error("خطا در گرفتن محصولات:", err);
+          } finally {
+          setLoading(false);
+          }
+        };
+        fetchData();
+      }, []);
+  
+      if (loading) return <p className="text-center mt-6 right-farsi">در حال بارگذاری...</p>;
 
   const handleConfirm = async () => {
     try {
-      const token = localStorage.getItem("token");
-      if (!token) {
+
+      setUser(getCurrentUser);
+
+      if (!user) {
         alert("لطفا ابتدا وارد شوید");
         navigate("/login");
         return;
@@ -27,7 +44,6 @@ export default function Products() {
 
       const data = {
         product_id: selectedProduct.id,
-        vendors_id: selectedProduct.vendors_id,
         count: count,
       };
 
@@ -84,10 +100,10 @@ export default function Products() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-xl shadow-xl p-6 w-96 right-farsi">
             <h2 className="text-xl font-bold mb-4 text-gray-800">جزئیات محصول: {selectedProduct.name}</h2>
-            <p><span className="font-semibold">نوع محصول:</span> {selectedProduct.type}</p>
-            <p><span className="font-semibold">نام فروشنده:</span> {selectedProduct.vendor}</p>
-            <p><span className="font-semibold">فروشگاه:</span> {selectedProduct.shop}</p>
-            <p><span className="font-semibold">آدرس:</span> {selectedProduct.address}</p>
+            <p><span className="font-semibold">نوع محصول: </span> {selectedProduct.type}</p>
+            <p><span className="font-semibold">نام فروشنده: </span> {selectedProduct.vendor}</p>
+            <p><span className="font-semibold">فروشگاه: </span> {selectedProduct.shop}</p>
+            <p><span className="font-semibold">آدرس: </span> {selectedProduct.address}</p>
 
             <div className="mt-4">
               <label className="block text-gray-700 font-semibold mb-2">

@@ -1,8 +1,37 @@
 // src/components/AddProductModal.js
-import React from "react";
+import React, { useState, } from "react";
+import { postProducts } from "../../routes/product/product";
 
 export default function AddProductModal({ isOpen, onClose }) {
   if (!isOpen) return null;
+  const [product, setProduct] = useState({
+    name: "",
+    type: "",
+    price: "",
+  });
+  const token = localStorage.getItem("token");
+
+  const handleSave = async () => {
+    try {
+        await postProducts(
+          {
+          name: product.name,
+          type: product.type,
+          price: parseInt(product.price, 10),
+          },
+          token
+        );
+      alert("محصول با موفقیت ذخیره شد! ✅");
+      onclose;
+    } catch (err) {
+      if (err.message.includes("405")) {
+        alert("اطلاعات حقیقی و حقوقی شما کافی نیست!")
+      } else {
+        alert("مشکلی پیش اومد ❌");
+      }
+      console.error("خطا در ذخیره محصول:", err);
+    }
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
@@ -10,11 +39,14 @@ export default function AddProductModal({ isOpen, onClose }) {
         <h2 className="text-xl font-bold mb-4 right-farsi">اضافه کردن محصول جدید</h2>
 
         {/* Form inputs */}
-        <div className="space-y-4">
+        <form className="space-y-4">
           <div>
             <label className="block text-sm font-medium"></label>
             <input
               type="text"
+              name="name"
+              value={product.name}
+              onChange={(e) => setProduct({ ...product, name: e.target.value })}
               required
               placeholder="اسم محصول جدیدت چیه؟"
               className="mt-1 block w-full border rounded p-2 right-farsi"
@@ -25,6 +57,9 @@ export default function AddProductModal({ isOpen, onClose }) {
             <label className="block text-sm font-medium"></label>
             <input
               type="text"
+              value={product.type}
+              onChange={(e) => setProduct({ ...product, type: e.target.value })}
+              name="type"
               required
               placeholder="نوعش چیه؟"
               className="mt-1 block w-full border rounded p-2 right-farsi"
@@ -35,22 +70,26 @@ export default function AddProductModal({ isOpen, onClose }) {
             <label className="block text-sm font-medium"></label>
             <input
               type="number"
+              name="price"
+              value={product.price}
+              onChange={(e) => setProduct({ ...product, price: e.target.value })}
               required
               placeholder="چقدر میخوای بفروشیش؟"
               className="mt-1 block w-full border rounded p-2 right-farsi"
             />
           </div>
-        </div>
+        </form>
 
         {/* Buttons */}
         <div className="flex justify-between mt-6 gap-3">
           <button
+            onClick={handleSave}
             className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition right-farsi"
           >
             اضافه کن!
           </button>
           <button
-            onClick={onClose}
+            onClick={onClose} 
             className="flex-1 bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-600 transition right-farsi"
           >
             کنسله!

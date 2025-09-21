@@ -5,6 +5,7 @@ import { getVendorsProducts } from "../../routes/vendors/vendors";
 import { enToFaNum } from "../../utlis/NumConvertor";
 import { createRequest } from "../../routes/request/request";
 import { getCurrentUser } from "../../utlis/currentUser"; 
+import { FaClipboardCheck } from "react-icons/fa";
 
 export default function VendorsProducts () {
   const { vendorsId } = useParams();
@@ -15,7 +16,7 @@ export default function VendorsProducts () {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [count, setCount] = useState(1);
   const token = localStorage.getItem("token");
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(getCurrentUser);
   
 
   useEffect(() => {
@@ -40,13 +41,8 @@ export default function VendorsProducts () {
       try {
   
         setUser(getCurrentUser);
-  
-        if (!user) {
-          alert("لطفا ابتدا وارد شوید");
-          navigate("/login");
-          return;
-        }
-  
+        // if (!user) return navigate("/login");
+
         const data = {
           product_id: selectedProduct.id,
           count: count,
@@ -86,7 +82,8 @@ export default function VendorsProducts () {
                 <p className="text-gray-800 left-num">از ساعت {enToFaNum(vendors.start_time)} تا ساعت {enToFaNum(vendors.end_time)}</p>
                 </div>
             </div>
-
+            
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
             {vendors.products.map((product) => (
                       <div
                         key={product.id}
@@ -119,6 +116,7 @@ export default function VendorsProducts () {
                         </button>
                       </div>
                     ))}
+                    </div>
 
                     {/* Popup Modal */}
                     {selectedProduct && (

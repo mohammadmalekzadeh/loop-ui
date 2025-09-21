@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { FaUser, FaCog, FaTrash, FaPlus, FaDirections } from "react-icons/fa";
+import { FaUser, FaCog, FaTrash, FaPlus, FaDirections, FaEdit } from "react-icons/fa";
 import AddProductModal from "../../components/popups/AddProductModal";
 import { enToFaNum, faToEnNum } from "../../utlis/NumConvertor";
 import { getCurrentUser } from "../../utlis/currentUser";
 import { getUserDashboard } from "../../routes/dashboard/dashboard";
+import { deleteProducts } from "../../routes/product/product";
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -102,7 +103,20 @@ export default function Dashboard() {
                           <div className="text-blue-600 font-bold">
                             {enToFaNum(it.price.toLocaleString())} تومان
                           </div>
-                          <button className="text-red-600 hover:text-red-800">
+                          <button onClick={async () => {
+                                          const token = localStorage.getItem("token");
+                                          try {
+                                            await deleteProducts(it.id, token);
+                                            alert("محصول حذف شد ✅");
+                                            setRequest((prev) => ({
+                                              ...prev,
+                                              sell_items: prev.sell_items.filter((p) => p.id !== it.id)
+                                            }));
+                                          } catch (err) {
+                                            console.error("خطا در حذف محصول:", err);
+                                            alert("حذف محصول موفقیت‌آمیز نبود ❌");
+                                          }
+                                    }} className="text-red-600 hover:text-red-800">
                             <FaTrash />
                           </button>
                         </div>

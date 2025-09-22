@@ -16,15 +16,28 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   
+  const refreshDashboard = async () => {
+    setLoading(true);
+    try {
+      const data = await getUserDashboard(token);
+      setRequest(data);
+    } catch (err) {
+      console.error("Failed to refresh dashboard:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   useEffect(() => {
     async function fetchUser() {
       try {
         const currentUser = await getCurrentUser();
         setUser(currentUser);
-
+        
         const data = await getUserDashboard(token);
         console.log(data.buy_items);
         setRequest(data);
+        await refreshDashboard();
       } catch (err) {
         console.error("Failed to fetch user:", err);
       } finally {
@@ -175,7 +188,7 @@ export default function Dashboard() {
           ) : null}
         </div>
       </main>
-      <AddProductModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <AddProductModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSuccess={refreshDashboard} />
     </div>
   );
 }

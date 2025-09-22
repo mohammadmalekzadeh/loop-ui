@@ -4,6 +4,9 @@ import { postProducts } from "../../routes/product/product";
 
 export default function AddProductModal({ isOpen, onClose }) {
   if (!isOpen) return null;
+  const [loading, setLoading] = useState();
+  
+  
   const [product, setProduct] = useState({
     name: "",
     type: "",
@@ -12,25 +15,48 @@ export default function AddProductModal({ isOpen, onClose }) {
   const token = localStorage.getItem("token");
 
   const handleSave = async () => {
-    try {
-        await postProducts(
-          {
-          name: product.name,
-          type: product.type,
-          price: parseInt(product.price, 10),
-          },
-          token
-        );
-      alert("محصول با موفقیت ذخیره شد! ✅");
-      onclose;
-    } catch (err) {
-      if (err.message.includes("405")) {
-        alert("اطلاعات حقیقی و حقوقی شما کافی نیست!")
-      } else {
-        alert("مشکلی پیش اومد ❌");
-      }
-      console.error("خطا در ذخیره محصول:", err);
-    }
+    if (!product.name.trim() || !product.type.trim() || !product.price) {
+          alert("لطفاً همه فیلدها را پر کنید.");
+          return;
+        }
+        const parsedPrice = parseInt(product.price, 10);
+        if (Number.isNaN(parsedPrice) || parsedPrice <= 0) {
+          alert("لطفاً قیمت معتبر وارد کنید.");
+          return;
+        }
+      
+        setLoading(true);
+        try {
+          await postProducts(
+            {
+              name: product.name.trim(),
+              type: product.type.trim(),
+              price: parsedPrice,
+            },
+            token
+          );
+        
+          alert("محصول با موفقیت ذخیره شد! ✅");
+        
+          if (typeof onSuccess === "function") {
+            await onSuccess();
+          }
+        
+          if (typeof onClose === "function") onClose();
+        
+          setProduct({ name: "", type: "", price: "" });
+        } catch (err) {
+          console.error("خطا در ذخیره محصول:", err);
+          if (err?.response?.data?.message) {
+            alert(err.response.data.message);
+          } else if (err.message && err.message.includes("405")) {
+            alert("اطلاعات حقیقی و حقوقی شما کافی نیست!");
+          } else {
+            alert("مشکلی پیش آمد ❌");
+          }
+        } finally {
+          setLoading(false);
+        }
   };
 
   return (
@@ -74,7 +100,7 @@ export default function AddProductModal({ isOpen, onClose }) {
               value={product.price}
               onChange={(e) => setProduct({ ...product, price: e.target.value })}
               required
-              placeholder="چقدر میخوای بفروشیش؟"
+              placeholder="چقدر میخوای بفروشیش؟ (به تومان)"
               className="mt-1 block w-full border rounded p-2 right-farsi"
             />
           </div>
@@ -84,12 +110,14 @@ export default function AddProductModal({ isOpen, onClose }) {
         <div className="flex justify-between mt-6 gap-3">
           <button
             onClick={handleSave}
-            className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition right-farsi"
+            disabled={loading}
+            className={`flex-1 ${loading ? "bg-blue-400" : "bg-blue-600 hover:bg-blue-700"} text-white py-2 rounded-lg transition right-farsi`}
           >
             اضافه کن!
           </button>
           <button
-            onClick={onClose} 
+            onClick={() => { if (!loading && typeof onClose === "function") onClose(); }}
+            disabled={loading}
             className="flex-1 bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-600 transition right-farsi"
           >
             کنسله!

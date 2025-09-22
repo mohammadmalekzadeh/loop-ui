@@ -79,6 +79,7 @@ export default function Dashboard() {
             <div className="bg-white shadow rounded-lg p-6 flex items-center justify-between mb-8 right-farsi font-semibold transition responsive">
             <p className="text-gray-800 right-farsi">از روز {request.start_day} تا روز {request.end_day}</p>
             <p className="text-gray-800 left-num">از ساعت {enToFaNum(request.start_time)} تا ساعت {enToFaNum(request.end_time)}</p>
+            <p className="text-yellow-800 mb-2">امتیاز: {enToFaNum(request.rate)}</p>
             </div>
             </>
             ) : ("")}
@@ -139,6 +140,7 @@ export default function Dashboard() {
                           <div className="font-semibold">{it.name}</div>
                           <div className="text-sm text-gray-500">{it.type}</div>
                           <div className="text-xs text-gray-400">از فروشگاه: {it.shop}</div>
+                          <div className="text-yellow-800">امتیاز: {enToFaNum(it.rate)}</div>
                         </div>
                         <div className="text-right">
                           <div className="text-blue-600 font-bold">
@@ -171,6 +173,7 @@ export default function Dashboard() {
                         <div className="font-semibold">{it.name}</div>
                         <div className="text-sm text-gray-500">{it.type}</div>
                         <div className="text-xs text-gray-400">به: {it.user_name}</div>
+                        <div className="text-yellow-800">امتیاز: {enToFaNum(it.rate)}</div>
                       </div>
                       <div className="text-right">
                         <div className="text-blue-600 font-bold">

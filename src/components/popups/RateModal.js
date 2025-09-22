@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { enToFaNum } from "../../utlis/NumConvertor";
 
 export default function RateModal({ isOpen, onClose, onSubmit }) {
   const [rate, setRate] = useState(0);
@@ -28,7 +29,7 @@ export default function RateModal({ isOpen, onClose, onSubmit }) {
                 rate >= n ? "bg-yellow-400" : "bg-gray-200"
               }`}
             >
-              {n}
+              {enToFaNum(n)}
             </button>
           ))}
         </div>

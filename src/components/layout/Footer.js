@@ -1,4 +1,4 @@
-import { FaInstagram, FaTelegramPlane, FaGithub } from "react-icons/fa";
+import { FaInstagram, FaTelegramPlane, FaGithub, FaInfoCircle, FaPhoneAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -7,9 +7,11 @@ export default function Footer() {
                       font-myfont right-farsi">
       
       {/* Left Section */}
-      <div className="text-center md:text-left mb-4 md:mb-0 right-farsi">
+      <div className="text-center md:text-left mb-4 md:mb-0 right-farsi items-center justify-center">
         {/* <p className="font-bold text-lg">LOOP © 2025</p> */}
         <p className="font-bold text-lg">لووپ © ۲۰۲۵</p>
+        <Link to="/about-us" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaInfoCircle /> درباره ما</Link>
+        <Link to="/contact-us" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaPhoneAlt /> تماس با ما</Link>
       </div>
 
       {/* Middle Section */}

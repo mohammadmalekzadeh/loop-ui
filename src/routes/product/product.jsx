@@ -19,6 +19,6 @@ export async function postProducts(data, token) {
   return apiPost("products/create", data, token);
 }
 
-export async function deleteProducts(id, token) {
-  return apiDelete(`products/delete/${id}`, token);
+export async function updateActiveProducts(id, is_active, token) {
+  return apiPut(`products/is_active/${id}?is_active=${is_active}`, {}, token);
 }

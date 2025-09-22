@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { FaUser, FaCog, FaTrash, FaPlus, FaDirections, FaEdit } from "react-icons/fa";
+import { FaCog, FaPlus, FaChevronRight, FaChevronDown } from "react-icons/fa";
 import AddProductModal from "../../components/popups/AddProductModal";
 import { enToFaNum, faToEnNum } from "../../utlis/NumConvertor";
 import { getCurrentUser } from "../../utlis/currentUser";
 import { getUserDashboard } from "../../routes/dashboard/dashboard";
-import { deleteProducts } from "../../routes/product/product";
+import { updateActiveProducts } from "../../routes/product/product";
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -117,6 +117,25 @@ export default function Dashboard() {
                           <div className="text-blue-600 font-bold">
                             {enToFaNum(it.price.toLocaleString())} تومان
                           </div>
+                          <button
+                            onClick={async () => {
+                              try {
+                                const token = localStorage.getItem("token");
+                                const newStatus = !it.is_active;
+                                await updateActiveProducts(it.id, newStatus, token);
+                                it.is_active = newStatus; 
+                                setRequest({ ...request });
+                              } catch (err) {
+                                console.error(err);
+                                alert("خطا در تغییر وضعیت محصول");
+                              }
+                            }}
+                            className={`px-3 py-1 rounded ${
+                              it.is_active ? "bg-green-500" : "bg-red-500"
+                            } text-white`}
+                          >
+                            {it.is_active ? "فعال" : "غیرفعال"}
+                          </button>
                         </div>
                       </div>
                     ))}

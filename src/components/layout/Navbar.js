@@ -19,12 +19,11 @@ export default function Navbar() {
               className="w-10 h-10 rounded-2xl"
             />
             <h1 className="text-2xl font-bold text-blue-300">
-              <Link to="/">lLOOP</Link>
+              <Link to="/">LOOP!</Link>
             </h1>
           </div>
           {/* Desktop Link*/}
           <div className="hidden md:flex space-x-6 items-center">
-            <Link to="/dashboard/settings#logout" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaSignOutAlt /> خروج از حساب کاربری</Link>
             <Link to="/about-us" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaInfoCircle /> درباره ما</Link>
             <Link to="/contact-us" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaPhoneAlt /> تماس با ما</Link>
             <Link to="/dashboard/requests" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaClipboardList /> درخواست ها</Link>
@@ -54,7 +53,6 @@ export default function Navbar() {
             <Link to="/dashboard/requests" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaClipboardList /> درخواست ها</Link>
             <Link to="/contact-us" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaPhoneAlt /> تماس با ما</Link>
             <Link to="/about-us" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaInfoCircle /> درباره ما</Link>
-            <Link to="/dashboard/settings#logout" onClick={toggleMenu} className="hover:text-blue-400 flex items-center gap-2"><FaSignOutAlt /> خروج از حساب کاربری</Link>
           </div>
         )}
       </nav>

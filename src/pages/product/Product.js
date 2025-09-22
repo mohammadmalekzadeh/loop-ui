@@ -24,14 +24,15 @@ export default function Products() {
   const [types, setTypes] = useState([]);
   const [shops, setShops] = useState([]);
 
-      useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const uniqueTypes = [...new Set(products.map((p) => p.type))];
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+            const base_data = await getProducts();
+            const uniqueTypes = [...new Set(base_data.map((p) => p.type))];
             setTypes(uniqueTypes);
-            const uniqueShops = [...new Set(products.map((p) => p.shop))];
+            const uniqueShops = [...new Set(base_data.map((p) => p.shop))];
             setShops(uniqueShops);
-            
+
             const data = await getProducts(filters);
             setProducts(data);
           } catch (err) {
@@ -43,7 +44,7 @@ export default function Products() {
         fetchData();
       }, [filters]);
   
-      if (loading) return <p className="text-center mt-6 right-farsi">در حال بارگذاری...</p>;
+  if (loading) return <p className="text-center mt-6 right-farsi">در حال بارگذاری...</p>;
 
   const handleConfirm = async () => {
         try {
@@ -92,7 +93,8 @@ export default function Products() {
 
           {/* فروشگاه */}
           <select
-            onChange={(e) => setFilters(e.target.value)}
+            value={filters.shop_name}
+            onChange={(e) => setFilters({ ...filters, shop_name: e.target.value })}
             className="border rounded p-2 right-farsi"
           >
             <option value="">همه فروشگاه‌ها</option>

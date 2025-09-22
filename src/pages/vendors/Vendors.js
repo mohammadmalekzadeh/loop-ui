@@ -33,18 +33,19 @@ export default function Vendors () {
             <div className="bg-white p-4 rounded-lg shadow-md mb-6 grid grid-cols-1 md:grid-cols-5 gap-4 right-farsi items-center justify-center">
               {/* امتیاز */}
           <div className="flex items-center gap-2">
-            <label><input type="radio" name="rate" onChange={() => setFilters({ ...filters, rate: "min" })}/> کمترین امتیاز</label>
-            <label><input type="radio" name="rate" onChange={() => setFilters({ ...filters, rate: "max" })}/> بیشترین امتیاز</label>
+            <label className="flex items-center gap-2 cursor-pointer"><input className="w-5 h-5 border-2 border-gray-400 rounded-full checked:bg-blue-500 checked:border-blue-500 transition-all duration-200" type="radio" name="rate" onChange={() => setFilters({ ...filters, rate: "min" })}/><span className="select-none text-gray-700">کمترین امتیاز</span></label>
+            <label className="flex items-center gap-2 cursor-pointer"><input className="w-5 h-5 border-2 border-gray-400 rounded-full checked:bg-blue-500 checked:border-blue-500 transition-all duration-200" type="radio" name="rate" onChange={() => setFilters({ ...filters, rate: "max" })}/><span className="select-none text-gray-700">بیشترین امتیاز</span></label>
           </div>
 
           {/* پرکار*/}
-          <label className="flex items-center gap-2">
+          <label className="flex items-center gap-2 cursor-pointer">
             <input
               type="checkbox"
               checked={filters.is_work}
               onChange={(e) => setFilters({ ...filters, is_work: e.target.checked })}
+              className="w-5 h-5 border-2 border-gray-400 rounded-lg checked:bg-pink-500 checked:border-pink-500 transition-all duration-200"
             />
-            پرکارترین
+            <span className="select-none text-gray-700">پرکارترین</span>
           </label>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-6 gap-8 right-farsi">

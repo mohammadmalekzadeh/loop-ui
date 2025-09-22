@@ -15,7 +15,7 @@ export default function Request() {
   const navigate = useNavigate();
   const [filters, setFilters] = useState({
     status: "",
-    date: "",
+    date: "new",
   });
 
   useEffect(() => {
@@ -76,8 +76,8 @@ export default function Request() {
 
           {/* date */}
           <div className="flex items-center gap-2">
-            <label><input type="radio" name="date" onChange={() => setFilters({ ...filters, date: "old" })}/> قدیمی ترین درخواست</label>
-            <label><input type="radio" name="date" onChange={() => setFilters({ ...filters, date: "new" })}/> جدیدترین درخواست</label>
+            <label className="flex items-center gap-2 cursor-pointer"><input className="w-5 h-5 border-2 border-gray-400 rounded-full checked:bg-blue-500 checked:border-blue-500 transition-all duration-200" type="radio" name="date" onChange={() => setFilters({ ...filters, date: "old" })}/><span className="select-none text-gray-700">قدیمی ترین</span></label>
+            <label className="flex items-center gap-2 cursor-pointer"><input className="w-5 h-5 border-2 border-gray-400 rounded-full checked:bg-blue-500 checked:border-blue-500 transition-all duration-200" type="radio" name="date" onChange={() => setFilters({ ...filters, date: "new" })} defaultChecked/><span className="select-none text-gray-700">جدیدترین</span></label>
           </div>
 
         </div>

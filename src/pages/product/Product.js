@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { FaClipboardCheck } from "react-icons/fa";
 import { enToFaNum, faToEnNum } from "../../utlis/NumConvertor";
 import { createRequest } from "../../routes/request/request";
@@ -105,24 +105,25 @@ export default function Products() {
 
           {/* قیمت */}
           <div className="flex items-center gap-2">
-            <label><input type="radio" name="price" onChange={() => setFilters({ ...filters, price: "min" })}/> ارزان‌ترین</label>
-            <label><input type="radio" name="price" onChange={() => setFilters({ ...filters, price: "max" })}/> گران‌ترین</label>
+            <label className="flex items-center gap-2 cursor-pointer"><input className="w-5 h-5 border-2 border-gray-400 rounded-full checked:bg-blue-500 checked:border-blue-500 transition-all duration-200" type="radio" name="price" onChange={() => setFilters({ ...filters, price: "min" })}/><span className="select-none text-gray-700">ارزان‌ترین</span></label>
+            <label className="flex items-center gap-2 cursor-pointer"><input className="w-5 h-5 border-2 border-gray-400 rounded-full checked:bg-blue-500 checked:border-blue-500 transition-all duration-200" type="radio" name="price" onChange={() => setFilters({ ...filters, price: "max" })}/><span className="select-none text-gray-700">گران‌ترین</span></label>
           </div>
 
           {/* امتیاز */}
           <div className="flex items-center gap-2">
-            <label><input type="radio" name="rate" onChange={() => setFilters({ ...filters, rate: "min" })}/> کمترین امتیاز</label>
-            <label><input type="radio" name="rate" onChange={() => setFilters({ ...filters, rate: "max" })}/> بیشترین امتیاز</label>
+            <label className="flex items-center gap-2 cursor-pointer"><input className="w-5 h-5 border-2 border-gray-400 rounded-full checked:bg-blue-500 checked:border-blue-500 transition-all duration-200" type="radio" name="rate" onChange={() => setFilters({ ...filters, rate: "min" })}/><span className="select-none text-gray-700">کمترین امتیاز</span></label>
+            <label className="flex items-center gap-2 cursor-pointer"><input className="w-5 h-5 border-2 border-gray-400 rounded-full checked:bg-blue-500 checked:border-blue-500 transition-all duration-200" type="radio" name="rate" onChange={() => setFilters({ ...filters, rate: "max" })}/><span className="select-none text-gray-700">بیشترین امتیاز</span></label>
           </div>
 
           {/* محبوب */}
-          <label className="flex items-center gap-2">
+          <label className="flex items-center gap-2 cursor-pointer">
             <input
               type="checkbox"
               checked={filters.is_popular}
               onChange={(e) => setFilters({ ...filters, is_popular: e.target.checked })}
+              className="w-5 h-5 border-2 border-gray-400 rounded-lg checked:bg-pink-500 checked:border-pink-500 transition-all duration-200"
             />
-            محبوب‌ترین
+            <span className="select-none text-gray-700">محبوب‌ترین</span>
           </label>
         </div>
       <div className="grid grid-cols-2 md:grid-cols-6 gap-8 right-farsi">

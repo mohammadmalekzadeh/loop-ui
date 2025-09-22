@@ -13,11 +13,11 @@ export default function Navbar() {
         <div className="flex justify-between items-center max-w-7xl mx-auto">
           {/* Desktop Link*/}
           <div className="hidden md:flex space-x-6 items-center">
+            <Link to="/signup" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaSignInAlt /> ثبت نام</Link>
             <Link to="/dashboard/requests" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaClipboardList /> درخواست ها</Link>
             <Link to="/dashboard" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaTachometerAlt /> داشبورد</Link>
             <Link to="/vendors" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaStore /> فروشندگان</Link>
             <Link to="/products" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaBoxOpen /> محصولات</Link>
-            <Link to="/signup" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaSignInAlt /> ثبت نام</Link>
             <Link to="/" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaHome /> خانه</Link>
           </div>
           {/* Logo */}

@@ -5,6 +5,8 @@ import { enToFaNum } from "../../utlis/NumConvertor";
 import { getRequests } from "../../routes/request/request";
 import { getCurrentUser } from "../../utlis/currentUser";
 import { updateRequestStatus } from "../../routes/request/request";
+import RateModal from "../../components/popups/RateModal";
+import { sendRate } from "../../routes/request/request";
 
 export default function Request() {
 
@@ -17,6 +19,8 @@ export default function Request() {
     status: "",
     date: "new",
   });
+  const [showRateModal, setShowRateModal] = useState(false);
+  const [selectedRequestId, setSelectedRequestId] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -28,6 +32,8 @@ export default function Request() {
         const requests = await getRequests(filters, token);
         setUserRole(currentUser.role);
         setRequests(requests);
+        console.log(userRole);
+        console.log(requests.role);
       } catch (err) {
         console.error("Error fetching requests:", err);
       } finally {
@@ -48,8 +54,24 @@ export default function Request() {
           r.id === id ? { ...r, status: newStatus } : r
         )
       );
+
+      if (userRole === "customer" && newStatus === "accepted") {
+        setSelectedRequestId(id);
+        setShowRateModal(true);
+      }
     } catch (err) {
       alert("خطا در تغییر وضعیت");
+      console.error(err);
+    }
+  };
+
+  const handleRateSubmit = async (rate) => {
+    try {
+      const token = localStorage.getItem("token");
+      await sendRate(selectedRequestId, rate, token);
+      alert("امتیاز ثبت شد ✅");
+    } catch (err) {
+      alert("خطا در ثبت امتیاز ❌");
       console.error(err);
     }
   };
@@ -81,7 +103,7 @@ export default function Request() {
           </div>
 
         </div>
-        {requests.role === "vendors" ? (
+        {userRole === "vendors" ? (
           <>
             {requests.length > 0 ? (
               <div className="space-y-4">
@@ -102,7 +124,6 @@ export default function Request() {
                       {req.status === "pending" ? (
                         <span className="flex items-center gap-2">
                           <span className="text-yellow-600 font-semibold">در انتظار تحویل</span>
-                          <button onClick={() => handleUpdateStatus(req.id, "accepted")} className="px-3 py-1 bg-yellow-500 text-white rounded">تحویل دادی؟</button>
                         </span>
                       ) : (
                         <span className="px-3 py-1 rounded text-white bg-green-600">تحویل داده شده</span>
@@ -150,6 +171,7 @@ export default function Request() {
           </>
         )}
       </div>
+      <RateModal isOpen={showRateModal} onClose={() => setShowRateModal(false)} onSubmit={handleRateSubmit} />
     </div>
   );
 }

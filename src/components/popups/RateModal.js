@@ -1,0 +1,47 @@
+import React, { useState } from "react";
+
+export default function RateModal({ isOpen, onClose, onSubmit }) {
+  const [rate, setRate] = useState(0);
+
+  if (!isOpen) return null;
+
+  const handleSubmit = () => {
+    if (rate <= 0) {
+      alert("لطفاً امتیاز بدهید");
+      return;
+    }
+    onSubmit(rate);
+    onClose();
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+      <div className="bg-white rounded-lg shadow-lg p-6 w-96">
+        <h2 className="text-xl font-bold mb-4 text-center">امتیاز بدهید</h2>
+
+        <div className="flex justify-center gap-2 mb-4">
+          {[1, 2, 3, 4, 5].map((n) => (
+            <button
+              key={n}
+              onClick={() => setRate(n)}
+              className={`w-10 h-10 rounded-full ${
+                rate >= n ? "bg-yellow-400" : "bg-gray-200"
+              }`}
+            >
+              {n}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex justify-between gap-4">
+          <button
+            onClick={handleSubmit}
+            className="flex-1 py-2 bg-blue-600 text-white rounded"
+          >
+            ثبت امتیاز
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -19,3 +19,7 @@ export async function createRequest(data, token) {
 export async function updateRequestStatus(id, status, token) {
   return apiPut(`request/update/${id}?status_value=${status}`, {}, token);
 }
+
+export async function sendRate(requestId, rate, token) {
+  return apiPost(`request/${requestId}?rate=${rate}`, {}, token);
+}

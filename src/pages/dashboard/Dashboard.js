@@ -23,7 +23,7 @@ export default function Dashboard() {
         setUser(currentUser);
 
         const data = await getUserDashboard(token);
-        console.log("Dashboard data:", data);
+        console.log(data.buy_items);
         setRequest(data);
       } catch (err) {
         console.error("Failed to fetch user:", err);
@@ -157,7 +157,7 @@ export default function Dashboard() {
                       <div>
                         <div className="font-semibold">{it.name}</div>
                         <div className="text-sm text-gray-500">{it.type}</div>
-                        <div className="text-xs text-gray-400">به: {it.shop}</div>
+                        <div className="text-xs text-gray-400">به: {it.user_name}</div>
                       </div>
                       <div className="text-right">
                         <div className="text-blue-600 font-bold">

@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signup, verify } from "../../routes/auth/auth";
-import { getCurrentUser } from "../../utlis/currentUser";
-
 export default function Signup() {
   const [role, setRole] = useState("customer");
   const navigate = useNavigate();
@@ -12,15 +10,9 @@ export default function Signup() {
   const [otp, setOtp] = useState("");
   const [user, setUser] = useState();
 
-  useEffect(() => {
-    async function fetchUser() {
-      const currentUser = await getCurrentUser();
-      setUser(currentUser);
-    }
-    fetchUser();
-  }, []);
+  const token = localStorage.getItem("token");
 
-  if (user) return navigate("/dashboard");
+  if (token) return navigate("/dashboard");
 
   const handleSignup = async (e) => {
     e.preventDefault();

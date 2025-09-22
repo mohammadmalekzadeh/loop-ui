@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signup, verify } from "../../routes/auth/auth";
+import { getCurrentUser } from "../../utlis/currentUser";
 
 export default function Signup() {
   const [role, setRole] = useState("customer");
@@ -9,6 +10,17 @@ export default function Signup() {
   const [name, setName] = useState("");
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState("");
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    async function fetchUser() {
+      const currentUser = await getCurrentUser();
+      setUser(currentUser);
+    }
+    fetchUser();
+  }, []);
+
+  if (user) return navigate("/dashboard");
 
   const handleSignup = async (e) => {
     e.preventDefault();

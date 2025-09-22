@@ -1,12 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login, verify } from "../../routes/auth/auth";
+import { getCurrentUser } from "../../utlis/currentUser";
 
 export default function Login() {
   const [phone, setPhone] = useState("");
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    async function fetchUser() {
+      const currentUser = await getCurrentUser();
+      setUser(currentUser);
+    }
+    fetchUser();
+  }, []);
+
+  if (user) return navigate("/dashboard");
 
   const handleLogin = async (e) => {
     e.preventDefault();

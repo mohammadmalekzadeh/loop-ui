@@ -22,9 +22,8 @@ export default function Request() {
 
         const token = localStorage.getItem("token");
         const requests = await getRequests(token);
-        setUserRole(currentUser.role)
+        setUserRole(currentUser.role);
         setRequests(requests);
-        console.log(requests)
       } catch (err) {
         console.error("Error fetching requests:", err);
       } finally {
@@ -59,7 +58,7 @@ export default function Request() {
       <div className="bg-white shadow rounded-lg p-6">
         <h2 className="text-2xl font-bold mb-6 text-center">درخواست های شما</h2>
 
-        {userRole === "vendors" ? (
+        {requests.role === "vendors" ? (
           <>
             {requests.length > 0 ? (
               <div className="space-y-4">
@@ -103,7 +102,7 @@ export default function Request() {
                       <p className="font-semibold">
                         محصول: {req.product_name} به تعداد: {req.count}
                       </p>
-                      <p className="text-sm text-gray-600">فروشنده: {req.vendor_name}</p>
+                      <p className="text-sm text-gray-600">فروشنده: {req.vendors_name}</p>
                       <p className="text-sm text-gray-600">آدرس: {req.address}</p>
                       <p className="text-sm text-gray-600 font-semibold">کد: {enToFaNum(req.code)}</p>
                       <p className="text-xs text-gray-500">{enToFaNum(req.date)}</p>

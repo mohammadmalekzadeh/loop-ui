@@ -11,7 +11,7 @@ export default function Products() {
   const [count, setCount] = useState(1);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true)
 
@@ -32,29 +32,24 @@ export default function Products() {
       if (loading) return <p className="text-center mt-6 right-farsi">در حال بارگذاری...</p>;
 
   const handleConfirm = async () => {
-    try {
-
-      setUser(getCurrentUser);
-
-      if (!user) {
-        alert("لطفا ابتدا وارد شوید");
-        navigate("/login");
-        return;
-      }
-
-      const data = {
-        product_id: selectedProduct.id,
-        count: count,
+        try {
+          const currentUser = await getCurrentUser();
+          setUser(currentUser);
+          // if (!user) return alert(user);
+  
+          const data = {
+            product_id: selectedProduct.id,
+            count: count,
+          };
+    
+          const res = await createRequest(data, token);
+          alert(`درخواست با موفقیت ثبت شد ✅ | کد درخواست: ${res.code}`);
+          setSelectedProduct(null);
+        } catch (err) {
+          console.error(err);
+          alert("خطا در ثبت درخواست ❌");
+        }
       };
-
-      const res = await createRequest(data, token);
-      alert(`درخواست با موفقیت ثبت شد ✅ | کد درخواست: ${res.code}`);
-      setSelectedProduct(null);
-    } catch (err) {
-      console.error(err);
-      alert("خطا در ثبت درخواست ❌");
-    }
-  };
 
   return (
     

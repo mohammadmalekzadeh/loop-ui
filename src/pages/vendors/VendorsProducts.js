@@ -40,8 +40,9 @@ export default function VendorsProducts () {
     const handleConfirm = async () => {
       try {
   
-        setUser(getCurrentUser);
-        // if (!user) return navigate("/login");
+        const currentUser = await getCurrentUser();
+        setUser(currentUser);
+        if (!user) return navigate("/login");
 
         const data = {
           product_id: selectedProduct.id,
@@ -99,7 +100,8 @@ export default function VendorsProducts () {
                           {product.name} - {product.type}
                         </h2>
             
-                        <p className="text-gray-700 mb-1">فروشگاه: {product.shop}</p>
+                        <p className="text-gray-700 mb-1">تعداد فروش: {product.buy_freq}</p>
+                        <p className="text-yellow-800 mb-2">امتیاز: {enToFaNum(product.rate)}</p>
             
                         <p className="text-blue-600 font-bold mb-4">
                           {enToFaNum(product.price.toLocaleString())} تومان

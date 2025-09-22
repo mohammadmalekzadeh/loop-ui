@@ -1,7 +1,18 @@
 import { apiGet, apiPut, apiPost, apiDelete } from "..";
 
-export async function getProducts() {
-  return apiGet("products/");
+export async function getProducts(filters = {}) {
+  const params = new URLSearchParams();
+
+  if (filters.type) params.append("type", filters.type);
+  if (filters.shop_name) params.append("shop_name", filters.shop_name);
+  if (filters.price) params.append("price", filters.price);
+  if (filters.rate) params.append("rate", filters.rate);
+  if (filters.is_popular !== undefined) params.append("is_popular", filters.is_popular);
+
+  const query = params.toString();
+  const endpoint = query ? `products?${query}` : "products";
+
+  return apiGet(endpoint);
 }
 
 export async function postProducts(data, token) {

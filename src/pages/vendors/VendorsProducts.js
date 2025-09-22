@@ -39,10 +39,8 @@ export default function VendorsProducts () {
 
     const handleConfirm = async () => {
       try {
-  
         const currentUser = await getCurrentUser();
         setUser(currentUser);
-        if (!user) return navigate("/login");
 
         const data = {
           product_id: selectedProduct.id,
@@ -53,8 +51,14 @@ export default function VendorsProducts () {
         alert(`درخواست با موفقیت ثبت شد ✅ | کد درخواست: ${res.code}`);
         setSelectedProduct(null);
       } catch (err) {
-        console.error(err);
-        alert("خطا در ثبت درخواست ❌");
+        if (err.message.includes("401")) {
+          alert("برای ثبت درخواست وارد حساب کاربری خود بشوید!");
+        } else if (err.message.includes("400")) {
+          alert("برای ثبت درخواست باید خریدار باشی :)");
+        } else {
+         console.error(err);
+         alert("خطا در ثبت درخواست ❌");
+        }
       }
     };
 

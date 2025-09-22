@@ -14,11 +14,26 @@ export default function Products() {
   const [user, setUser] = useState();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true)
+  const [filters, setFilters] = useState({
+    type: "",
+    shop_name: "",
+    price: "",
+    rate: "",
+    is_popular: false,
+  });
+  const [types, setTypes] = useState([]);
+  const [shops, setShops] = useState([]);
 
       useEffect(() => {
         const fetchData = async () => {
           try {
-            const data = await getProducts();
+            const filterBox = await getProducts();
+            const uniqueTypes = [...new Set(products.map((p) => p.type))];
+            setTypes(uniqueTypes);
+            const uniqueShops = [...new Set(products.map((p) => p.shop))];
+            setShops(uniqueShops);
+            
+            const data = await getProducts(filters);
             setProducts(data);
           } catch (err) {
             console.error("خطا در گرفتن محصولات:", err);
@@ -27,7 +42,7 @@ export default function Products() {
           }
         };
         fetchData();
-      }, []);
+      }, [filters]);
   
       if (loading) return <p className="text-center mt-6 right-farsi">در حال بارگذاری...</p>;
 
@@ -35,7 +50,6 @@ export default function Products() {
         try {
           const currentUser = await getCurrentUser();
           setUser(currentUser);
-          // if (!user) return alert(user);
   
           const data = {
             product_id: selectedProduct.id,
@@ -46,8 +60,14 @@ export default function Products() {
           alert(`درخواست با موفقیت ثبت شد ✅ | کد درخواست: ${res.code}`);
           setSelectedProduct(null);
         } catch (err) {
-          console.error(err);
-          alert("خطا در ثبت درخواست ❌");
+          if (err.message.includes("401")) {
+            alert("برای ثبت درخواست وارد حساب کاربری خود بشوید!");
+          } else if (err.message.includes("400")) {
+            alert("برای ثبت درخواست باید خریدار باشی :)");
+          } else {
+           console.error(err);
+           alert("خطا در ثبت درخواست ❌");
+          }
         }
       };
 
@@ -56,6 +76,56 @@ export default function Products() {
     <div className="min-h-screen bg-gray-100 py-10 px-5 md:px-10">
       <h1 className="text-4xl font-bold text-center mb-10"></h1>
       {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 right-farsi"> */}
+      <div className="bg-white p-4 rounded-lg shadow-md mb-6 grid grid-cols-1 md:grid-cols-5 gap-4 right-farsi">
+          {/* نوع محصول */}
+          <select
+            value={filters.type}
+            onChange={(e) => setFilters({ ...filters, type: e.target.value })}
+            className="border rounded p-2"
+          >
+            <option value="">همه نوع‌ها</option>
+            {types.map((t, i) => (
+            <option key={i} value={t}>
+              {t}
+            </option>
+            ))}
+          </select>
+
+          {/* فروشگاه */}
+          <select
+            onChange={(e) => setFilters(e.target.value)}
+            className="border rounded p-2 right-farsi"
+          >
+            <option value="">همه فروشگاه‌ها</option>
+            {shops.map((s, i) => (
+              <option key={i} value={s}>
+                {s}
+              </option>
+            ))}
+          </select>
+
+          {/* قیمت */}
+          <div className="flex items-center gap-2">
+            <label><input type="radio" name="price" onChange={() => setFilters({ ...filters, price: "min" })}/> ارزان‌ترین</label>
+            <label><input type="radio" name="price" onChange={() => setFilters({ ...filters, price: "max" })}/> گران‌ترین</label>
+          </div>
+
+          {/* امتیاز */}
+          <div className="flex items-center gap-2">
+            <label><input type="radio" name="rate" onChange={() => setFilters({ ...filters, rate: "min" })}/> کمترین امتیاز</label>
+            <label><input type="radio" name="rate" onChange={() => setFilters({ ...filters, rate: "max" })}/> بیشترین امتیاز</label>
+          </div>
+
+          {/* محبوب */}
+          <label className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={filters.is_popular}
+              onChange={(e) => setFilters({ ...filters, is_popular: e.target.checked })}
+            />
+            محبوب‌ترین
+          </label>
+        </div>
       <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
         {products.map((product) => (
           <div
@@ -73,6 +143,7 @@ export default function Products() {
             </h2>
 
             <p className="text-gray-700 mb-1">فروشگاه: {product.shop}</p>
+            <p className="text-yellow-800 mb-2">امتیاز: {enToFaNum(product.rate)}</p>
 
             <p className="text-blue-600 font-bold mb-4">
               {enToFaNum(product.price.toLocaleString())} تومان

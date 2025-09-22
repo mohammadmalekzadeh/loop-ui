@@ -16,7 +16,6 @@ export default function Vendors () {
         try {
           const data = await getVendors(filters);
           setVendors(data);
-          console.log(vendors)
         } catch (err) {
           console.error("خطا در گرفتن فروشنده‌ها:", err);
         } finally {
@@ -31,7 +30,7 @@ export default function Vendors () {
     return (
         <div className="min-h-screen bg-gray-100 py-10 px-5 md:px-10">
             <h1 className="text-4xl font-bold text-center mb-10"></h1>
-            <div className="bg-white p-4 rounded-lg shadow-md mb-6 grid grid-cols-1 md:grid-cols-5 gap-4 right-farsi">
+            <div className="bg-white p-4 rounded-lg shadow-md mb-6 grid grid-cols-1 md:grid-cols-5 gap-4 right-farsi items-center justify-center">
               {/* امتیاز */}
           <div className="flex items-center gap-2">
             <label><input type="radio" name="rate" onChange={() => setFilters({ ...filters, rate: "min" })}/> کمترین امتیاز</label>

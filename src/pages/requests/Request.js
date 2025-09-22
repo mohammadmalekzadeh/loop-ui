@@ -12,7 +12,11 @@ export default function Request() {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [filters, setFilters] = useState({
+    status: "",
+    date: "",
+  });
 
   useEffect(() => {
     async function fetchData() {
@@ -21,7 +25,7 @@ export default function Request() {
         setUser(currentUser);
 
         const token = localStorage.getItem("token");
-        const requests = await getRequests(token);
+        const requests = await getRequests(filters, token);
         setUserRole(currentUser.role);
         setRequests(requests);
       } catch (err) {
@@ -32,7 +36,7 @@ export default function Request() {
     }
 
     fetchData();
-  }, []);
+  }, [filters]);
 
   const handleUpdateStatus = async (id, newStatus) => {
     try {
@@ -58,6 +62,25 @@ export default function Request() {
       <div className="bg-white shadow rounded-lg p-6">
         <h2 className="text-2xl font-bold mb-6 text-center">درخواست های شما</h2>
 
+        <div className="bg-white p-4 rounded-lg shadow-md mb-6 grid grid-cols-1 md:grid-cols-5 gap-4 right-farsi items-center justify-center">
+          {/* status */}
+          <select
+            value={filters.status}
+            onChange={(e) => setFilters({ ...filters, status: e.target.value })}
+            className="border rounded p-2"
+          >
+            <option value="">همه درخواست ها</option>
+            <option value={"accepted"}>تمام شده</option>
+            <option value={"pending"}>در انتظار</option>
+          </select>
+
+          {/* date */}
+          <div className="flex items-center gap-2">
+            <label><input type="radio" name="date" onChange={() => setFilters({ ...filters, date: "old" })}/> قدیمی ترین درخواست</label>
+            <label><input type="radio" name="date" onChange={() => setFilters({ ...filters, date: "new" })}/> جدیدترین درخواست</label>
+          </div>
+
+        </div>
         {requests.role === "vendors" ? (
           <>
             {requests.length > 0 ? (

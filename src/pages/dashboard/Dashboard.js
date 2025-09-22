@@ -103,22 +103,6 @@ export default function Dashboard() {
                           <div className="text-blue-600 font-bold">
                             {enToFaNum(it.price.toLocaleString())} تومان
                           </div>
-                          <button onClick={async () => {
-                                          const token = localStorage.getItem("token");
-                                          try {
-                                            await deleteProducts(it.id, token);
-                                            alert("محصول حذف شد ✅");
-                                            setRequest((prev) => ({
-                                              ...prev,
-                                              sell_items: prev.sell_items.filter((p) => p.id !== it.id)
-                                            }));
-                                          } catch (err) {
-                                            console.error("خطا در حذف محصول:", err);
-                                            alert("حذف محصول موفقیت‌آمیز نبود ❌");
-                                          }
-                                    }} className="text-red-600 hover:text-red-800">
-                            <FaTrash />
-                          </button>
                         </div>
                       </div>
                     ))}
@@ -147,7 +131,7 @@ export default function Dashboard() {
                           <div className="text-blue-600 font-bold">
                             {enToFaNum(it.price.toLocaleString())} تومان
                           </div>
-                          <div className="text-xs text-gray-400">{enToFaNum(it.buy_date)}</div>
+                          <div className="text-xs text-gray-400 left-num">{enToFaNum(it.buy_date)}</div>
                         </div>
                       </div>
                     ))}

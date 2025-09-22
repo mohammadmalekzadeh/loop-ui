@@ -27,7 +27,6 @@ export default function Products() {
       useEffect(() => {
         const fetchData = async () => {
           try {
-            const filterBox = await getProducts();
             const uniqueTypes = [...new Set(products.map((p) => p.type))];
             setTypes(uniqueTypes);
             const uniqueShops = [...new Set(products.map((p) => p.shop))];
@@ -126,7 +125,7 @@ export default function Products() {
             محبوب‌ترین
           </label>
         </div>
-      <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
+      <div className="grid grid-cols-2 md:grid-cols-6 gap-8 right-farsi">
         {products.map((product) => (
           <div
             key={product.id}

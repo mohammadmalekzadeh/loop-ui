@@ -6,11 +6,15 @@ import { enToFaNum } from "../../utlis/NumConvertor";
 export default function Vendors () {
     const [vendors, setVendors] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [filters, setFilters] = useState({
+      rate: "",
+      is_work: false,
+    });
 
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const data = await getVendors();
+          const data = await getVendors(filters);
           setVendors(data);
           console.log(vendors)
         } catch (err) {
@@ -20,14 +24,31 @@ export default function Vendors () {
         }
       };
       fetchData();
-    }, []);
+    }, [filters]);
 
     if (loading) return <p className="text-center mt-6 right-farsi">در حال بارگذاری...</p>;
 
     return (
         <div className="min-h-screen bg-gray-100 py-10 px-5 md:px-10">
             <h1 className="text-4xl font-bold text-center mb-10"></h1>
-            <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
+            <div className="bg-white p-4 rounded-lg shadow-md mb-6 grid grid-cols-1 md:grid-cols-5 gap-4 right-farsi">
+              {/* امتیاز */}
+          <div className="flex items-center gap-2">
+            <label><input type="radio" name="rate" onChange={() => setFilters({ ...filters, rate: "min" })}/> کمترین امتیاز</label>
+            <label><input type="radio" name="rate" onChange={() => setFilters({ ...filters, rate: "max" })}/> بیشترین امتیاز</label>
+          </div>
+
+          {/* پرکار*/}
+          <label className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={filters.is_work}
+              onChange={(e) => setFilters({ ...filters, is_work: e.target.checked })}
+            />
+            پرکارترین
+          </label>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-8 right-farsi">
               {vendors.map((vendor) => (
                 <div
                   key={vendor.id}

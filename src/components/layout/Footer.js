@@ -7,11 +7,9 @@ export default function Footer() {
                       font-myfont right-farsi">
       
       {/* Left Section */}
-      <div className="text-center md:text-left mb-4 md:mb-0">
+      <div className="text-center md:text-left mb-4 md:mb-0 right-farsi">
         {/* <p className="font-bold text-lg">LOOP © 2025</p> */}
         <p className="font-bold text-lg">لووپ © ۲۰۲۵</p>
-        {/* <p className="text-sm">Iran, Isfahan, Najafabad</p> */}
-        <p className="text-sm">ایران، اصفهان، نجف آباد</p>
       </div>
 
       {/* Middle Section */}

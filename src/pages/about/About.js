@@ -6,7 +6,7 @@ export default function About() {
     <div
       className="relative h-screen bg-cover bg-center flex items-center justify-center px-6"
       style={{
-        backgroundImage: "url('/background/about.png')",
+        backgroundImage: "url('/background/about.jpg')",
       }}
     >
       {/* Blur layer over the whole background */}

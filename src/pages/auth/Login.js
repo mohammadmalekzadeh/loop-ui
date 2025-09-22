@@ -10,9 +10,11 @@ export default function Login() {
   const navigate = useNavigate();
   const [user, setUser] = useState();
 
-  const token = localStorage.getItem("token");
-
-  if (token) return navigate("/dashboard");
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+  
+    if (token) return navigate("/dashboard");
+  })
 
   const handleLogin = async (e) => {
     e.preventDefault();

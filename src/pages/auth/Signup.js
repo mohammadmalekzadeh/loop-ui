@@ -10,9 +10,11 @@ export default function Signup() {
   const [otp, setOtp] = useState("");
   const [user, setUser] = useState();
 
-  const token = localStorage.getItem("token");
-
-  if (token) return navigate("/dashboard");
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+  
+    if (token) return navigate("/dashboard");
+  })
 
   const handleSignup = async (e) => {
     e.preventDefault();

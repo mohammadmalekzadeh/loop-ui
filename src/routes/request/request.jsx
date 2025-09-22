@@ -9,5 +9,5 @@ export async function createRequest(data, token) {
 }
 
 export async function updateRequestStatus(id, status, token) {
-  return apiPut(`request/update/${id}?status=${status}`, {}, token);
+  return apiPut(`request/update/${id}?status_value=${status}`, {}, token);
 }

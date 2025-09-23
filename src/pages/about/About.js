@@ -14,6 +14,11 @@ export default function About() {
 
       {/* White transparent card */}
       <div className="relative max-w-2xl text-center bg-white bg-opacity-70 p-10 rounded-2xl shadow-2xl">
+        <img
+          src="/icon/favicon.png"
+          alt="LOOP Logo"
+          className="w-36 md:w-32 lg:w-48 mx-auto mb-6"
+        />
         <h1 className="text-4xl font-bold mb-6 text-gray-800 right-farsi">درباره ما</h1>
 
         {/* Welcome line */}

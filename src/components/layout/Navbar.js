@@ -22,13 +22,10 @@ export default function Navbar() {
           </div>
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <h1 className="text-2xl font-bold text-blue-300">
-              <Link to="/">لووپ</Link>
-            </h1>
             <img
               src="/icon/favicon.png"
               alt="LOOP Logo"
-              className="w-10 h-10 rounded-2xl"
+              className="w-16 rounded-2xl"
             />
           </div>
 

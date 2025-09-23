@@ -21,13 +21,13 @@ export default function Navbar() {
             <Link to="/" className="hover:text-blue-400 flex items-center gap-2 right-farsi"><FaHome /> خانه</Link>
           </div>
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <Link to={"/"} className="flex items-center space-x-3">
             <img
               src="/icon/favicon.png"
               alt="LOOP Logo"
-              className="w-16 rounded-2xl"
+              className="w-16"
             />
-          </div>
+          </Link>
 
           {/* Mobile Menu */}
           <div className="md:hidden flex items-center">

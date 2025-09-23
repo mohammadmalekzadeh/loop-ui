@@ -24,7 +24,7 @@ export default function Home() {
       {/* Landing Section */}
       <section
         className="relative min-h-screen bg-cover bg-center flex flex-col items-center justify-center text-white"
-        style={{ backgroundImage: "url('/background/home1.jpg')" }}
+        style={{ backgroundImage: "url('/background/home.jpg')" }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 

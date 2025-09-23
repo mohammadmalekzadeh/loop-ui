@@ -1,32 +1,98 @@
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaSignInAlt } from "react-icons/fa";
 import { enToFaNum } from "../../utlis/NumConvertor";
+import { getProducts } from "../../routes/product/product";
 
 export default function Home() {
+  const [newestProducts, setNewestProducts] = useState([]);
+
+  useEffect(() => {
+    async function fetchNewest() {
+      try {
+        const data = await getProducts({ newest: true });
+        setNewestProducts(data.slice(0, 6)); // 6 محصول
+      } catch (error) {
+        console.error("خطا در دریافت محصولات جدید:", error);
+      }
+    }
+    fetchNewest();
+  }, []);
+
   return (
     <div className="font-myfont">
-      <section className="mb-5"></section>
-      {/* Landing Section*/}
+      {/* Landing Section */}
       <section
-        className="relative h-screen bg-cover bg-center flex flex-col items-center justify-center text-white"
-        style={{
-          backgroundImage: "url('/background/home1.jpg')",
-        }}
+        className="relative min-h-screen bg-cover bg-center flex flex-col items-center justify-center text-white"
+        style={{ backgroundImage: "url('/background/home1.jpg')" }}
       >
-        {/* Dark overlay*/}
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
-        {/* Content */}
-        <div className="relative z-10 text-center px-4 right-farsi">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">
-            به <span className="bg-loop-color" >لووپ</span> خوش آمدید!
-          </h1>
+        <div className="relative z-10 text-center px-4 flex flex-col items-center justify-center">
+          {/* Logo */}
+          <img
+            src="/icon/favicon.png"
+            alt="LOOP Logo"
+            className="w-48 md:w-56 lg:w-64 rounded-2xl mx-auto"
+          />
 
-          <Link to="/login" className="mt-10 flex justify-center right-farsi">
-            <button className="flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 rounded-lg text-lg hover:bg-blue-700 transition right-farsi">
-              <FaSignInAlt /> ورود
-            </button>
-          </Link>
+          {/* Newest Products */}
+          {newestProducts.length > 0 && (
+            <div className="mt-12 w-full max-w-6xl px-2">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6">
+                جدیدترین محصولات
+              </h2>
+
+              <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-6 gap-6">
+                {newestProducts.map((p) => (
+                  <div
+                    key={p.id}
+                    className="bg-white text-black rounded-lg shadow-md p-4 flex flex-col items-center"
+                  >
+                    <img
+                      src={"/products/default.jpg"}
+                      alt={p.name}
+                      className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 object-cover mb-2 rounded"
+                    />
+                    <h3 className="font-semibold text-center">{p.name}</h3>
+                    <p className="text-gray-800 mt-1 text-sm sm:text-base right-farsi">
+                      فروشگاه: {p.shop}
+                    </p>
+                    <p className="text-sm sm:text-base text-gray-600 mt-1">
+                      قیمت: {enToFaNum(p.price.toLocaleString())} تومان
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Horizontal scroll برای موبایل */}
+              <div className="md:hidden flex overflow-x-auto gap-4 py-2 px-2">
+                {newestProducts.slice(0, 4).map((p) => (
+                  <div
+                    key={p.id}
+                    className="min-w-[140px] sm:min-w-[160px] bg-white text-black rounded-lg shadow-md p-3 flex flex-col items-center flex-shrink-0"
+                  >
+                    <img
+                      src={"/products/default.jpg"}
+                      alt={p.name}
+                      className="w-24 h-24 sm:w-28 sm:h-28 object-cover mb-2 rounded"
+                    />
+                    <h3 className="font-semibold text-center text-sm">{p.name}</h3>
+                    <p className="text-gray-800 mt-1 text-xs right-farsi">{p.shop}</p>
+                    <p className="text-xs text-gray-600 mt-1">{enToFaNum(p.price.toLocaleString())} تومان</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex justify-center mt-8">
+                <Link to="/products">
+                  <button className="px-8 py-3 bg-blue-600 text-white text-lg font-bold rounded-lg hover:bg-blue-700 transition right-farsi">
+                    نمایش بیشتر ...
+                  </button>
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </div>

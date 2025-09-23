@@ -8,6 +8,7 @@ export async function getProducts(filters = {}) {
   if (filters.price) params.append("price", filters.price);
   if (filters.rate) params.append("rate", filters.rate);
   if (filters.is_popular !== undefined) params.append("is_popular", filters.is_popular);
+  if (filters !== undefined) params.append("newest", filters.newest);
 
   const query = params.toString();
   const endpoint = query ? `products?${query}` : "products";

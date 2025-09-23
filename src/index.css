@@ -76,10 +76,6 @@ body::-webkit-scrollbar-thumb {
   border-radius: 10px;
 }
 
-.bg-loop-color {
-  color: #eb5e28;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

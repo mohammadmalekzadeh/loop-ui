@@ -11,17 +11,24 @@ export default function AddProductModal({ isOpen, onClose }) {
     name: "",
     type: "",
     price: "",
+    inventory: "",
   });
   const token = localStorage.getItem("token");
 
   const handleSave = async () => {
-    if (!product.name.trim() || !product.type.trim() || !product.price) {
+    if (!product.name.trim() || !product.type.trim() || !product.price || !product.inventory) {
           alert("لطفاً همه فیلدها را پر کنید.");
           return;
         }
+        
         const parsedPrice = parseInt(product.price, 10);
         if (Number.isNaN(parsedPrice) || parsedPrice <= 0) {
           alert("لطفاً قیمت معتبر وارد کنید.");
+          return;
+        }
+        const parsedInventory = parseInt(product.inventory, 10);
+        if (Number.isNaN(parsedInventory) || parsedInventory <= 0) {
+          alert("لطفاً تعداد معتبر وارد کنید.");
           return;
         }
       
@@ -32,6 +39,7 @@ export default function AddProductModal({ isOpen, onClose }) {
               name: product.name.trim(),
               type: product.type.trim(),
               price: parsedPrice,
+              inventory: parsedInventory,
             },
             token
           );
@@ -44,7 +52,7 @@ export default function AddProductModal({ isOpen, onClose }) {
         
           if (typeof onClose === "function") onClose();
         
-          setProduct({ name: "", type: "", price: "" });
+          setProduct({ name: "", type: "", price: "", inventory: "" });
         } catch (err) {
           console.error("خطا در ذخیره محصول:", err);
           if (err?.response?.data?.message) {
@@ -87,7 +95,7 @@ export default function AddProductModal({ isOpen, onClose }) {
               onChange={(e) => setProduct({ ...product, type: e.target.value })}
               name="type"
               required
-              placeholder="نوعش چیه؟"
+              placeholder="نوعش چیه؟ (مثلاً نوشیدنی، تنقلات و غیره ...)"
               className="mt-1 block w-full border rounded p-2 right-farsi"
             />
           </div>
@@ -97,10 +105,24 @@ export default function AddProductModal({ isOpen, onClose }) {
             <input
               type="number"
               name="price"
-              value={product.price}
+              value={product.price.toLocaleString()}
               onChange={(e) => setProduct({ ...product, price: e.target.value })}
               required
               placeholder="چقدر میخوای بفروشیش؟ (به تومان)"
+              className="mt-1 block w-full border rounded p-2 right-farsi"
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium"></label>
+            <input
+              type="number"
+              name="inventory"
+              min={1}
+              value={product.inventory}
+              onChange={(e) => setProduct({ ...product, inventory: e.target.value })}
+              required
+              placeholder="چقدر موجودی داری؟"
               className="mt-1 block w-full border rounded p-2 right-farsi"
             />
           </div>

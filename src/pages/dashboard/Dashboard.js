@@ -110,8 +110,9 @@ export default function Dashboard() {
                         className="flex items-center justify-between p-3 border rounded right-farsi"
                       >
                         <div>
-                          <div className="font-semibold">{it.name}</div>
-                          <div className="text-sm text-gray-500">{it.type}</div>
+                          <div className="font-semibold">اسم محصول: {it.name}</div>
+                          <div className="text-sm text-gray-500">نوع محصول: {it.type}</div>
+                          <div className="text-sm text-gray-500">تعداد موجودی: {it.inventory}</div>
                         </div>
                         <div className="flex items-center gap-3">
                           <div className="text-blue-600 font-bold">
@@ -159,7 +160,7 @@ export default function Dashboard() {
                         <div>
                           <div className="font-semibold">{it.name}</div>
                           <div className="text-sm text-gray-500">{it.type}</div>
-                          <div className="text-xs text-gray-400">از فروشگاه: {it.shop}</div>
+                          <div className="text-xs text-gray-400">از فروشگاه: {it.shop} به تعداد: {enToFaNum(it.count)}</div>
                           <div className="text-yellow-800">امتیاز: {enToFaNum(it.rate)}</div>
                         </div>
                         <div className="text-right">
@@ -192,7 +193,7 @@ export default function Dashboard() {
                       <div>
                         <div className="font-semibold">{it.name}</div>
                         <div className="text-sm text-gray-500">{it.type}</div>
-                        <div className="text-xs text-gray-400">به: {it.user_name}</div>
+                        <div className="text-xs text-gray-400">به: {it.user_name} به تعداد: {enToFaNum(it.count)}</div>
                         <div className="text-yellow-800">امتیاز: {enToFaNum(it.rate)}</div>
                       </div>
                       <div className="text-right">

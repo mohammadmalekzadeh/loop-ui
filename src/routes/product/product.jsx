@@ -22,3 +22,7 @@ export async function postProducts(data, token) {
 export async function updateActiveProducts(id, is_active, token) {
   return apiPut(`products/is_active/${id}?is_active=${is_active}`, {}, token);
 }
+
+export async function updateProducts(id, data, token) {
+  return apiPut(`products/edit/${id}`, data, token);
+}

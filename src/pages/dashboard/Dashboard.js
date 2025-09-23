@@ -7,12 +7,15 @@ import { enToFaNum, faToEnNum } from "../../utlis/NumConvertor";
 import { getCurrentUser } from "../../utlis/currentUser";
 import { getUserDashboard } from "../../routes/dashboard/dashboard";
 import { updateActiveProducts } from "../../routes/product/product";
+import UpdateProductModal from "../../components/popups/UpdateProductsModal";
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [request, setRequest] = useState({});
   const [loading, setLoading] = useState(true);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   
@@ -127,7 +130,11 @@ export default function Dashboard() {
                                 it.is_active = newStatus; 
                                 setRequest({ ...request });
                               } catch (err) {
-                                if (err.message.includes("400")) {alert("محصول موجود نیست!");} else {
+                                if (err.message.includes("400")) {
+                                  alert("محصول موجود نیست!");
+                                  setSelectedProduct(it);
+                                  setIsEditModalOpen(true);
+                                } else {
                                 console.error(err);
                                 alert("خطا در تغییر وضعیت محصول");}
                               }
@@ -138,7 +145,14 @@ export default function Dashboard() {
                           >
                             {it.is_active ? "فعال" : "غیرفعال"}
                           </button>
-                          <button><FaEdit /></button>
+                          <button
+                            onClick={() => {
+                              setSelectedProduct(it);
+                              setIsEditModalOpen(true);
+                            }}
+                          >
+                            <FaEdit />
+                          </button>
                         </div>
                       </div>
                     ))}
@@ -214,6 +228,7 @@ export default function Dashboard() {
         </div>
       </main>
       <AddProductModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSuccess={refreshDashboard} />
+      <UpdateProductModal isOpen={isEditModalOpen} onClose={() => setIsEditModalOpen(false)} product={selectedProduct} onSuccess={refreshDashboard} />
     </div>
   );
 }

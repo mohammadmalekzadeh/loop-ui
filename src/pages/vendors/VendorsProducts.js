@@ -130,7 +130,7 @@ export default function VendorsProducts () {
                         <div className="bg-white rounded-xl shadow-xl p-6 w-96 right-farsi">
                           <h2 className="text-xl font-bold mb-4 text-gray-800">جزئیات محصول: {selectedProduct.name}</h2>
                           <p><span className="font-semibold">نوع محصول: </span> {selectedProduct.type}</p>
-                          <p><span className="font-semibold">آدرس: </span> {selectedProduct.address}</p>
+                          <p><span className="font-semibold">موجودی: </span> {selectedProduct.inventory}</p>
                     
                           <div className="mt-4">
                             <label className="block text-gray-700 font-semibold mb-2">
@@ -138,7 +138,8 @@ export default function VendorsProducts () {
                             </label>
                             <input
                               type="number"
-                              min="1"
+                              min={1}
+                              max={selectedProduct.inventory}
                               value={count}
                               onChange={(e) => setCount(Number(e.target.value))}
                               className="w-full border rounded-lg p-2 text-center focus:outline-none focus:ring-2 focus:ring-blue-500"

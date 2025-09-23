@@ -5,6 +5,7 @@ import { enToFaNum } from "../../utlis/NumConvertor";
 export default function Home() {
   return (
     <div className="font-myfont">
+      <section className="mb-5"></section>
       {/* Landing Section*/}
       <section
         className="relative h-screen bg-cover bg-center flex flex-col items-center justify-center text-white"

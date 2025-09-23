@@ -52,7 +52,7 @@ export default function Navbar() {
           </div>
         )}
       </nav>
-      <div className="h-15"></div>
+      <div className="mb-10"></div>
     </>
   );
 }

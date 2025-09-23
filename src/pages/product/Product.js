@@ -50,6 +50,8 @@ export default function Products() {
         try {
           const currentUser = await getCurrentUser();
           setUser(currentUser);
+
+          if (count > selectedProduct.inventory) return alert("نمیشه که!");
   
           const data = {
             product_id: selectedProduct.id,
@@ -172,6 +174,7 @@ export default function Products() {
             <p><span className="font-semibold">نام فروشنده: </span> {selectedProduct.vendor}</p>
             <p><span className="font-semibold">فروشگاه: </span> {selectedProduct.shop}</p>
             <p><span className="font-semibold">آدرس: </span> {selectedProduct.address}</p>
+            <p><span className="font-semibold">حداکثر تعداد سفارش:</span> {enToFaNum(selectedProduct.inventory)}</p>
 
             <div className="mt-4">
               <label className="block text-gray-700 font-semibold mb-2">
@@ -179,7 +182,8 @@ export default function Products() {
               </label>
               <input
                 type="number"
-                min="1"
+                min={1}
+                max={selectedProduct.inventory}
                 value={count}
                 onChange={(e) => setCount(Number(e.target.value))}
                 className="w-full border rounded-lg p-2 text-center focus:outline-none focus:ring-2 focus:ring-blue-500"

@@ -127,8 +127,9 @@ export default function Dashboard() {
                                 it.is_active = newStatus; 
                                 setRequest({ ...request });
                               } catch (err) {
+                                if (err.message.includes("400")) {alert("محصول موجود نیست!");} else {
                                 console.error(err);
-                                alert("خطا در تغییر وضعیت محصول");
+                                alert("خطا در تغییر وضعیت محصول");}
                               }
                             }}
                             className={`px-3 py-1 rounded ${

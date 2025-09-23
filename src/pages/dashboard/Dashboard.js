@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { FaCog, FaPlus, FaChevronRight, FaChevronDown } from "react-icons/fa";
+import { FaCog, FaPlus, FaChevronRight, FaChevronDown, FaEdit } from "react-icons/fa";
 import AddProductModal from "../../components/popups/AddProductModal";
 import { enToFaNum, faToEnNum } from "../../utlis/NumConvertor";
 import { getCurrentUser } from "../../utlis/currentUser";
@@ -136,6 +136,7 @@ export default function Dashboard() {
                           >
                             {it.is_active ? "فعال" : "غیرفعال"}
                           </button>
+                          <button><FaEdit /></button>
                         </div>
                       </div>
                     ))}

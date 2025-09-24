@@ -16,10 +16,9 @@ export default function VendorsProducts () {
   const [loading, setLoading] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [count, setCount] = useState(1);
-  const token = localStorage.getItem("token");
   const [user, setUser] = useState(getCurrentUser);
   
-
+  
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -27,9 +26,9 @@ export default function VendorsProducts () {
         setVendors(data);
       } catch (err) {
         if (err.message.includes("404")) {
-            navigate("/404");
+          navigate("/404");
         } else {
-            console.error("خطا در گرفتن محصولات:", err);
+          console.error("خطا در گرفتن محصولات:", err);
         }
       } finally {
         setLoading(false);
@@ -37,9 +36,10 @@ export default function VendorsProducts () {
     };
     fetchProducts();
   }, [id]);
-
-    const handleConfirm = async () => {
-      try {
+  
+  const handleConfirm = async () => {
+    try {
+        const token = localStorage.getItem("token");
         const currentUser = await getCurrentUser();
         setUser(currentUser);
 
@@ -111,7 +111,7 @@ export default function VendorsProducts () {
                           {enToFaNum(product.price.toLocaleString())} تومان
                         </p>
                         <button
-                          className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-eggshell rounded-lg transition"
+                          className="flex items-center gap-2 px-4 py-2 bg-pigment_green hover:bg-sea_green text-eggshell rounded-lg transition"
                           onClick={ () => {
                             setSelectedProduct(product);
                             setCount(1);

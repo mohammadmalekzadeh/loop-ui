@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaTimes, FaHome, FaSignInAlt, FaBoxOpen, FaTachometerAlt, FaClipboardList, FaPhoneAlt, FaInfoCircle, FaSignOutAlt, FaStore } from "react-icons/fa";
+import { FaBars, FaTimes, FaHome, FaSignInAlt, FaBoxOpen, FaTachometerAlt, FaClipboardList, FaPhoneAlt, FaInfoCircle, FaSignOutAlt, FaStore, FaDownload } from "react-icons/fa";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +13,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center max-w-7xl mx-auto">
           {/* Desktop Link*/}
           <div className="hidden md:flex space-x-6 items-center text-isabelline">
+            <Link to="/install-app" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaDownload /> نصب اپلیکیشن</Link>
             <Link to="/signup" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaSignInAlt /> ثبت نام</Link>
             <Link to="/dashboard/requests" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaClipboardList /> درخواست ها</Link>
             <Link to="/dashboard" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaTachometerAlt /> داشبورد</Link>

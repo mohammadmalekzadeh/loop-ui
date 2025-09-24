@@ -42,6 +42,7 @@ export default function Navbar() {
         {isOpen && (
           <div className="md:hidden mt-4 flex flex-col space-y-3 bg-black bg-opacity-90 p-4 rounded-md right-farsi text-isabelline">
             <Link to="/" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaHome /> خانه</Link>
+            <Link to="/install-app" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaDownload /> نصب اپلیکیشن</Link>
             <Link to="/signup" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaSignInAlt /> ثبت نام</Link>
             <Link to="/products" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaBoxOpen /> محصولات</Link>
             <Link to="/vendors" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaStore /> فروشندگان</Link>

@@ -182,7 +182,7 @@ export default function Dashboard() {
                           <div className="text-blue-600 font-bold">
                             {enToFaNum(it.price.toLocaleString())} تومان
                           </div>
-                          <div className="text-xs text-gray-400 left-num">{enToFaNum(it.buy_date)}</div>
+                          <div className="text-xs text-gray-400">{enToFaNum(it.jalali_date)}</div>
                         </div>
                       </div>
                     ))}
@@ -215,7 +215,7 @@ export default function Dashboard() {
                         <div className="text-blue-600 font-bold">
                           {enToFaNum(it.price.toLocaleString())} تومان
                         </div>
-                        <div className="text-xs text-gray-400">{enToFaNum(it.buy_date)}</div>
+                        <div className="text-xs text-gray-400">{enToFaNum(it.jalali_date)}</div>
                       </div>
                     </div>
                   ))}

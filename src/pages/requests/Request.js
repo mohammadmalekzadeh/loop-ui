@@ -174,7 +174,7 @@ export default function Request() {
                       <p className="text-sm text-gray-600">فروشنده: {req.vendors_name}</p>
                       <p className="text-sm text-gray-600">آدرس: {req.address}</p>
                       <p className="text-sm text-gray-600 font-semibold">کد: {enToFaNum(req.code)}</p>
-                      <p className="text-xs text-gray-500">{enToFaNum(req.date)}</p>
+                      <p className="text-xs text-gray-500">{enToFaNum(req.jalali_date)}</p>
                       {req.status === "pending" && (
                         <p className="text-sm text-green-600 mt-2 font-semibold">در اسرع وقت تحویل گرفته شود!</p>
                       )}

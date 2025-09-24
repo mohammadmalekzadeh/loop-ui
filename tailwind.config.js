@@ -16,6 +16,8 @@ module.exports = {
         fire_brick: "#BE2323",
         mantis: "#63BB66",
         golden: "#F7FF00",
+        sea_green: "#26945E",
+        dim_gray: "#656463",
       },
     }
   },

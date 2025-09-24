@@ -5,6 +5,7 @@ export async function getVendors(filters = {}) {
 
   if (filters.rate) params.append("rate", filters.rate);
   if (filters.is_work !== undefined) params.append("is_work", filters.is_work);
+  if (filters.newest !== undefined) params.append("newest", filters.newest);
 
   const query = params.toString();
   const endpoint = query ? `vendors?${query}` : "vendors";

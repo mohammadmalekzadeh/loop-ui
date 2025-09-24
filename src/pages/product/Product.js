@@ -20,6 +20,7 @@ export default function Products() {
     price: "",
     rate: "",
     is_popular: false,
+    newest: true,
   });
   const [types, setTypes] = useState([]);
   const [shops, setShops] = useState([]);
@@ -77,13 +78,12 @@ export default function Products() {
     
     <div className="min-h-screen bg-gray-100 py-10 px-5 md:px-10">
       <h1 className="text-4xl font-bold text-center mb-10"></h1>
-      {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 right-farsi"> */}
-      <div className="bg-white p-4 rounded-lg shadow-md mb-6 grid grid-cols-1 md:grid-cols-5 gap-4 right-farsi">
+        <div className="bg-white p-4 rounded-lg shadow-md mb-6 flex flex-wrap items-center gap-4 right-farsi">
           {/* نوع محصول */}
           <select
             value={filters.type}
             onChange={(e) => setFilters({ ...filters, type: e.target.value })}
-            className="border rounded p-2"
+            className="border rounded p-2 right-farsi"
           >
             <option value="">همه نوع‌ها</option>
             {types.map((t, i) => (
@@ -129,6 +129,34 @@ export default function Products() {
             />
             <span className="select-none text-gray-700">محبوب‌ترین</span>
           </label>
+
+          {/* جدید */}
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={filters.newest}
+              defaultChecked
+              onChange={(e) => setFilters({ ...filters, newest: e.target.checked })}
+              className="w-5 h-5 border-2 border-gray-400 rounded-lg checked:bg-pink-500 checked:border-pink-500 transition-all duration-200"
+            />
+            <span className="select-none text-gray-700">جدیدترین</span>
+          </label>
+
+          <button
+            onClick={() =>
+              setFilters({
+                type: "",
+                shop_name: "",
+                price: "",
+                rate: "",
+                is_popular: false,
+                newest: false,
+              })
+            }
+            className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+          >
+            حذف فیلترها
+          </button>
         </div>
       <div className="grid grid-cols-2 md:grid-cols-6 gap-8 right-farsi">
         {products.map((product) => (

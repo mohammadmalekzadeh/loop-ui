@@ -5,6 +5,7 @@ export async function getRequests(filters = {}, token) {
 
   if (filters.status) params.append("status", filters.status);
   if (filters.date) params.append("date", filters.date);
+  if (filters.code) params.append("code", filters.code);
 
   const query = params.toString();
   const endpoint = query ? `request/show?${query}` : "request/show";

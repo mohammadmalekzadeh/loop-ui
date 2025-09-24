@@ -9,6 +9,7 @@ export default function Vendors () {
     const [filters, setFilters] = useState({
       rate: "",
       is_work: false,
+      newest: false,
     });
 
     useEffect(() => {
@@ -30,8 +31,9 @@ export default function Vendors () {
     return (
         <div className="min-h-screen bg-gray-100 py-10 px-5 md:px-10">
             <h1 className="text-4xl font-bold text-center mb-10"></h1>
-            <div className="bg-white p-4 rounded-lg shadow-md mb-6 grid grid-cols-1 md:grid-cols-5 gap-4 right-farsi items-center justify-center">
-              {/* امتیاز */}
+            <div className="bg-white p-4 rounded-lg shadow-md mb-6 flex flex-wrap items-center gap-4 right-farsi">
+          
+          {/* امتیاز */}
           <div className="flex items-center gap-2">
             <label className="flex items-center gap-2 cursor-pointer"><input className="w-5 h-5 border-2 border-gray-400 rounded-full checked:bg-blue-500 checked:border-blue-500 transition-all duration-200" type="radio" name="rate" onChange={() => setFilters({ ...filters, rate: "min" })}/><span className="select-none text-gray-700">کمترین امتیاز</span></label>
             <label className="flex items-center gap-2 cursor-pointer"><input className="w-5 h-5 border-2 border-gray-400 rounded-full checked:bg-blue-500 checked:border-blue-500 transition-all duration-200" type="radio" name="rate" onChange={() => setFilters({ ...filters, rate: "max" })}/><span className="select-none text-gray-700">بیشترین امتیاز</span></label>
@@ -47,8 +49,34 @@ export default function Vendors () {
             />
             <span className="select-none text-gray-700">پرکارترین</span>
           </label>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-6 gap-8 right-farsi">
+          
+          {/* جدید */}
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={filters.newest}
+              defaultChecked
+              onChange={(e) => setFilters({ ...filters, newest: e.target.checked })}
+              className="w-5 h-5 border-2 border-gray-400 rounded-lg checked:bg-pink-500 checked:border-pink-500 transition-all duration-200"
+            />
+            <span className="select-none text-gray-700">جدیدترین</span>
+          </label>
+
+          <button
+            onClick={() =>
+              setFilters({
+                rate: "",
+                is_work: false,
+                newest: false,
+              })
+            }
+            className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+          >
+            حذف فیلترها
+          </button>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-8 right-farsi">
               {vendors.map((vendor) => (
                 <div
                   key={vendor.id}

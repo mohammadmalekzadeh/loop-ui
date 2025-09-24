@@ -18,6 +18,7 @@ export default function Request() {
   const [filters, setFilters] = useState({
     status: "",
     date: "new",
+    code: "",
   });
   const [showRateModal, setShowRateModal] = useState(false);
   const [selectedRequestId, setSelectedRequestId] = useState(null);
@@ -84,7 +85,7 @@ export default function Request() {
       <div className="bg-white shadow rounded-lg p-6">
         <h2 className="text-2xl font-bold mb-6 text-center">درخواست های شما</h2>
 
-        <div className="bg-white p-4 rounded-lg shadow-md mb-6 grid grid-cols-1 md:grid-cols-5 gap-4 right-farsi items-center justify-center">
+        <div className="bg-white p-4 rounded-lg shadow-md mb-6 flex flex-wrap items-center gap-4 right-farsi">
           {/* status */}
           <select
             value={filters.status}
@@ -101,6 +102,30 @@ export default function Request() {
             <label className="flex items-center gap-2 cursor-pointer"><input className="w-5 h-5 border-2 border-gray-400 rounded-full checked:bg-blue-500 checked:border-blue-500 transition-all duration-200" type="radio" name="date" onChange={() => setFilters({ ...filters, date: "old" })}/><span className="select-none text-gray-700">قدیمی ترین</span></label>
             <label className="flex items-center gap-2 cursor-pointer"><input className="w-5 h-5 border-2 border-gray-400 rounded-full checked:bg-blue-500 checked:border-blue-500 transition-all duration-200" type="radio" name="date" onChange={() => setFilters({ ...filters, date: "new" })} defaultChecked/><span className="select-none text-gray-700">جدیدترین</span></label>
           </div>
+
+          {/* code */}
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="number"
+              value={filters.code}
+              placeholder="کد درخواست"
+              onChange={(e) => setFilters({ ...filters, code: e.target.value })}
+              className="border rounded p-2 transition"
+            />
+          </label>
+
+          <button
+            onClick={() =>
+              setFilters({
+                status: "",
+                date: "",
+                code: "",
+              })
+            }
+            className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+          >
+            حذف فیلترها
+          </button>
 
         </div>
         {userRole === "vendors" ? (

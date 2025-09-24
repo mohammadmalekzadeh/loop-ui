@@ -22,20 +22,20 @@ function App() {
     <>
     <ScrollToTop />
     <Routes>
-    <Route path="/" element={<MainLayout><Home /></MainLayout>} />
-    <Route path="/login" element={<MainLayout><Login /></MainLayout>} />
-    <Route path="/signup" element={<MainLayout><Signup /></MainLayout>} />
-    <Route path="/products" element={<MainLayout><Products /></MainLayout>} />
-    <Route path="/dashboard" element={<MainLayout><Dashboard /></MainLayout>} />
-    <Route path="/dashboard/settings" element={<MainLayout><Settings /></MainLayout>} />
-    <Route path="/dashboard/requests" element={<MainLayout><Request /></MainLayout>} />
-    <Route path="/vendors" element={<MainLayout><Vendors /></MainLayout>} />
-    <Route path="/vendors/:vendorsId" element={<MainLayout><VendorsProducts /></MainLayout>} />
-    <Route path="/app" element={<MainLayout><InstallApp /></MainLayout>} />
-    <Route path="/about-us" element={<MainLayout><About /></MainLayout>} />
-    <Route path="/contact-us" element={<MainLayout><Contact /></MainLayout>} />
-    <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />
-    <Route path="/404" element={<MainLayout><NotFound /></MainLayout>} />
+      <Route path="/" element={<MainLayout><Home /></MainLayout>} />
+      <Route path="/login" element={<MainLayout><Login /></MainLayout>} />
+      <Route path="/signup" element={<MainLayout><Signup /></MainLayout>} />
+      <Route path="/products" element={<MainLayout><Products /></MainLayout>} />
+      <Route path="/dashboard" element={<MainLayout><Dashboard /></MainLayout>} />
+      <Route path="/dashboard/settings" element={<MainLayout><Settings /></MainLayout>} />
+      <Route path="/dashboard/requests" element={<MainLayout><Request /></MainLayout>} />
+      <Route path="/vendors" element={<MainLayout><Vendors /></MainLayout>} />
+      <Route path="/vendors/:vendorsId" element={<MainLayout><VendorsProducts /></MainLayout>} />
+      <Route path="/app" element={<MainLayout><InstallApp /></MainLayout>} />
+      <Route path="/about-us" element={<MainLayout><About /></MainLayout>} />
+      <Route path="/contact-us" element={<MainLayout><Contact /></MainLayout>} />
+      <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />
+      <Route path="/404" element={<MainLayout><NotFound /></MainLayout>} />
     </Routes>
     <Analytics />
     <SpeedInsights />

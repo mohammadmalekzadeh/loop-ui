@@ -4,30 +4,30 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <footer className="w-full bg-gray-900 text-gray-300 py-6 px-8 flex flex-col md:flex-row justify-between items-center
-                      font-myfont right-farsi">
+                      font-myfont right-farsi bg-jet">
       
       {/* Left Section */}
-      <div className="text-center md:text-left mb-4 md:mb-0 right-farsi items-center justify-center">
+      <div className="text-center md:text-left mb-4 md:mb-0 right-farsi items-center justify-center text-isabelline">
         <p className="font-bold text-lg items-center justify-center flex">لووپ © ۲۰۲۵</p>
         <div className="flex items-center gap-4 justify-center md:justify-start mt-2">
-          <Link to="/contact-us" className="hover:text-blue-400 flex items-center gap-2 right-farsi">
+          <Link to="/contact-us" className="hover:text-mantis flex items-center gap-2 right-farsi">
             <FaPhoneAlt /> تماس با ما
           </Link>
-          <Link to="/about-us" className="hover:text-blue-400 flex items-center gap-2 right-farsi">
+          <Link to="/about-us" className="hover:text-mantis flex items-center gap-2 right-farsi">
             <FaInfoCircle /> درباره ما
           </Link>
         </div>
       </div>
 
       {/* Middle Section */}
-      <div className="text-center mb-4 md:mb-0">
+      <div className="text-center mb-4 md:mb-0 text-isabelline">
         {/* <p className="text-sm">Powered by <span className="font-semibold">Malek</span></p> */}
-        <p className="text-sm">توسعه داده شده توسط <a href="https://instagram.com/er._.math" className="font-semibold text-green-500 hover:text-blue-500">مَلِک</a></p>
+        <p className="text-sm">توسعه داده شده توسط <a href="https://instagram.com/er._.math" className="font-semibold text-loop hover:text-mantis">مَلِک</a></p>
         <p className="text-sm">تمامی حقوق محفوظ است</p>
       </div>
 
       {/* Right Section */}
-      <div className="flex space-x-6 left-num">
+      <div className="flex space-x-6 left-num text-isabelline">
         <a
           href="https://instagram.com"
           target="_blank"

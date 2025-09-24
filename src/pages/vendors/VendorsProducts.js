@@ -80,7 +80,7 @@ export default function VendorsProducts () {
                 </div>
               </div>
               {/* Right: Edit Info Button */}
-              <p className="text-yellow-800 mb-2">امتیاز: {enToFaNum(vendors.rate)}</p>
+              <p className="text-fulvous mb-2">امتیاز: {enToFaNum(vendors.rate)}</p>
             </div>
             <div>
                 <div className="bg-white shadow rounded-lg p-6 flex items-center justify-between mb-8 right-farsi font-semibold transition responsive">
@@ -105,14 +105,13 @@ export default function VendorsProducts () {
                           {product.name} - {product.type}
                         </h2>
             
-                        <p className="text-gray-700 mb-1">تعداد فروش: {product.buy_freq}</p>
-                        <p className="text-yellow-800 mb-2">امتیاز: {enToFaNum(product.rate)}</p>
+                        <p className="text-fulvous mb-2">امتیاز: {enToFaNum(product.rate)}</p>
             
-                        <p className="text-blue-600 font-bold mb-4">
+                        <p className="text-azul font-bold mb-4">
                           {enToFaNum(product.price.toLocaleString())} تومان
                         </p>
                         <button
-                          className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                          className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-eggshell rounded-lg transition"
                           onClick={ () => {
                             setSelectedProduct(product);
                             setCount(1);
@@ -131,7 +130,7 @@ export default function VendorsProducts () {
                         <div className="bg-white rounded-xl shadow-xl p-6 w-96 right-farsi">
                           <h2 className="text-xl font-bold mb-4 text-gray-800">جزئیات محصول: {selectedProduct.name}</h2>
                           <p><span className="font-semibold">نوع محصول: </span> {selectedProduct.type}</p>
-                          <p><span className="font-semibold">موجودی: </span> {selectedProduct.inventory}</p>
+                          <p><span className="font-semibold">حداکثر تعداد سفارش: </span> {selectedProduct.inventory}</p>
                     
                           <div className="mt-4">
                             <label className="block text-gray-700 font-semibold mb-2">
@@ -150,13 +149,13 @@ export default function VendorsProducts () {
                           <div className="flex justify-between mt-6 gap-3">
                             <button
                               onClick={() => setSelectedProduct(null)}
-                              className="flex-1 bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-600 transition"
+                              className="flex-1 bg-dim_gray hover:bg-jet text-eggshell py-2 rounded-lg transition"
                             >
                               لغو
                             </button>
                             <button
                               onClick={handleConfirm}
-                              className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+                              className="flex-1 bg-pigment_green hover:bg-sea_green text-eggshell py-2 rounded-lg transition"
                             >
                               تایید
                             </button>

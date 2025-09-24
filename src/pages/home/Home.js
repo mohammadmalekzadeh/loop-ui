@@ -11,7 +11,7 @@ export default function Home() {
     async function fetchNewest() {
       try {
         const data = await getProducts({ newest: true });
-        setNewestProducts(data.slice(0, 6)); // 6 محصول
+        setNewestProducts(data.slice(0, 6));
       } catch (error) {
         console.error("خطا در دریافت محصولات جدید:", error);
       }
@@ -23,9 +23,7 @@ export default function Home() {
     <div className="font-myfont">
       {/* Landing Section */}
       <section
-        className="relative min-h-screen bg-cover bg-center flex flex-col items-center justify-center text-white"
-        style={{ backgroundImage: "url('/background/home.jpg')" }}
-      >
+        className="relative min-h-screen bg-isabelline bg-center flex flex-col items-center justify-center text-pine_green">
 
         <div className="relative z-10 text-center px-4 flex flex-col items-center justify-center">
           {/* Logo */}
@@ -46,13 +44,13 @@ export default function Home() {
                 {newestProducts.map((p) => (
                   <div
                     key={p.id}
-                    className="bg-white text-black rounded-lg shadow-md p-4 flex flex-col items-center"
+                    className="bg-eggshell text-black rounded-lg shadow-2xl p-4 flex flex-col items-center"
                   >
                     <h3 className="font-semibold text-center">{p.name}</h3>
                     <p className="text-gray-800 mt-1 text-sm sm:text-base right-farsi">
                       فروشگاه: {p.shop}
                     </p>
-                    <p className="text-sm sm:text-base text-gray-600 mt-1">
+                    <p className="text-sm sm:text-base text-azul mt-1">
                       قیمت: {enToFaNum(p.price.toLocaleString())} تومان
                     </p>
                   </div>
@@ -64,7 +62,7 @@ export default function Home() {
                 {newestProducts.slice(0, 4).map((p) => (
                   <div
                     key={p.id}
-                    className="min-w-[140px] sm:min-w-[160px] bg-white text-black rounded-lg shadow-md p-3 flex flex-col items-center flex-shrink-0"
+                    className="min-w-[140px] sm:min-w-[160px] bg-eggshell text-black rounded-lg shadow-2xl p-3 flex flex-col items-center flex-shrink-0"
                   >
                     <h3 className="font-semibold text-center text-sm">{p.name}</h3>
                     <p className="text-gray-800 mt-1 text-xs right-farsi">{p.shop}</p>
@@ -75,7 +73,7 @@ export default function Home() {
 
               <div className="flex justify-center mt-8 mb-6">
                 <Link to="/products">
-                  <button className="px-8 py-3 bg-blue-600 text-white text-lg font-bold rounded-lg hover:bg-blue-700 transition right-farsi">
+                  <button className="px-8 py-3 bg-pigment_green hover:bg-sea_green text-eggshell text-lg font-bold rounded-lg transition right-farsi">
                     نمایش بیشتر ...
                   </button>
                 </Link>
@@ -84,7 +82,7 @@ export default function Home() {
           )}
 
             <Link to="/signup">
-              <button className="inline-flex items-center px-8 py-3 bg-blue-600 text-white text-lg font-bold rounded-lg hover:bg-blue-700 transition">
+              <button className="inline-flex items-center px-8 py-3 bg-pigment_green hover:bg-sea_green text-eggshell text-lg font-bold rounded-lg transition">
                 ثبت نام
                 <FaSignInAlt className="ml-2" />
               </button>

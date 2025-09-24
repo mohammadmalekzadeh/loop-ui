@@ -55,7 +55,7 @@ export default function Dashboard() {
   if (!user) return navigate("/login");
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-isabelline">
       {/* Main Content */}
       <main className="flex-1 p-6">
         {/* Profile Card */}
@@ -64,6 +64,7 @@ export default function Dashboard() {
           <div className="flex items-center">
             <div>
               <h2 className="text-2xl font-bold">{request.name}</h2>
+              <h2 className="font-semibold">{request.shop_name}</h2>
               <p className="text-gray-600 left-num">+۹۸ {enToFaNum(request.phone)}</p>
 
             </div>
@@ -71,7 +72,7 @@ export default function Dashboard() {
           {/* Right: Edit Info Button */}
           <Link
             to="/dashboard/settings"
-            className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition right-farsi"
+            className="flex items-center gap-2 px-4 py-2 bg-azul text-eggshell rounded-lg hover:bg-silver transition right-farsi"
             >
             <FaCog />
             ویرایش اطلاعات
@@ -83,7 +84,7 @@ export default function Dashboard() {
             <div className="bg-white shadow rounded-lg p-6 flex items-center justify-between mb-8 right-farsi font-semibold transition responsive">
             <p className="text-gray-800 right-farsi">از روز {request.start_day} تا روز {request.end_day}</p>
             <p className="text-gray-800 left-num">از ساعت {enToFaNum(request.start_time)} تا ساعت {enToFaNum(request.end_time)}</p>
-            <p className="text-yellow-800 mb-2">امتیاز: {enToFaNum(request.rate)}</p>
+            <p className="text-fulvous mb-2">امتیاز: {enToFaNum(request.rate)}</p>
             </div>
             </>
             ) : ("")}
@@ -100,7 +101,7 @@ export default function Dashboard() {
                 <div className="mt-6">
                   <button
                    onClick={() => setIsModalOpen(true)}
-                   className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition right-farsi">
+                   className="flex items-center gap-2 px-4 py-2 text-eggshell rounded-lg bg-pigment_green hover:bg-sea_green transition right-farsi">
                     <FaPlus />
                     محصول جدیدت رو اضافه کن
                   </button>
@@ -119,7 +120,7 @@ export default function Dashboard() {
                           <div className="text-sm text-gray-500">تعداد موجودی: {it.inventory}</div>
                         </div>
                         <div className="flex items-center gap-3">
-                          <div className="text-blue-600 font-bold">
+                          <div className="text-azul font-bold">
                             {enToFaNum(it.price.toLocaleString())} تومان
                           </div>
                           <button
@@ -141,8 +142,8 @@ export default function Dashboard() {
                               }
                             }}
                             className={`px-3 py-1 rounded ${
-                              it.is_active ? "bg-green-500" : "bg-red-500"
-                            } text-white`}
+                              it.is_active ? "bg-mantis" : "bg-fire_brick"
+                            } text-eggshell`}
                           >
                             {it.is_active ? "فعال" : "غیرفعال"}
                           </button>
@@ -177,10 +178,10 @@ export default function Dashboard() {
                           <div className="font-semibold">{it.name}</div>
                           <div className="text-sm text-gray-500">{it.type}</div>
                           <div className="text-xs text-gray-400">از فروشگاه: {it.shop} به تعداد: {enToFaNum(it.count)}</div>
-                          <div className="text-yellow-800">امتیاز: {enToFaNum(it.rate)}</div>
+                          <div className="text-fulvous">امتیاز: {enToFaNum(it.rate)}</div>
                         </div>
                         <div className="text-right">
-                          <div className="text-blue-600 font-bold">
+                          <div className="text-azul font-bold">
                             {enToFaNum(it.price.toLocaleString())} تومان
                           </div>
                           <div className="text-xs text-gray-400">{enToFaNum(it.jalali_date)}</div>
@@ -210,10 +211,10 @@ export default function Dashboard() {
                         <div className="font-semibold">{it.name}</div>
                         <div className="text-sm text-gray-500">{it.type}</div>
                         <div className="text-xs text-gray-400">به: {it.user_name} به تعداد: {enToFaNum(it.count)}</div>
-                        <div className="text-yellow-800">امتیاز: {enToFaNum(it.rate)}</div>
+                        <div className="text-fulvous">امتیاز: {enToFaNum(it.rate)}</div>
                       </div>
                       <div className="text-right">
-                        <div className="text-blue-600 font-bold">
+                        <div className="text-azul font-bold">
                           {enToFaNum(it.price.toLocaleString())} تومان
                         </div>
                         <div className="text-xs text-gray-400">{enToFaNum(it.jalali_date)}</div>

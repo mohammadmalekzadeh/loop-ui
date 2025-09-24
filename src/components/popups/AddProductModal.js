@@ -133,14 +133,14 @@ export default function AddProductModal({ isOpen, onClose }) {
           <button
             onClick={handleSave}
             disabled={loading}
-            className={`flex-1 ${loading ? "bg-blue-400" : "bg-blue-600 hover:bg-blue-700"} text-white py-2 rounded-lg transition right-farsi`}
+            className={`flex-1 ${loading ? "bg-blue-400" : "bg-pigment_green hover:bg-sea_green"} text-eggshell py-2 rounded-lg transition right-farsi`}
           >
             اضافه کن!
           </button>
           <button
             onClick={() => { if (!loading && typeof onClose === "function") onClose(); }}
             disabled={loading}
-            className="flex-1 bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-600 transition right-farsi"
+            className="flex-1 text-eggshell py-2 rounded-lg bg-dim_gray hover:bg-jet transition right-farsi"
           >
             کنسله!
           </button>

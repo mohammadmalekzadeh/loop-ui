@@ -48,7 +48,7 @@ export default function Signup() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 font-myfont">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
-        <h2 className="text-3xl font-bold text-center text-blue-600 mb-6">
+        <h2 className="text-3xl font-bold text-center text-loop mb-6">
         صفحه ثبت نام
         </h2>
 
@@ -114,7 +114,7 @@ export default function Signup() {
 
             <button
               type="submit"
-              className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
+              className="w-full py-2 text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
             >
               ثبت نام
             </button>
@@ -134,19 +134,19 @@ export default function Signup() {
             </div>
             <button
               type="submit"
-              className="w-full py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition"
+              className="w-full py-2 text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
             >
               تایید
             </button>
           </form>
         )}
 
-        <p className="mt-4 text-sm text-gray-500 text-center font-semibold right-farsi">
+        <p className="mt-4 text-sm text-loop text-center font-semibold right-farsi">
           اطلاعات شما نزد ما محفوظ نگه داشته می‌شود!
         </p>
         <p className="text-center text-gray-600 mt-6 right-farsi">
           حساب کاربری دارید؟{" "}
-          <Link to="/login" className="text-blue-600 hover:underline">
+          <Link to="/login" className="text-azul hover:underline">
             ورود
           </Link>
         </p>

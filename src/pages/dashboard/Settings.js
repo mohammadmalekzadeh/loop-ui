@@ -238,14 +238,14 @@ export default function Settings() {
           <button
             type="button"
             onClick={handleSave}
-            className="flex-1 bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition right-farsi"
+            className="flex-1 text-eggshell font-semibold py-2 rounded-lg bg-pigment_green hover:bg-sea_green transition right-farsi"
           >
             ذخیره تغییرات!
           </button>
           <button
             type="button"
             onClick={() => window.history.back()}
-            className="flex-1 bg-gray-500 text-white font-semibold py-2 rounded-lg hover:bg-gray-600 transition right-farsi"
+            className="flex-1 text-eggshell font-semibold py-2 rounded-lg bg-dim_gray hover:bg-jet transition right-farsi"
           >
             کنسله، برگرد!
           </button>

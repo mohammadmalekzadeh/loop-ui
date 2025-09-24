@@ -31,7 +31,7 @@ export default function Vendors () {
 
     return (
         <div className="min-h-screen bg-gray-100 py-10 px-5 md:px-10">
-            <h1 className="text-4xl font-bold text-center mb-10"></h1>
+            <h1 className="text-4xl text-loop font-bold text-center mb-10">فروشندگان</h1>
             <div className="bg-white p-4 rounded-lg shadow-md mb-6 flex flex-wrap items-center gap-4 right-farsi">
           
           {/* امتیاز */}
@@ -71,7 +71,7 @@ export default function Vendors () {
                 newest: false,
               })
             }
-            className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+            className="px-4 py-2 bg-fire_brick text-eggshell rounded-lg hover:bg-red-600 transition"
           >
             حذف فیلترها
           </button>
@@ -91,10 +91,10 @@ export default function Vendors () {
                     <h2 className="text-lg font-semibold right-farsi">فروشگاه {vendor.shop_name}</h2>
                     <p className="text-gray-600 mb-2">{vendor.shop_address}</p>
                     <p className="font-bold mb-2">تعداد محصولات: {enToFaNum(vendor.products.length)}</p>
-                    <p className="text-yellow-800 mb-2">امتیاز: {enToFaNum(vendor.rate)}</p>
+                    <p className="text-fulvous mb-2">امتیاز: {enToFaNum(vendor.rate)}</p>
                     <Link
                       to={`/vendors/${vendor.id}`}
-                      className="mt-3 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                      className="mt-3 bg-pigment_green hover:bg-sea_green text-eggshell px-4 py-2 rounded-lg transition"
                     >
                       مشاهده بیشتر
                     </Link>

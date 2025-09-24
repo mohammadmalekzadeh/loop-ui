@@ -77,8 +77,8 @@ export default function Products() {
 
   return (
     
-    <div className="min-h-screen bg-gray-100 py-10 px-5 md:px-10">
-      <h1 className="text-4xl font-bold text-center mb-10"></h1>
+    <div className="min-h-screen bg-isabelline py-10 px-5 md:px-10">
+      <h1 className="text-4xl text-loop font-bold text-center mb-10">محصولات</h1>
         <div className="bg-white p-4 rounded-lg shadow-md mb-6 flex flex-wrap items-center gap-4 right-farsi">
           {/* نوع محصول */}
           <select
@@ -154,7 +154,7 @@ export default function Products() {
                 newest: false,
               })
             }
-            className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+            className="px-4 py-2 bg-fire_brick text-eggshell rounded-lg hover:bg-red-600 transition"
           >
             حذف فیلترها
           </button>
@@ -171,13 +171,13 @@ export default function Products() {
             </h2>
 
             <p className="text-gray-700 mb-1">فروشگاه: {product.shop}</p>
-            <p className="text-yellow-800 mb-2">امتیاز: {enToFaNum(product.rate)}</p>
+            <p className="text-fulvous mb-2">امتیاز: {enToFaNum(product.rate)}</p>
 
-            <p className="text-blue-600 font-bold mb-4">
+            <p className="text-azul font-bold mb-4">
               {enToFaNum(product.price.toLocaleString())} تومان
             </p>
             <button
-              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+              className="flex items-center gap-2 px-4 py-2 bg-pigment_green hover:bg-sea_green text-eggshell rounded-lg transition"
               onClick={ () => {
                 setSelectedProduct(product);
                 setCount(1);
@@ -217,13 +217,13 @@ export default function Products() {
             <div className="flex justify-between mt-6 gap-3">
               <button
                 onClick={() => setSelectedProduct(null)}
-                className="flex-1 bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-600 transition"
+                className="flex-1 bg-dim_gray hover:bg-jet text-eggshell py-2 rounded-lg transition"
               >
                 لغو
               </button>
               <button
                 onClick={handleConfirm}
-                className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+                className="flex-1 bg-pigment_green hover:bg-sea_green text-eggshell py-2 rounded-lg transition"
               >
                 تایید
               </button>

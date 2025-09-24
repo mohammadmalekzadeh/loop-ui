@@ -35,7 +35,7 @@ export default function Request() {
         setUserRole(currentUser.role);
         setRequests(requests);
         console.log(userRole);
-        console.log(requests.role);
+        console.log(requests);
       } catch (err) {
         console.error("Error fetching requests:", err);
       } finally {
@@ -84,7 +84,7 @@ export default function Request() {
   return (
     <div className="font-myfont min-h-screen bg-gray-100 p-6">
       <div className="bg-white shadow rounded-lg p-6">
-        <h2 className="text-2xl font-bold mb-6 text-center">درخواست های شما</h2>
+        <h2 className="text-2xl text-loop font-bold mb-6 text-center">درخواست های شما</h2>
 
         <div className="bg-white p-4 rounded-lg shadow-md mb-6 flex flex-wrap items-center gap-4 right-farsi">
           {/* status */}
@@ -123,7 +123,7 @@ export default function Request() {
                 code: "",
               })
             }
-            className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+            className="px-4 py-2 bg-fire_brick text-eggshell rounded-lg hover:bg-red-600 transition"
           >
             حذف فیلترها
           </button>
@@ -141,18 +141,19 @@ export default function Request() {
                       </p>
                       <p className="text-sm text-gray-600">مشتری: {req.customer_name}</p>
                       <p className="text-sm text-gray-600 font-semibold">کد: {enToFaNum(req.code)}</p>
+                      <p className="text-sm text-azul font-bold">قیمت کل: {enToFaNum(req.price.toLocaleString())} تومان</p>
                       <p className="text-xs text-gray-500">{enToFaNum(req.date)}</p>
                       {req.status === "pending" && (
-                        <p className="text-sm text-blue-600 mt-2 font-semibold">در اسرع وقت تحویل داده شود!</p>
+                        <p className="text-sm text- mt-2 font-semibold">در اسرع وقت تحویل داده شود!</p>
                       )}
                     </div>
                     <div className="flex items-center gap-2">
                       {req.status === "pending" ? (
                         <span className="flex items-center gap-2">
-                          <span className="text-yellow-600 font-semibold">در انتظار تحویل</span>
+                          <span className="text-orange_web font-semibold">در انتظار تحویل</span>
                         </span>
                       ) : (
-                        <span className="px-3 py-1 rounded text-white bg-green-600">تحویل داده شده</span>
+                        <span className="px-3 py-1 rounded text-eggshell bg-mantis">تحویل داده شده</span>
                       )}
                     </div>
                   </div>
@@ -175,6 +176,7 @@ export default function Request() {
                       <p className="text-sm text-gray-600">فروشنده: {req.vendors_name}</p>
                       <p className="text-sm text-gray-600">آدرس: {req.address}</p>
                       <p className="text-sm text-gray-600 font-semibold">کد: {enToFaNum(req.code)}</p>
+                      <p className="text-sm text-azul font-bold">قیمت کل: {enToFaNum(req.price.toLocaleString())} تومان</p>
                       <p className="text-xs text-gray-500">{enToFaNum(req.jalali_date)}</p>
                       {req.status === "pending" && (
                         <p className="text-sm text-green-600 mt-2 font-semibold">در اسرع وقت تحویل گرفته شود!</p>
@@ -182,11 +184,11 @@ export default function Request() {
                     </div>
                     {req.status === "pending" ? (
                       <span className="flex items-center gap-2">
-                        <span className="text-yellow-600 font-semibold">در انتظار تحویل</span>
-                        <button onClick={() => handleUpdateStatus(req.id, "accepted")} className="px-3 py-1 bg-yellow-500 text-white rounded">تحویل گرفتی؟</button>
+                        <span className="text-orange_web font-semibold">در انتظار تحویل</span>
+                        <button onClick={() => handleUpdateStatus(req.id, "accepted")} className="px-3 py-1 bg-yellow-500 text-eggshell rounded">تحویل گرفتی؟</button>
                       </span>
                     ) : (
-                      <span className="px-3 py-1 rounded text-white bg-green-600">تحویل گرفته شده</span>
+                      <span className="px-3 py-1 rounded text-eggshell bg-mantis">تحویل گرفته شده</span>
                     )}
                   </div>
                 ))}

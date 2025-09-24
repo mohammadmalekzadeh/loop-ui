@@ -111,16 +111,16 @@ export default function UpdateProductModal({ isOpen, onClose, product, onSuccess
           <button
             onClick={handleSave}
             disabled={loading}
-            className={`flex-1 ${loading ? "bg-blue-400" : "bg-blue-600 hover:bg-blue-700"} text-white py-2 rounded-lg`}
+            className={`flex-1 ${loading ? "bg-blue-400" : "bg-pigment_green hover:bg-sea_green"} text-eggshell py-2 rounded-lg`}
           >
             ذخیره
           </button>
           <button
             onClick={() => { if (!loading && typeof onClose === "function") onClose(); }}
             disabled={loading}
-            className="flex-1 bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-600"
+            className="flex-1 bg-dim_gray text-eggshell py-2 rounded-lg hover:bg-jet right-farsi"
           >
-            لغو
+            کنسله!
           </button>
         </div>
       </div>

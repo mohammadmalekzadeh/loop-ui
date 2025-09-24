@@ -26,7 +26,7 @@ export default function RateModal({ isOpen, onClose, onSubmit }) {
               key={n}
               onClick={() => setRate(n)}
               className={`w-10 h-10 rounded-full ${
-                rate >= n ? "bg-yellow-400" : "bg-gray-200"
+                rate >= n ? "bg-golden" : "bg-gray-200"
               }`}
             >
               {enToFaNum(n)}
@@ -37,7 +37,7 @@ export default function RateModal({ isOpen, onClose, onSubmit }) {
         <div className="flex justify-between gap-4">
           <button
             onClick={handleSubmit}
-            className="flex-1 py-2 bg-blue-600 text-white rounded"
+            className="flex-1 py-2 bg-pigment_green text-eggshell rounded"
           >
             ثبت امتیاز
           </button>

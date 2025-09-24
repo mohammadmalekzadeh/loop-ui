@@ -50,7 +50,7 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 font-myfont">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
-        <h2 className="text-3xl font-bold text-center text-blue-600 mb-6">صفحه ورود</h2>
+        <h2 className="text-3xl font-bold text-center text-loop mb-6">صفحه ورود</h2>
 
         {!otpSent ? (
           <form className="space-y-4" onSubmit={handleLogin} method="post" action={"auth/login"}>
@@ -73,7 +73,7 @@ export default function Login() {
             </div>
             <button
               type="submit"
-              className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
+              className="w-full py-2 text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
             >
               ورود
             </button>
@@ -93,7 +93,7 @@ export default function Login() {
             </div>
             <button
               type="submit"
-              className="w-full py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition"
+              className="w-full py-2 text-eggshell bg-pigment_green hover:bg-sea_green font-semibold rounded-lg transition"
             >
               تایید
             </button>
@@ -102,7 +102,7 @@ export default function Login() {
 
         <p className="text-center text-gray-600 mt-6 right-farsi">
           حساب کاربری ندارید؟{" "}
-          <Link to="/signup" className="text-blue-600 hover:underline">
+          <Link to="/signup" className="text-azul hover:underline">
             ثبت نام کنید
           </Link>
         </p>

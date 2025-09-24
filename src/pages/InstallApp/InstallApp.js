@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FaApple, FaCloudDownloadAlt, FaDownload } from "react-icons/fa";
 
 export default function InstallApp () {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
@@ -49,20 +50,21 @@ export default function InstallApp () {
 
         {/* دکمه یا راهنما */}
         {isIOS ? (
-          <p className="text-sm text-gray-600">
-            در iOS روی <span className="font-semibold">Share</span> بزنید و سپس{" "}
-            <span className="font-semibold">Add to Home Screen</span> را انتخاب کنید.
-          </p>
+            <p className="text-sm text-gray-600 right-farsi">
+              در <span className="inline-flex gap-1 font-semibold">iOS <FaApple /></span> روی <span className="font-semibold">Share</span> بزنید و سپس{" "}
+              <span className="font-semibold">Add to Home Screen</span> را انتخاب کنید.
+            </p>
+
         ) : deferredPrompt ? (
           <button
             onClick={handleInstall}
-            className="bg-green-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-green-600 transition right-farsi"
+            className="bg-green-500 text-eggshell px-6 py-3 rounded-lg text-lg hover:bg-green-600 transition right-farsi inline-flex gap-2 items-center"
           >
-            نصب اپلیکیشن
+            <FaDownload /> نصب اپلیکیشن
           </button>
         ) : (
-          <p className="text-gray-500 right-farsi">
-            این مرورگر از نصب پشتیبانی نمی‌کند یا اپلیکیشن قبلاً نصب شده است.
+          <p className="text-fire_brick right-farsi">
+            این مرورگر از نصب پشتیبانی نمی‌کند <br /> یا اپلیکیشن قبلاً نصب شده است.
           </p>
         )}
       </div>

@@ -1,7 +1,23 @@
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false,
-  theme: { extend: {} },
+  theme: {
+    extend: {
+      colors: {
+        loop: "#FF9800",
+        jet: "#333333",
+        pine_green: "#00796B",
+        isabelline: "#F9F5F0",
+        eggshell: "#F7EEDB",
+        pigment_green: "#4CAF50",
+        orange_web: "#FFAD33",
+        fulvous: "#E08800",
+        azul: "#016BB7",
+        fire_brick: "#BE2323",
+        mantis: "#63BB66",
+      },
+    }
+  },
   variants: { extend: {} },
   plugins: [],
   extend: {

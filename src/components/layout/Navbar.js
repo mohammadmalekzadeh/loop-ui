@@ -13,7 +13,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center max-w-7xl mx-auto">
           {/* Desktop Link*/}
           <div className="hidden md:flex space-x-6 items-center text-isabelline">
-            <Link to="/install-app" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaDownload /> نصب اپلیکیشن</Link>
+            <Link to="/app" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaDownload /> نصب اپلیکیشن</Link>
             <Link to="/signup" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaSignInAlt /> ثبت نام</Link>
             <Link to="/dashboard/requests" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaClipboardList /> درخواست ها</Link>
             <Link to="/dashboard" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaTachometerAlt /> داشبورد</Link>
@@ -42,7 +42,7 @@ export default function Navbar() {
         {isOpen && (
           <div className="md:hidden mt-4 flex flex-col space-y-3 bg-black bg-opacity-90 p-4 rounded-md right-farsi text-isabelline">
             <Link to="/" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaHome /> خانه</Link>
-            <Link to="/install-app" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaDownload /> نصب اپلیکیشن</Link>
+            <Link to="/app" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaDownload /> نصب اپلیکیشن</Link>
             <Link to="/signup" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaSignInAlt /> ثبت نام</Link>
             <Link to="/products" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaBoxOpen /> محصولات</Link>
             <Link to="/vendors" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaStore /> فروشندگان</Link>

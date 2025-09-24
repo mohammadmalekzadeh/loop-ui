@@ -31,7 +31,7 @@ function App() {
     <Route path="/dashboard/requests" element={<MainLayout><Request /></MainLayout>} />
     <Route path="/vendors" element={<MainLayout><Vendors /></MainLayout>} />
     <Route path="/vendors/:vendorsId" element={<MainLayout><VendorsProducts /></MainLayout>} />
-    <Route path="/install-app" element={<MainLayout><InstallApp /></MainLayout>} />
+    <Route path="/app" element={<MainLayout><InstallApp /></MainLayout>} />
     <Route path="/about-us" element={<MainLayout><About /></MainLayout>} />
     <Route path="/contact-us" element={<MainLayout><Contact /></MainLayout>} />
     <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />

@@ -6,6 +6,7 @@ import { enToFaNum } from "../../utlis/NumConvertor";
 import { createRequest } from "../../routes/request/request";
 import { getCurrentUser } from "../../utlis/currentUser"; 
 import { FaClipboardCheck } from "react-icons/fa";
+import Loading from "../../components/ui/Loading";
 
 export default function VendorsProducts () {
   const { vendorsId } = useParams();
@@ -62,7 +63,7 @@ export default function VendorsProducts () {
       }
     };
 
-  if (loading) return <p className="text-center mt-6 right-farsi">در حال بارگذاری...</p>;
+  if (loading) return <Loading />;
 
   return (
     <div className="flex min-h-screen bg-gray-100">

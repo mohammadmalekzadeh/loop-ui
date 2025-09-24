@@ -7,6 +7,7 @@ import { getCurrentUser } from "../../utlis/currentUser";
 import { updateRequestStatus } from "../../routes/request/request";
 import RateModal from "../../components/popups/RateModal";
 import { sendRate } from "../../routes/request/request";
+import Loading from "../../components/ui/Loading";
 
 export default function Request() {
 
@@ -77,7 +78,7 @@ export default function Request() {
     }
   };
 
-  if (loading) return <p className="text-center mt-6 right-farsi">در حال بارگذاری...</p>;
+  if (loading) return <Loading />;
   if (!user) return navigate("/login");
 
   return (

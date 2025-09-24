@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getVendors } from "../../routes/vendors/vendors";
 import { enToFaNum } from "../../utlis/NumConvertor";
+import Loading from "../../components/ui/Loading";
 
 export default function Vendors () {
     const [vendors, setVendors] = useState([]);
@@ -26,7 +27,7 @@ export default function Vendors () {
       fetchData();
     }, [filters]);
 
-    if (loading) return <p className="text-center mt-6 right-farsi">در حال بارگذاری...</p>;
+    if (loading) return <Loading />;
 
     return (
         <div className="min-h-screen bg-gray-100 py-10 px-5 md:px-10">

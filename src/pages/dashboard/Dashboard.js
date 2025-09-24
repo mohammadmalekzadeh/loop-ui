@@ -8,6 +8,7 @@ import { getCurrentUser } from "../../utlis/currentUser";
 import { getUserDashboard } from "../../routes/dashboard/dashboard";
 import { updateActiveProducts } from "../../routes/product/product";
 import UpdateProductModal from "../../components/popups/UpdateProductsModal";
+import Loading from "../../components/ui/Loading";
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,7 +51,7 @@ export default function Dashboard() {
     fetchUser();
   }, [token]);
 
-  if (loading) return <p className="text-center mt-6 right-farsi">در حال بارگذاری...</p>;
+  if (loading) return <Loading />;
   if (!user) return navigate("/login");
 
   return (

@@ -253,7 +253,9 @@ export default function Settings() {
       </form>
       {/* Logout Account Button */}
         <div className="mt-10 flex justify-center right-farsi" id="logout">
-          <button className="flex items-center justify-center w-screen gap-2 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+          <button
+            disabled
+            className="flex items-center justify-center w-screen gap-2 px-6 py-3 bg-gray-400 text-white rounded-lg cursor-not-allowed"
           >
             <FaSignOutAlt />
             خروج از حساب کاربری

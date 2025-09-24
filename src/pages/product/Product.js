@@ -5,6 +5,7 @@ import { createRequest } from "../../routes/request/request";
 import { useNavigate } from "react-router-dom";
 import { getCurrentUser } from "../../utlis/currentUser"; 
 import { getProducts } from "../../routes/product/product";
+import Loading from "../../components/ui/Loading";
 
 export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -45,7 +46,7 @@ export default function Products() {
         fetchData();
       }, [filters]);
   
-  if (loading) return <p className="text-center mt-6 right-farsi">در حال بارگذاری...</p>;
+  if (loading) return <Loading />;
 
   const handleConfirm = async () => {
         try {

@@ -1,7 +1,6 @@
 const CACHE_NAME = "loop-cache-v1";
 const urlsToCache = ["/", "/index.html", "/manifest.json"];
 
-// نصب
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {

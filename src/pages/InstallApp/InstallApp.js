@@ -28,7 +28,6 @@ export default function InstallApp () {
   return (
     <div className="min-h-screen bg-isabelline flex items-center justify-center px-4 text-center">
       <div className="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full">
-        {/* آیکون */}
         <img
           src="/icon/favicon (crop).png"
           alt="App Icon"
@@ -40,7 +39,6 @@ export default function InstallApp () {
           className="w-36 md:w-32 lg:w-48 mx-auto mb-6"
         />
 
-        {/* عنوان */}
         <h1 className="text-2xl font-bold mb-4 text-mantis right-farsi">
           اپلیکیشن آماده نصب است!
         </h1>

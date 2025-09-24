@@ -26,7 +26,6 @@ export default function Home() {
         className="relative min-h-screen bg-cover bg-center flex flex-col items-center justify-center text-white"
         style={{ backgroundImage: "url('/background/home.jpg')" }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
         <div className="relative z-10 text-center px-4 flex flex-col items-center justify-center">
           {/* Logo */}
@@ -49,11 +48,6 @@ export default function Home() {
                     key={p.id}
                     className="bg-white text-black rounded-lg shadow-md p-4 flex flex-col items-center"
                   >
-                    <img
-                      src={"/products/default.jpg"}
-                      alt={p.name}
-                      className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 object-cover mb-2 rounded"
-                    />
                     <h3 className="font-semibold text-center">{p.name}</h3>
                     <p className="text-gray-800 mt-1 text-sm sm:text-base right-farsi">
                       فروشگاه: {p.shop}
@@ -72,11 +66,6 @@ export default function Home() {
                     key={p.id}
                     className="min-w-[140px] sm:min-w-[160px] bg-white text-black rounded-lg shadow-md p-3 flex flex-col items-center flex-shrink-0"
                   >
-                    <img
-                      src={"/products/default.jpg"}
-                      alt={p.name}
-                      className="w-24 h-24 sm:w-28 sm:h-28 object-cover mb-2 rounded"
-                    />
                     <h3 className="font-semibold text-center text-sm">{p.name}</h3>
                     <p className="text-gray-800 mt-1 text-xs right-farsi">{p.shop}</p>
                     <p className="text-xs text-gray-600 mt-1">{enToFaNum(p.price.toLocaleString())} تومان</p>
@@ -84,7 +73,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="flex justify-center mt-8">
+              <div className="flex justify-center mt-8 mb-6">
                 <Link to="/products">
                   <button className="px-8 py-3 bg-blue-600 text-white text-lg font-bold rounded-lg hover:bg-blue-700 transition right-farsi">
                     نمایش بیشتر ...
@@ -93,6 +82,14 @@ export default function Home() {
               </div>
             </div>
           )}
+
+            <Link to="/signup">
+              <button className="inline-flex items-center px-8 py-3 bg-blue-600 text-white text-lg font-bold rounded-lg hover:bg-blue-700 transition">
+                ثبت نام
+                <FaSignInAlt className="ml-2" />
+              </button>
+            </Link>
+
         </div>
       </section>
     </div>

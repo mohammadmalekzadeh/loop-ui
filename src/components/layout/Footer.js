@@ -10,11 +10,11 @@ export default function Footer() {
       <div className="text-center md:text-left mb-4 md:mb-0 right-farsi items-center justify-center">
         <p className="font-bold text-lg items-center justify-center flex">لووپ © ۲۰۲۵</p>
         <div className="flex items-center gap-4 justify-center md:justify-start mt-2">
-          <Link to="/about-us" className="hover:text-blue-400 flex items-center gap-2 right-farsi">
-            <FaInfoCircle /> درباره ما
-          </Link>
           <Link to="/contact-us" className="hover:text-blue-400 flex items-center gap-2 right-farsi">
             <FaPhoneAlt /> تماس با ما
+          </Link>
+          <Link to="/about-us" className="hover:text-blue-400 flex items-center gap-2 right-farsi">
+            <FaInfoCircle /> درباره ما
           </Link>
         </div>
       </div>

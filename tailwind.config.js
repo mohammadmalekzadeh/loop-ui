@@ -15,6 +15,7 @@ module.exports = {
         azul: "#016BB7",
         fire_brick: "#BE2323",
         mantis: "#63BB66",
+        golden: "#F7FF00",
       },
     }
   },

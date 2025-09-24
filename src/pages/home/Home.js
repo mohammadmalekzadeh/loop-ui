@@ -30,7 +30,7 @@ export default function Home() {
           <img
             src="/icon/favicon.png"
             alt="LOOP Logo"
-            className="w-48 md:w-56 lg:w-64 mx-auto"
+            className="w-48 md:w-56 lg:w-64 mx-auto mb-6"
           />
 
           {/* Newest Products */}

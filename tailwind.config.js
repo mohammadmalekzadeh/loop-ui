@@ -18,6 +18,8 @@ module.exports = {
         golden: "#F7FF00",
         sea_green: "#26945E",
         dim_gray: "#656463",
+        silver: "#C8C5C1",
+        platinum: "#E7E3DF",
       },
     }
   },

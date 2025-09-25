@@ -72,7 +72,12 @@ export default function VendorsProducts () {
             {/* Profile Card */}
             <div className="bg-white shadow rounded-lg p-6 flex items-center justify-between mb-8 right-farsi">
               {/* Left: Avatar + Info */}
-              <div className="flex items-center">
+              <div className="flex items-center gap-4">
+              <img
+                  src={vendors.avatar || "/vendors/default.jpg"}
+                  alt={vendors.shop_name}
+                  className="w-32 h-32 mx-auto mb-4 rounded-lg"
+                />
                 <div>
                   <h2 className="text-2xl font-bold">{vendors.shop_name}</h2>
                   <p className="text-gray-600">{vendors.shop_address}</p>
@@ -95,11 +100,6 @@ export default function VendorsProducts () {
                         key={product.id}
                         className="bg-white rounded-xl shadow-md p-5 flex flex-col items-center transition transform hover:scale-105"
                       >
-                        <img
-                          src={"/products/default.jpg"}
-                          alt={product.name}
-                          className="w-full h-48 object-cover rounded-lg mb-4"
-                        />
             
                         <h2 className="text-lg font-semibold mb-1">
                           {product.name} - {product.type}

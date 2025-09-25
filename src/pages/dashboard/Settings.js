@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaHome, FaTrash, FaSignOutAlt } from "react-icons/fa";
+import { FaHome, FaTrash, FaSignOutAlt, FaFileUpload, FaUpload } from "react-icons/fa";
 import { enToFaNum, faToEnNum } from "../../utlis/NumConvertor";
 import { updateUserInfo, updateVendorsInfo, getUserDashboard } from "../../routes/dashboard/dashboard";
+import { uploadAvatar } from "../../routes/upload-avatar/upload";
 import { getCurrentUser } from "../../utlis/currentUser";
 
 export default function Settings() {
   const token = localStorage.getItem("token");
   const [formData, setFormData] = useState({});
   const [user, setUser] = useState("");
+  const [avatarFile, setAvatarFile] = useState(null);
+  const [loadingAvatar, setLoadingAvatar] = useState(false);
   const navigate = useNavigate();
 
    useEffect(() => {
@@ -63,7 +66,7 @@ export default function Settings() {
         );
       }
       alert("اطلاعات با موفقیت ذخیره شد ✅");
-      const updatedUser = await getCurrentUser();
+      const updatedUser = await getUserDashboard(token);
       setUser(updatedUser);
       setFormData(updatedUser);
     } catch (err) {
@@ -76,12 +79,52 @@ export default function Settings() {
     }
   };
 
+  const handleAvatarChange = (e) => {
+    setAvatarFile(e.target.files[0]);
+  };
+
+  const handleAvatarUpload = async () => {
+    if (!avatarFile) return;
+    setLoadingAvatar(true);
+    try {
+      const data = new FormData();
+      data.append("file", avatarFile);
+
+      const res = await uploadAvatar(data, token);
+      setFormData((prev) => ({ ...prev, avatar: res.url }));
+      alert("تصویر پروفایل آپلود شد ✅");
+    } catch (err) {
+      console.error("خطا در آپلود تصویر:", err);
+      alert("آپلود تصویر ناموفق ❌");
+    }
+    setLoadingAvatar(false);
+  };
+
   if (!user) return navigate("/login");
 
   return (
-    <div className="max-w-2xl mx-auto bg-white shadow-md rounded-xl p-6">
+    <div className="max-w-2xl mx-auto bg-isabelline shadow-md rounded-xl p-6">
       <h2 className="text-2xl font-bold mb-6 text-gray-800 right-farsi">⚙️ تنظیمات</h2>
 
+      {user.role === "vendors" && (
+        <div className="items-center justify-center gap-2">
+        <img
+          src={formData.avatar || "/vendors/default.jpg"}
+          alt={formData.shop_name}
+          className="w-32 h-32 mx-auto mb-4 rounded-lg"
+          />
+        <input type="file" accept="image/*" onChange={handleAvatarChange} className="mb-2" />
+        <button
+            type="button"
+            onClick={handleAvatarUpload}
+            disabled={loadingAvatar}
+            className="bg-pigment_green hover:bg-sea_green text-eggshell px-4 py-2 rounded-lg inline-flex items-center justify-center gap-2 transition"
+          >
+          {loadingAvatar ? "در حال آپلود..." : "آپلود تصویر"}
+          <FaUpload />
+        </button>
+        </div>
+        )}
       <form className="space-y-4">
         {/* Full Name */}
         <div>
@@ -255,7 +298,7 @@ export default function Settings() {
         <div className="mt-10 flex justify-center right-farsi" id="logout">
           <button
             disabled
-            className="flex items-center justify-center w-screen gap-2 px-6 py-3 bg-gray-400 text-white rounded-lg cursor-not-allowed"
+            className="flex items-center justify-center w-screen gap-2 px-6 py-3 bg-gray-400 text-eggshell rounded-lg cursor-not-allowed"
           >
             <FaSignOutAlt />
             خروج از حساب کاربری

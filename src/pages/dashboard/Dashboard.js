@@ -61,10 +61,17 @@ export default function Dashboard() {
         {/* Profile Card */}
         <div className="bg-white shadow rounded-lg p-6 flex items-center justify-between mb-8 right-farsi">
           {/* Left: Avatar + Info */}
-          <div className="flex items-center">
+          <div className="flex items-center gap-4">
+            {request.role === "vendors" && (
+              <img
+                src={request.avatar || "/vendors/default.jpg"}
+                alt={request.shop_name}
+                className="w-32 h-32 mx-auto mb-4 rounded-lg"
+                />
+          )}
             <div>
               <h2 className="text-2xl font-bold">{request.name}</h2>
-              <h2 className="font-semibold">{request.shop_name}</h2>
+             {request.role === "vendors" && ( <h2 className="font-semibold">{request.shop_name}</h2> )}
               <p className="text-gray-600 left-num">+۹۸ {enToFaNum(request.phone)}</p>
 
             </div>

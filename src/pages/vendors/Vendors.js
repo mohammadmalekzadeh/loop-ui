@@ -84,9 +84,9 @@ export default function Vendors () {
                   className="bg-white rounded-xl shadow-md p-5 flex flex-col items-center transition transform hover:scale-105"
                 >
                     <img
-                        src={"/vendors/default.jpg"}
+                        src={vendor.avatar || "/vendors/default.jpg"}
                         alt={vendor.shop_name}
-                        className="w-full h-48 object-cover rounded-lg mb-4"
+                        className="w-32 h-32 object-cover rounded-lg mb-4"
                     />
                     <h2 className="text-lg font-semibold right-farsi">فروشگاه {vendor.shop_name}</h2>
                     <p className="text-gray-600 mb-2">{vendor.shop_address}</p>

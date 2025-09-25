@@ -33,6 +33,7 @@ export default function Dashboard() {
   };
   
   useEffect(() => {
+    if (!token) return navigate("/login");
     async function fetchUser() {
       try {
         const currentUser = await getCurrentUser();
@@ -52,7 +53,6 @@ export default function Dashboard() {
   }, [token]);
 
   if (loading) return <Loading />;
-  if (!user) return navigate("/login");
 
   return (
     <div className="flex min-h-screen bg-isabelline">

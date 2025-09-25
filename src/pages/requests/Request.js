@@ -16,6 +16,7 @@ export default function Request() {
   const [loading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState("");
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
   const [filters, setFilters] = useState({
     status: "",
     date: "new",
@@ -23,14 +24,14 @@ export default function Request() {
   });
   const [showRateModal, setShowRateModal] = useState(false);
   const [selectedRequestId, setSelectedRequestId] = useState(null);
-
+  
   useEffect(() => {
+    if (!token) return navigate("/login");
     async function fetchData() {
       try {
         const currentUser = await getCurrentUser();
         setUser(currentUser);
 
-        const token = localStorage.getItem("token");
         const requests = await getRequests(filters, token);
         setUserRole(currentUser.role);
         setRequests(requests);
@@ -79,7 +80,6 @@ export default function Request() {
   };
 
   if (loading) return <Loading />;
-  if (!user) return navigate("/login");
 
   return (
     <div className="font-myfont min-h-screen bg-gray-100 p-6">

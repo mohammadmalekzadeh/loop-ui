@@ -66,6 +66,7 @@ export default function Products() {
         } catch (err) {
           if (err.message.includes("401")) {
             alert("برای ثبت درخواست وارد حساب کاربری خود بشوید!");
+            navigate("/login");
           } else if (err.message.includes("400")) {
             alert("برای ثبت درخواست باید خریدار باشی :)");
           } else {

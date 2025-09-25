@@ -8,6 +8,7 @@ import { updateRequestStatus } from "../../routes/request/request";
 import RateModal from "../../components/popups/RateModal";
 import { sendRate } from "../../routes/request/request";
 import Loading from "../../components/ui/Loading";
+import { toast } from "react-toastify";
 
 export default function Request() {
 
@@ -63,7 +64,7 @@ export default function Request() {
         setShowRateModal(true);
       }
     } catch (err) {
-      alert("خطا در تغییر وضعیت");
+      toast.error("خطا در تغییر وضعیت!");
       console.error(err);
     }
   };
@@ -72,9 +73,9 @@ export default function Request() {
     try {
       const token = localStorage.getItem("token");
       await sendRate(selectedRequestId, rate, token);
-      alert("امتیاز ثبت شد ✅");
+      toast.success("امتیاز ثبت شد!");
     } catch (err) {
-      alert("خطا در ثبت امتیاز ❌");
+      toast.err("خطا در ثبت امتیاز!");
       console.error(err);
     }
   };

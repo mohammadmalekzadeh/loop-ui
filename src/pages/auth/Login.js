@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login, verify } from "../../routes/auth/auth";
 import { getCurrentUser } from "../../utlis/currentUser";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const [phone, setPhone] = useState("");
@@ -21,9 +22,9 @@ export default function Login() {
     try {
       const res = await login(phone);
       setOtpSent(true);
-      alert(`کد تایید: ${res.otp}`);
+      alert(`شماره: ${phone} | کد تایید: ${res.otp}`);
     } catch (err) {
-      alert("خطا در ارسال شماره");
+      toast.warning("خطا در ارسال شماره!");
       console.error(err);
     }
   };
@@ -33,15 +34,15 @@ export default function Login() {
     try {
       const res = await verify(phone, otp);
       localStorage.setItem("token", res.access_token);
-      alert("ورود موفق!");
+      toast.success("ورود موفق!");
       console.log("Access Token:", res.access_token);
       navigate("/dashboard");
     } catch (err) {
       if (err.message.includes("404")) {
         console.log(err);
-        alert("کاربری با این شماره قبلا ثبت نشده است!");
+        toast.warn("کاربری با این شماره قبلا ثبت نشده است!");
       } else {
-        alert("کد وارد شده اشتباه است");
+        toast.error("کد وارد شده اشتباه است!");
         console.error(err);
       }
     }

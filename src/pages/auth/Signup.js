@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signup, verify } from "../../routes/auth/auth";
+import { toast } from "react-toastify";
 export default function Signup() {
   const [role, setRole] = useState("customer");
   const navigate = useNavigate();
@@ -24,9 +25,9 @@ export default function Signup() {
       alert(`شماره: ${phone} | کد تایید: ${res.otp}`);
     } catch (err) {
       if (err.message.includes("400")) {
-        alert("کاربری با این شماره قبلا ثبت شده است!");
+        toast.warn("کاربری با این شماره قبلا ثبت شده است!");
       } else {
-        alert("خطا در ثبت نام");
+        toast.warning("خطا در ثبت نام!");
       }
       console.error(err);
     }
@@ -37,10 +38,10 @@ export default function Signup() {
     try {
       const res = await verify(phone, otp);
       localStorage.setItem("token", res.access_token);
-      alert("ثبت نام موفق!");
+      toast.success("ثبت نام موفق!");
       navigate("/dashboard/settings");
     } catch (err) {
-      alert("کد وارد شده اشتباه است");
+      toast.error("کد وارد شده اشتباه است!");
       console.error(err);
     }
   };

@@ -5,6 +5,7 @@ import { enToFaNum, faToEnNum } from "../../utlis/NumConvertor";
 import { updateUserInfo, updateVendorsInfo, getUserDashboard } from "../../routes/dashboard/dashboard";
 import { uploadAvatar } from "../../routes/upload-avatar/upload";
 import { getCurrentUser } from "../../utlis/currentUser";
+import { toast } from "react-toastify";
 
 export default function Settings() {
   const token = localStorage.getItem("token");
@@ -66,15 +67,15 @@ export default function Settings() {
           token
         );
       }
-      alert("اطلاعات با موفقیت ذخیره شد ✅");
+      toast.success("اطلاعات با موفقیت ذخیره شد!");
       const updatedUser = await getUserDashboard(token);
       setUser(updatedUser);
       setFormData(updatedUser);
     } catch (err) {
       if (err.message.includes("422")) {
-        alert("کد ملی نامعتبر است!")
+        toast.warn("کد ملی نامعتبر است!")
       } else {
-        alert("مشکلی پیش اومد ❌");
+        toast.error("مشکلی پیش اومد!");
       }
       console.error("خطا در ذخیره تغییرات:", err);
     }
@@ -93,10 +94,10 @@ export default function Settings() {
 
       const res = await uploadAvatar(data, token);
       setFormData((prev) => ({ ...prev, avatar: res.url }));
-      alert("تصویر پروفایل آپلود شد ✅");
+      toast.success("تصویر پروفایل آپلود شد!");
     } catch (err) {
       console.error("خطا در آپلود تصویر:", err);
-      alert("آپلود تصویر ناموفق ❌");
+      toast.error("آپلود تصویر ناموفق!");
     }
     setLoadingAvatar(false);
   };
@@ -104,11 +105,11 @@ export default function Settings() {
   const handleLogout = async () => {
     try {
       localStorage.removeItem("token");
-      alert("با موفقیت از حساب خارج شدید");
+      toast.success("با موفقیت خارج شدید!");
       navigate("/login");
     } catch (err) {
       console.log(err);
-      alert("خطا در خروج از حساب! لطفا دوباره تلاش کنید.");
+      toast.error("خطا در خروج! لطفا دوباره تلاش کنید.");
     }
   };
 

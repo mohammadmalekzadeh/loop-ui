@@ -1,4 +1,6 @@
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import MainLayout from "./components/layout/MainLayout";
 import Home from "./pages/home/Home";
 import Login from "./pages/auth/Login";
@@ -39,6 +41,7 @@ function App() {
     </Routes>
     <Analytics />
     <SpeedInsights />
+    <ToastContainer position="top-right" autoClose={5000} className={"right-farsi"} />
     </>
   );
 }

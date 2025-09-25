@@ -4,6 +4,7 @@ import { FaBars, FaTimes, FaHome, FaSignInAlt, FaBoxOpen, FaTachometerAlt, FaCli
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const token = localStorage.getItem("token");
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -14,9 +15,9 @@ export default function Navbar() {
           {/* Desktop Link*/}
           <div className="hidden md:flex space-x-6 items-center text-isabelline">
             <Link to="/app" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaDownload /> نصب اپلیکیشن</Link>
-            <Link to="/signup" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaSignInAlt /> ثبت نام</Link>
-            <Link to="/dashboard/requests" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaClipboardList /> درخواست ها</Link>
-            <Link to="/dashboard" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaTachometerAlt /> داشبورد</Link>
+            { (!token) ? <Link to="/signup" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaSignInAlt /> ثبت نام</Link> : ("") }
+            { (token) ? <Link to="/dashboard/requests" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaClipboardList /> درخواست ها</Link> : ("") }
+            { (token) ? <Link to="/dashboard" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaTachometerAlt /> داشبورد</Link> : ("") }
             <Link to="/vendors" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaStore /> فروشندگان</Link>
             <Link to="/products" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaBoxOpen /> محصولات</Link>
             <Link to="/" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaHome /> خانه</Link>
@@ -43,11 +44,11 @@ export default function Navbar() {
           <div className="md:hidden mt-4 flex flex-col space-y-3 bg-black bg-opacity-90 p-4 rounded-md right-farsi text-isabelline">
             <Link to="/" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaHome /> خانه</Link>
             <Link to="/app" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaDownload /> نصب اپلیکیشن</Link>
-            <Link to="/signup" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaSignInAlt /> ثبت نام</Link>
+            { (!token) ? <Link to="/signup" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaSignInAlt /> ثبت نام</Link> : ("") }
             <Link to="/products" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaBoxOpen /> محصولات</Link>
             <Link to="/vendors" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaStore /> فروشندگان</Link>
-            <Link to="/dashboard" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaTachometerAlt /> داشبورد</Link>
-            <Link to="/dashboard/requests" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaClipboardList /> درخواست ها</Link>
+            { (token) ? <Link to="/dashboard" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaTachometerAlt /> داشبورد</Link> : ("") }
+            { (token) ? <Link to="/dashboard/requests" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaClipboardList /> درخواست ها</Link> : ("") }
           </div>
         )}
       </nav>

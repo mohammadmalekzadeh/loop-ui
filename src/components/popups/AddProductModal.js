@@ -1,6 +1,7 @@
 // src/components/AddProductModal.js
 import React, { useState, } from "react";
 import { postProducts } from "../../routes/product/product";
+import { toast } from "react-toastify";
 
 export default function AddProductModal({ isOpen, onClose }) {
   if (!isOpen) return null;
@@ -17,18 +18,18 @@ export default function AddProductModal({ isOpen, onClose }) {
 
   const handleSave = async () => {
     if (!product.name.trim() || !product.type.trim() || !product.price || !product.inventory) {
-          alert("لطفاً همه فیلدها را پر کنید.");
+          toast.warn("لطفاً همه فیلدها را پر کنید!");
           return;
         }
         
         const parsedPrice = parseInt(product.price, 10);
         if (Number.isNaN(parsedPrice) || parsedPrice <= 0) {
-          alert("لطفاً قیمت معتبر وارد کنید.");
+          toast.warn("لطفاً قیمت معتبر وارد کنید!");
           return;
         }
         const parsedInventory = parseInt(product.inventory, 10);
         if (Number.isNaN(parsedInventory) || parsedInventory <= 0) {
-          alert("لطفاً تعداد معتبر وارد کنید.");
+          toast.warn("لطفاً تعداد معتبر وارد کنید!");
           return;
         }
       
@@ -44,7 +45,7 @@ export default function AddProductModal({ isOpen, onClose }) {
             token
           );
         
-          alert("محصول با موفقیت ذخیره شد! ✅");
+          toast.success("محصول با موفقیت ذخیره شد!");
         
           if (typeof onSuccess === "function") {
             await onSuccess();
@@ -56,11 +57,11 @@ export default function AddProductModal({ isOpen, onClose }) {
         } catch (err) {
           console.error("خطا در ذخیره محصول:", err);
           if (err?.response?.data?.message) {
-            alert(err.response.data.message);
+            console.error(err.response.data.message);
           } else if (err.message && err.message.includes("405")) {
-            alert("اطلاعات حقیقی و حقوقی شما کافی نیست!");
+            toast.warn("اطلاعات حقیقی و حقوقی شما کافی نیست!");
           } else {
-            alert("مشکلی پیش آمد ❌");
+            toast.error("مشکلی پیش آمد!");
           }
         } finally {
           setLoading(false);

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { enToFaNum } from "../../utlis/NumConvertor";
+import { toast } from "react-toastify";
 
 export default function RateModal({ isOpen, onClose, onSubmit }) {
   const [rate, setRate] = useState(0);
@@ -8,7 +9,7 @@ export default function RateModal({ isOpen, onClose, onSubmit }) {
 
   const handleSubmit = () => {
     if (rate <= 0) {
-      alert("لطفاً امتیاز بدهید");
+      toast.warn("لطفاً امتیاز بدهید!");
       return;
     }
     onSubmit(rate);

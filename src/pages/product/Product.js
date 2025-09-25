@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { getCurrentUser } from "../../utlis/currentUser"; 
 import { getProducts } from "../../routes/product/product";
 import Loading from "../../components/ui/Loading";
+import { toast } from "react-toastify";
 
 export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -53,7 +54,7 @@ export default function Products() {
           const currentUser = await getCurrentUser();
           setUser(currentUser);
 
-          if (count > selectedProduct.inventory) return alert("نمیشه که!");
+          if (count > selectedProduct.inventory) return toast.warn("نمیشه که!");
   
           const data = {
             product_id: selectedProduct.id,
@@ -61,17 +62,17 @@ export default function Products() {
           };
     
           const res = await createRequest(data, token);
-          alert(`درخواست با موفقیت ثبت شد ✅ | کد درخواست: ${res.code}`);
+          toast.success(`درخواست با موفقیت ثبت شد! | کد درخواست: ${res.code}`);
           setSelectedProduct(null);
         } catch (err) {
           if (err.message.includes("401")) {
-            alert("برای ثبت درخواست وارد حساب کاربری خود بشوید!");
+            toast.warn("برای ثبت درخواست وارد حساب کاربری خود بشوید!");
             navigate("/login");
           } else if (err.message.includes("400")) {
-            alert("برای ثبت درخواست باید خریدار باشی :)");
+            toast.info("برای ثبت درخواست باید خریدار باشی :)");
           } else {
            console.error(err);
-           alert("خطا در ثبت درخواست ❌");
+           toast.error("خطا در ثبت درخواست!");
           }
         }
       };

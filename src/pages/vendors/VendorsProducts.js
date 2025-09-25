@@ -7,6 +7,7 @@ import { createRequest } from "../../routes/request/request";
 import { getCurrentUser } from "../../utlis/currentUser"; 
 import { FaClipboardCheck } from "react-icons/fa";
 import Loading from "../../components/ui/Loading";
+import { toast } from "react-toastify";
 
 export default function VendorsProducts () {
   const { vendorsId } = useParams();
@@ -49,17 +50,17 @@ export default function VendorsProducts () {
         };
   
         const res = await createRequest(data, token);
-        alert(`درخواست با موفقیت ثبت شد ✅ | کد درخواست: ${res.code}`);
+        toast.success(`درخواست با موفقیت ثبت شد! | کد درخواست: ${res.code}`);
         setSelectedProduct(null);
       } catch (err) {
         if (err.message.includes("401")) {
-          alert("برای ثبت درخواست وارد حساب کاربری خود بشوید!");
+          toast.warn("برای ثبت درخواست وارد حساب کاربری خود بشوید!");
           navigate("/login");
         } else if (err.message.includes("400")) {
-          alert("برای ثبت درخواست باید خریدار باشی :)");
+          toast.info("برای ثبت درخواست باید خریدار باشی :)");
         } else {
          console.error(err);
-         alert("خطا در ثبت درخواست ❌");
+         toast.error("خطا در ثبت درخواست!");
         }
       }
     };

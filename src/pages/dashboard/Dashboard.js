@@ -9,6 +9,7 @@ import { getUserDashboard } from "../../routes/dashboard/dashboard";
 import { updateActiveProducts } from "../../routes/product/product";
 import UpdateProductModal from "../../components/popups/UpdateProductsModal";
 import Loading from "../../components/ui/Loading";
+import { toast } from "react-toastify";
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -140,12 +141,12 @@ export default function Dashboard() {
                                 setRequest({ ...request });
                               } catch (err) {
                                 if (err.message.includes("400")) {
-                                  alert("محصول موجود نیست!");
+                                  toast.warn("محصول موجود نیست!");
                                   setSelectedProduct(it);
                                   setIsEditModalOpen(true);
                                 } else {
                                 console.error(err);
-                                alert("خطا در تغییر وضعیت محصول");}
+                                toast.error("خطا در تغییر وضعیت محصول!");}
                               }
                             }}
                             className={`px-3 py-1 rounded ${

@@ -1,6 +1,7 @@
 // src/components/popups/UpdateProductModal.js
 import React, { useState, useEffect } from "react";
 import { updateProducts } from "../../routes/product/product";
+import { toast } from "react-toastify";
 
 export default function UpdateProductModal({ isOpen, onClose, product, onSuccess }) {
   const [loading, setLoading] = useState(false);
@@ -29,7 +30,7 @@ export default function UpdateProductModal({ isOpen, onClose, product, onSuccess
 
   const handleSave = async () => {
     if (!form.name.trim() || !form.type.trim() || !form.price || !form.inventory) {
-      alert("لطفاً همه فیلدها را پر کنید.");
+      toast.warn("لطفاً همه فیلدها را پر کنید!");
       return;
     }
 
@@ -37,12 +38,12 @@ export default function UpdateProductModal({ isOpen, onClose, product, onSuccess
     const parsedInventory = parseInt(form.inventory, 10);
 
     if (Number.isNaN(parsedPrice) || parsedPrice <= 0) {
-      alert("لطفاً قیمت معتبر وارد کنید.");
+      toast.warn("لطفاً قیمت معتبر وارد کنید!");
       return;
     }
 
     if (Number.isNaN(parsedInventory) || parsedInventory <= 0) {
-      alert("لطفاً موجودی معتبر وارد کنید.");
+      toast.warn("لطفاً موجودی معتبر وارد کنید!");
       return;
     }
 
@@ -55,13 +56,13 @@ export default function UpdateProductModal({ isOpen, onClose, product, onSuccess
         inventory: parsedInventory,
       }, token);
 
-      alert("محصول با موفقیت بروزرسانی شد ✅");
+      toast.success("محصول با موفقیت بروزرسانی شد!");
 
       if (typeof onSuccess === "function") onSuccess();
       if (typeof onClose === "function") onClose();
     } catch (err) {
       console.error("خطا در بروزرسانی محصول:", err);
-      alert("مشکلی در بروزرسانی محصول پیش آمد ❌");
+      toast.error("مشکلی در بروزرسانی محصول پیش آمد!");
     } finally {
       setLoading(false);
     }

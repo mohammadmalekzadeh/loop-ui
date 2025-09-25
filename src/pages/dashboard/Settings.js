@@ -13,8 +13,9 @@ export default function Settings() {
   const [avatarFile, setAvatarFile] = useState(null);
   const [loadingAvatar, setLoadingAvatar] = useState(false);
   const navigate = useNavigate();
-
-   useEffect(() => {
+  
+  useEffect(() => {
+    if (!token) return navigate("/login");
     const fetchData = async () => {
       try {
         const u = await getCurrentUser();
@@ -100,7 +101,17 @@ export default function Settings() {
     setLoadingAvatar(false);
   };
 
-  if (!user) return navigate("/login");
+  const handleLogout = async () => {
+    try {
+      localStorage.removeItem("token");
+      alert("با موفقیت از حساب خارج شدید");
+      navigate("/login");
+    } catch (err) {
+      console.log(err);
+      alert("خطا در خروج از حساب! لطفا دوباره تلاش کنید.");
+    }
+  };
+
 
   return (
     <div className="max-w-2xl mx-auto bg-isabelline shadow-md rounded-xl p-6">
@@ -297,8 +308,9 @@ export default function Settings() {
       {/* Logout Account Button */}
         <div className="mt-10 flex justify-center right-farsi" id="logout">
           <button
-            disabled
-            className="flex items-center justify-center w-screen gap-2 px-6 py-3 bg-gray-400 text-eggshell rounded-lg cursor-not-allowed"
+            // disabled
+            onClick={handleLogout}
+            className="flex items-center justify-center w-screen gap-2 px-6 py-3 bg-fire_brick text-eggshell rounded-lg"
           >
             <FaSignOutAlt />
             خروج از حساب کاربری

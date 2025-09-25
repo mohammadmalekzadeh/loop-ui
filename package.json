@@ -2,6 +2,7 @@
   "name": "loop-ui",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@babel/plugin-transform-class-properties": "^7.27.1",
     "@babel/plugin-transform-optional-chaining": "^7.27.1",

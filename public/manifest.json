@@ -1,6 +1,6 @@
 {
   "short_name": "Loop",
-  "name": "Loop",
+  "name": "Loop App",
   "orientation": "portrait",
   "start_url": ".",
   "display": "standalone",

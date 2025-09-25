@@ -337,7 +337,7 @@ export default function Settings() {
           <button
             // disabled
             onClick={handleLogout}
-            className="flex items-center justify-center w-screen gap-2 px-6 py-3 bg-fire_brick text-eggshell rounded-lg"
+            className="flex items-center justify-center w-screen gap-2 px-6 py-3 bg-fire_brick hover:bg-red-600 text-eggshell rounded-lg"
           >
             <FaSignOutAlt />
             خروج از حساب کاربری

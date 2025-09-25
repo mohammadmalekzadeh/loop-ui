@@ -119,24 +119,50 @@ export default function Settings() {
       <h2 className="text-2xl font-bold mb-6 text-gray-800 right-farsi">⚙️ تنظیمات</h2>
 
       {user.role === "vendors" && (
-        <div className="items-center justify-center gap-2">
-        <img
-          src={formData.avatar || "/vendors/default.jpg"}
-          alt={formData.shop_name}
-          className="w-32 h-32 mx-auto mb-4 rounded-lg"
-          />
-        <input type="file" accept="image/*" onChange={handleAvatarChange} className="mb-2" />
-        <button
-            type="button"
-            onClick={handleAvatarUpload}
-            disabled={loadingAvatar}
-            className="bg-pigment_green hover:bg-sea_green text-eggshell px-4 py-2 rounded-lg inline-flex items-center justify-center gap-2 transition"
-          >
-          {loadingAvatar ? "در حال آپلود..." : "آپلود تصویر"}
-          <FaUpload />
-        </button>
+        <div className="flex flex-col items-center justify-center gap-4 p-4 rounded-xl shadow-md max-w-xs mx-auto">
+          {/* Avatar Image */}
+          <div className="w-32 h-32 mb-2 rounded-full overflow-hidden border-2 border-pigment_green shadow-lg">
+            <img
+              src={formData.avatar || "/vendors/default.jpg"}
+              alt={formData.shop_name || "Avatar"}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* File Input & Upload Button */}
+          <label className="w-full cursor-pointer">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleAvatarChange}
+              className="hidden"
+            />
+            <div className="flex items-center justify-center gap-2 px-4 py-2 bg-pigment_green hover:bg-sea_green text-eggshell font-medium rounded-lg transition">
+              {avatarFile ? (
+                <span>انتخاب شد: {avatarFile.name}</span>
+              ) : (
+                <span>انتخاب تصویر</span>
+              )}
+              <FaUpload />
+            </div>
+          </label>
+            
+          {/* Upload Button */}
+          {avatarFile && (
+            <button
+              type="button"
+              onClick={handleAvatarUpload}
+              disabled={loadingAvatar}
+              className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-sea_green hover:bg-pigment_green text-eggshell font-semibold rounded-lg transition"
+            >
+              {loadingAvatar ? "در حال آپلود..." : "آپلود تصویر"}
+              <FaUpload />
+            </button>
+          )}
         </div>
-        )}
+      )}
+
+
       <form className="space-y-4">
         {/* Full Name */}
         <div>
@@ -226,7 +252,7 @@ export default function Settings() {
         {user.role === "vendors" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 right-farsi">
               <div>
-                <label className="block text-gray-700 right-farsi">روز شروع</label>
+                <label className="block text-gray-700 right-farsi">روز شروع کاری</label>
                 <select
                   name="start_day"
                   value={formData.start_day || ""}
@@ -244,7 +270,7 @@ export default function Settings() {
                 </select>
               </div>
               <div>
-                <label className="block text-gray-700 right-farsi">روز پایان</label>
+                <label className="block text-gray-700 right-farsi">روز پایان کاری</label>
                 <select
                   name="end_day"
                   value={formData.end_day || ""}
@@ -266,7 +292,7 @@ export default function Settings() {
           {user.role === "vendors" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 right-farsi">
               <div>
-                <label className="block text-gray-700 right-farsi">ساعت باز شدن</label>
+                <label className="block text-gray-700 right-farsi">ساعت شروع کار</label>
                 <input
                   name="start_time"
                   type="time"
@@ -276,7 +302,7 @@ export default function Settings() {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 right-farsi">ساعت بسته شدن</label>
+                <label className="block text-gray-700 right-farsi">ساعت پایان کار</label>
                 <input
                   name="end_time"
                   type="time"

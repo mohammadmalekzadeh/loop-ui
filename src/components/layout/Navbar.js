@@ -20,10 +20,10 @@ export default function Navbar() {
             { (token) ? <Link to="/dashboard" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaTachometerAlt /> داشبورد</Link> : ("") }
             <Link to="/vendors" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaStore /> فروشندگان</Link>
             <Link to="/products" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaBoxOpen /> محصولات</Link>
-            <Link to="/" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaHome /> خانه</Link>
+            <Link to="/home" className="hover:text-mantis flex items-center gap-2 right-farsi"><FaHome /> خانه</Link>
           </div>
           {/* Logo */}
-          <Link to={"/"} className="flex items-center space-x-3">
+          <Link to={"/home"} className="flex items-center space-x-3">
             <img
               src="/icon/favicon.png"
               alt="LOOP Logo"
@@ -42,7 +42,7 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden mt-4 flex flex-col space-y-3 bg-black bg-opacity-90 p-4 rounded-md right-farsi text-isabelline">
-            <Link to="/" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaHome /> خانه</Link>
+            <Link to="/home" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaHome /> خانه</Link>
             <Link to="/app" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaDownload /> نصب اپلیکیشن</Link>
             { (!token) ? <Link to="/signup" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaSignInAlt /> ثبت نام</Link> : ("") }
             <Link to="/products" onClick={toggleMenu} className="hover:text-mantis flex items-center gap-2"><FaBoxOpen /> محصولات</Link>

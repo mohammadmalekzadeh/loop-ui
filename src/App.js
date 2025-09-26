@@ -18,13 +18,15 @@ import Contact from "./pages/contact/Contact";
 import ScrollToTop from "./components/common/ScrollToTop";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import GoHome from "./pages/home/GoHome";
 
 function App() {
   return (
     <>
     <ScrollToTop />
     <Routes>
-      <Route path="/" element={<MainLayout><Home /></MainLayout>} />
+      <Route path="/" element={<MainLayout><GoHome /></MainLayout>} />
+      <Route path="/home" element={<MainLayout><Home /></MainLayout>} />
       <Route path="/login" element={<MainLayout><Login /></MainLayout>} />
       <Route path="/signup" element={<MainLayout><Signup /></MainLayout>} />
       <Route path="/products" element={<MainLayout><Products /></MainLayout>} />

@@ -46,13 +46,17 @@ export default function AddProductModal({ isOpen, onClose }) {
           );
         
           toast.success("محصول با موفقیت ذخیره شد!");
-        
+          
           if (typeof onSuccess === "function") {
             await onSuccess();
           }
-        
+          
           if (typeof onClose === "function") onClose();
-        
+          
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+
           setProduct({ name: "", type: "", price: "", inventory: "" });
         } catch (err) {
           console.error("خطا در ذخیره محصول:", err);

@@ -48,7 +48,7 @@ export default function Footer() {
           <span>Telegram</span>
           {/* <span> تلگرام </span> */}
         </a>
-        <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=653285&Code=RaAwR5KPF65j3auqo1ipoHjAb4FAEujk'>
+        <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=653285&Code=RaAwR5KPF65j3auqo1ipoHjAb4FAEujk' className="w-32 h-32">
           <img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=653285&Code=RaAwR5KPF65j3auqo1ipoHjAb4FAEujk' alt='' style={{'cursor':'pointer'}} code='RaAwR5KPF65j3auqo1ipoHjAb4FAEujk' />
         </a>
       </div>

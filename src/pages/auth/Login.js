@@ -22,7 +22,7 @@ export default function Login() {
     try {
       const res = await login(phone);
       setOtpSent(true);
-      alert(`شماره: ${phone} | کد تایید: ${res.otp}`);
+      toast.success("رمز یکبار مصرف برای شما ارسال گردید!");
     } catch (err) {
       toast.warning("خطا در ارسال شماره!");
       console.error(err);

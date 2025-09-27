@@ -22,7 +22,7 @@ export default function Signup() {
     try {
       const res = await signup({ phone, name, role })
       setOtpSent(true);
-      alert(`شماره: ${phone} | کد تایید: ${res.otp}`);
+      toast.success("رمز یکبار مصرف برای شما ارسال گردید!");
     } catch (err) {
       if (err.message.includes("400")) {
         toast.warn("کاربری با این شماره قبلا ثبت شده است!");

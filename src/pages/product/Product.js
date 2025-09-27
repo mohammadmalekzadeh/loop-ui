@@ -62,7 +62,7 @@ export default function Products() {
           };
     
           const res = await createRequest(data, token);
-          toast.success(`درخواست با موفقیت ثبت شد! | کد درخواست: ${res.code}`);
+          toast.success("درخواست با موفقیت ثبت شد!");
           setSelectedProduct(null);
         } catch (err) {
           if (err.message.includes("401")) {

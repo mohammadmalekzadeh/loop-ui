@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { login, verify } from "../../routes/auth/auth";
 import { getCurrentUser } from "../../utlis/currentUser";
 import { toast } from "react-toastify";
+import { FaSync } from "react-icons/fa";
 
 export default function Login() {
   const [phone, setPhone] = useState("");
@@ -10,6 +11,7 @@ export default function Login() {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
   const [user, setUser] = useState();
+  const [timeLeft, setTimeLeft] = useState(0);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -17,11 +19,21 @@ export default function Login() {
     if (token) return navigate("/dashboard");
   })
 
+  useEffect(() => {
+    if (otpSent && timeLeft > 0) {
+      const timer = setInterval(() => {
+        setTimeLeft((prev) => prev - 1);
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [otpSent, timeLeft]);
+  
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const res = await login(phone);
       setOtpSent(true);
+      setTimeLeft(300);
       toast.success("رمز یکبار مصرف برای شما ارسال گردید!");
     } catch (err) {
       toast.warning("خطا در ارسال شماره!");
@@ -46,6 +58,12 @@ export default function Login() {
         console.error(err);
       }
     }
+  };
+
+  const formatTime = (seconds) => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m}:${s < 10 ? "0" : ""}${s}`;
   };
 
   return (
@@ -80,6 +98,7 @@ export default function Login() {
             </button>
           </form>
         ) : (
+          <>
           <form className="space-y-4" onSubmit={handleVerify}>
             <div>
               <label className="block text-gray-700 right-farsi">کد تایید</label>
@@ -99,6 +118,25 @@ export default function Login() {
               تایید
             </button>
           </form>
+          <p className="text-center text-dim_gray font-myfont mt-4">
+              {timeLeft > 0 ? (
+                <>زمان باقی‌مانده: {formatTime(timeLeft)}</>
+              ) : (
+                <button
+                  type="button"
+                  onClick={
+                    (e) => {
+                    setOtp("");
+                    handleLogin(e);
+                  }}
+                  className="text-azul hover:underline inline-flex gap-2 right-farsi flex justify-center items-center"
+                >
+                  <FaSync />
+                  ارسال مجدد کد
+                </button>
+              )}
+            </p>
+          </>
         )}
 
         <p className="text-center text-gray-600 mt-6 right-farsi">

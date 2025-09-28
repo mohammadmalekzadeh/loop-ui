@@ -58,7 +58,7 @@ export default function Dashboard() {
   return (
     <div className="flex min-h-screen bg-isabelline">
       {/* Main Content */}
-      <main className="flex flex-col md:flex-row gap-6">
+      <main className="flex-1 sm:flex-col md:flex-row gap-6">
         {/* Profile Card */}
         <div className="bg-white shadow rounded-lg p-6 flex items-center justify-between mb-8 right-farsi">
           {/* Left: Avatar + Info */}

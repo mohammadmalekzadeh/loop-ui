@@ -1,39 +1,58 @@
-# LOOP UI (Frontend)
+![Loop](https://www.lloop.ir/icon/favicon.png)
 
-The **LOOP UI** is a **React.js** frontend with **TailwindCSS**, providing the user interface for the LOOP platform. It connects to the LOOP API to display products, manage user accounts, and enable orders.
+The **LOOP UI (Front-End)** is the **React.js frontend** for the LOOP platform.  
+It provides a modern, responsive user interface built with **TailwindCSS**, and communicates with the **LOOP API** for data management (products, users, etc.).
 
 ---
 
 ## 📌 Technologies Used
 
-* **Framework:** React.js
-* **Styling:** TailwindCSS
-* **Build Tool:** Create React App
+- **Framework:** React.js  
+- **Styling:** TailwindCSS  
+- **Build Tool:** Create React App (CRA)  
+- **Package Management:** npm 
 
 ---
 
-## 📂 Structure
+## 📂 Project Structure
 
-```
-frontend/
-│   package.json
-│   tailwind.config.js
-│   postcss.config.js
+```bash
+loop-ui/
+├── package.json
+├── tailwind.config.js
+├── postcss.config.js
 │
 ├── public/
-│   ├── index.html
-│   ├── manifest.json
-│   ├── robots.txt
-│   └── assets (icons, backgrounds, images)
+│ ├── index.html
+│ ├── manifest.json
+│ ├── robots.txt
+│ └── assets/
 │
 └── src/
-    ├── assets/fonts/   # Custom fonts
-    ├── components/     # Reusable components (Navbar, Footer, UI elements)
-    ├── pages/          # Pages (Home, About, Dashboard, etc.)
-    ├── utlis/          # Utility functions
-    ├── App.js
-    └── index.js
+├── assets/fonts/
+├── components/
+├── pages/
+├── utils/
+├── App.js
+└── index.js
 ```
+
+---
+
+![Loop](public/exp/mockup.jpg)
+
+---
+
+## 🔄 CI/CD
+
+This project includes a **GitHub Actions** workflow for:  
+- Running tests  
+- Building the app  
+- Deploying to hosting providers (e.g., Render, Liara or custom servers)  
+
+Workflow configuration is stored in `.github/workflows/`.
+
+---
 
 ## 📜 License
 

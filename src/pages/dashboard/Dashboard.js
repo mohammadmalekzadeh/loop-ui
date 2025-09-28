@@ -58,16 +58,16 @@ export default function Dashboard() {
   return (
     <div className="flex min-h-screen bg-isabelline">
       {/* Main Content */}
-      <main className="flex-1 p-6">
+      <main className="flex flex-col md:flex-row gap-6">
         {/* Profile Card */}
         <div className="bg-white shadow rounded-lg p-6 flex items-center justify-between mb-8 right-farsi">
           {/* Left: Avatar + Info */}
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col md:flex-row gap-6">
             {request.role === "vendors" && (
               <img
                 src={request.avatar || "/vendors/default.jpg"}
                 alt={request.shop_name}
-                className="w-32 h-32 mx-auto mb-4 rounded-lg"
+                className="w-24 h-24 md:w-32 md:h-32 rounded-lg mx-auto md:mx-0 mb-4 md:mb-0"
                 />
           )}
             <div>
@@ -89,7 +89,7 @@ export default function Dashboard() {
         <div>
           {request.role === "vendors" ? (
             <>
-            <div className="bg-white shadow rounded-lg p-6 flex items-center justify-between mb-8 right-farsi font-semibold transition responsive">
+            <div className="bg-white shadow rounded-lg p-6 flex flex-col sm:flex-row items-center justify-between mb-8 right-farsi font-semibold gap-4">
             <p className="text-gray-800 right-farsi">از روز {request.start_day} تا روز {request.end_day}</p>
             <p className="text-gray-800 left-num">از ساعت {enToFaNum(request.start_time)} تا ساعت {enToFaNum(request.end_time)}</p>
             <p className="text-fulvous mb-2">امتیاز: {enToFaNum(request.rate)}</p>
@@ -99,18 +99,18 @@ export default function Dashboard() {
             ) : ("")}
         </div>
         {/* Cards area */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {/* Left column: Sell items (if vendor) OR Bought items (if customer) */}
           <div className="bg-white shadow rounded-lg p-6">
             {request.role === "vendors" ? (
               <>
-              <div className="flex right-farsi items-center justify-between">
+              <div className="flex right-farsi items-center justify-between text-sm sm:text-base">
                 <h3 className="text-lg font-bold mb-4 right-farsi">محصولاتی که داری می فروشی</h3>
                 {/* Add New Product Button */}
                 <div className="mt-6">
                   <button
                    onClick={() => setIsModalOpen(true)}
-                   className="flex items-center gap-2 px-4 py-2 text-eggshell rounded-lg bg-pigment_green hover:bg-sea_green transition right-farsi">
+                   className="flex items-center gap-2 px-4 py-2 text-eggshell rounded-lg bg-pigment_green hover:bg-sea_green transition right-farsi px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base rounded-lg">
                     <FaPlus />
                     محصول جدیدت رو اضافه کن
                   </button>
@@ -121,7 +121,7 @@ export default function Dashboard() {
                     {request.sell_items.map((it) => (
                       <div
                         key={it.id}
-                        className="flex items-center justify-between p-3 border rounded right-farsi"
+                        className="flex items-center justify-between p-3 border rounded right-farsi text-sm sm:text-base"
                       >
                         <div>
                           <div className="font-semibold">اسم محصول: {it.name}</div>
@@ -150,7 +150,7 @@ export default function Dashboard() {
                                 toast.error("خطا در تغییر وضعیت محصول!");}
                               }
                             }}
-                            className={`px-3 py-1 rounded ${
+                            className={`px-3 py-1 rounded px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base rounded-lg ${
                               it.is_active ? "bg-mantis" : "bg-fire_brick"
                             } text-eggshell`}
                           >
@@ -161,6 +161,7 @@ export default function Dashboard() {
                               setSelectedProduct(it);
                               setIsEditModalOpen(true);
                             }}
+                            className="px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base rounded-lg"
                           >
                             <FaEdit />
                           </button>
@@ -181,7 +182,7 @@ export default function Dashboard() {
                     {request.buy_items.map((it) => (
                       <div
                         key={it.id}
-                        className="flex items-center justify-between p-3 border rounded right-farsi"
+                        className="flex items-center justify-between p-3 border rounded right-farsi text-sm sm:text-base"
                       >
                         <div>
                           <div className="font-semibold">{it.name}</div>
@@ -214,7 +215,7 @@ export default function Dashboard() {
                   {request.buy_items.map((it) => (
                     <div
                       key={it.id}
-                      className="flex items-center justify-between p-3 border rounded right-farsi"
+                      className="flex items-center justify-between p-3 border rounded right-farsi text-sm sm:text-base"
                     >
                       <div>
                         <div className="font-semibold">{it.name}</div>

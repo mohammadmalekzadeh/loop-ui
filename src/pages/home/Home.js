@@ -36,11 +36,11 @@ export default function Home() {
           {/* Newest Products */}
           {newestProducts.length > 0 && (
             <div className="mt-12 w-full max-w-6xl px-2">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-4 sm:mb-6">
                 جدیدترین محصولات
               </h2>
 
-              <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-6 gap-6">
+              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 sm:gap-6">
                 {newestProducts.map((p) => (
                   <div
                     key={p.id}
@@ -58,22 +58,22 @@ export default function Home() {
               </div>
 
               {/* Horizontal scroll برای موبایل */}
-              <div className="md:hidden flex overflow-x-auto gap-4 py-2 px-2">
+              <div className="md:hidden flex overflow-x-auto gap-3 sm:gap-4 py-2 px-2">
                 {newestProducts.slice(0, 4).map((p) => (
                   <div
                     key={p.id}
-                    className="min-w-[140px] sm:min-w-[160px] bg-eggshell text-black rounded-lg shadow-2xl p-3 flex flex-col items-center flex-shrink-0"
+                    className="min-w-[120px] sm:min-w-[140px] bg-eggshell text-black rounded-lg shadow-2xl p-2 flex flex-col items-center flex-shrink-0"
                   >
                     <h3 className="font-semibold text-center text-sm">{p.name}</h3>
                     <p className="text-gray-800 mt-1 text-xs right-farsi">{p.shop}</p>
-                    <p className="text-xs text-gray-600 mt-1">{enToFaNum(p.price.toLocaleString())} تومان</p>
+                    <p className="text-xs text-azul mt-1">{enToFaNum(p.price.toLocaleString())} تومان</p>
                   </div>
                 ))}
               </div>
 
               <div className="flex justify-center mt-8 mb-6">
                 <Link to="/products">
-                  <button className="px-8 py-3 bg-pigment_green hover:bg-sea_green text-eggshell text-lg font-bold rounded-lg transition right-farsi">
+                  <button className="px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg rounded-lg bg-pigment_green hover:bg-sea_green text-eggshell font-bold transition right-farsi">
                     نمایش بیشتر ...
                   </button>
                 </Link>
@@ -82,7 +82,7 @@ export default function Home() {
           )}
 
             <Link to="/signup">
-              <button className="inline-flex items-center px-8 py-3 bg-pigment_green hover:bg-sea_green text-eggshell text-lg font-bold rounded-lg transition">
+              <button className="inline-flex items-center px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg rounded-lg bg-pigment_green hover:bg-sea_green text-eggshell font-bold transition">
                 ثبت نام
                 <FaSignInAlt className="ml-2" />
               </button>

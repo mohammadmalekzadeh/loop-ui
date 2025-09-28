@@ -32,7 +32,7 @@ export default function Vendors () {
     return (
         <div className="min-h-screen bg-gray-100 py-10 px-5 md:px-10">
             <h1 className="text-4xl text-loop font-bold text-center mb-10">فروشندگان</h1>
-            <div className="bg-white p-4 rounded-lg shadow-md mb-6 flex flex-wrap items-center gap-4 right-farsi">
+            <div className="bg-white p-4 rounded-lg shadow-md mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 right-farsi">
           
           {/* امتیاز */}
           <div className="flex items-center gap-2">
@@ -77,11 +77,11 @@ export default function Vendors () {
           </button>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-8 right-farsi">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 right-farsi">
               {vendors.map((vendor) => (
                 <div
                   key={vendor.id}
-                  className="bg-white rounded-xl shadow-md p-5 flex flex-col items-center transition transform hover:scale-105"
+                  className="bg-white rounded-xl shadow-md p-5 flex flex-col items-center sm:items-start transition transform hover:scale-105"
                 >
                     <img
                         src={vendor.avatar || "/vendors/default.jpg"}

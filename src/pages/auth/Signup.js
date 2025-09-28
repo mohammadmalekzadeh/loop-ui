@@ -17,7 +17,7 @@ export default function Signup() {
     const token = localStorage.getItem("token");
   
     if (token) return navigate("/dashboard");
-  })
+  }, [])
 
   useEffect(() => {
     if (otpSent && timeLeft > 0) {
@@ -66,8 +66,8 @@ export default function Signup() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 font-myfont">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
-        <h2 className="text-3xl font-bold text-center text-loop mb-6">
+      <div className="w-11/12 sm:w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-loop mb-6">
         صفحه ثبت نام
         </h2>
 
@@ -96,7 +96,8 @@ export default function Signup() {
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="۹۱۲۳۴۵۶۷۸۹"
                   required
-                  pattern="\d{10}"
+                  pattern="9\d{9}"
+                  inputMode="numeric"
                   title="شماره تلفن خود را بدون صفر وارد کنید"
                   className="w-full px-4 py-2 border rounded-r-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-myfont"
                 />
@@ -133,7 +134,7 @@ export default function Signup() {
 
             <button
               type="submit"
-              className="w-full py-2 text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
+              className="w-full py-2 text-sm sm:text-base text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
             >
               ثبت نام
             </button>
@@ -148,18 +149,22 @@ export default function Signup() {
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
                 placeholder="X X X X X X"
+                inputMode="numeric"
+                maxLength={6}
+                minLength={6}
+                pattern="[0-9]*"
                 required
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-myfont"
+                className="w-full px-3 sm:px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-myfont text-center tracking-widest"
               />
             </div>
             <button
               type="submit"
-              className="w-full py-2 text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
+              className="w-full py-2 text-sm sm:text-base text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
             >
               تایید
             </button>
           </form>
-          <p className="text-center text-dim_gray font-myfont mt-4">
+          <p className="text-center text-dim_gray font-myfont mt-4 text-sm sm:text-base">
               {timeLeft > 0 ? (
                 <>زمان باقی‌مانده: {formatTime(timeLeft)}</>
               ) : (
@@ -168,9 +173,9 @@ export default function Signup() {
                   onClick={
                     (e) => {
                     setOtp("");
-                    handleLogin(e);
+                    handleSignup(e);
                   }}
-                  className="text-azul hover:underline inline-flex gap-2 right-farsi flex justify-center items-center"
+                  className="w-full py-2 text-sm sm:text-base text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
                 >
                   <FaSync />
                   ارسال مجدد کد

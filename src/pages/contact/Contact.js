@@ -4,11 +4,11 @@ import { enToFaNum } from "../../utlis/NumConvertor";
 export default function Contact() {
   return (
     <div
-      className="relative h-screen bg-isabelline bg-center flex items-center justify-center px-6 font-myfont">
+      className="relative min-h-screen bg-isabelline bg-center flex items-center justify-center px-4 sm:px-6 py-8 font-myfont">
 
       {/* White transparent card */}
-      <div className="relative max-w-2xl w-full text-center bg-eggshel bg-opacity-70 p-10 rounded-2xl shadow-2xl">
-        <h1 className="text-4xl font-bold mb-6 text-gray-800 right-farsi">
+      <div className="relative max-w-lg w-full text-center bg-eggshel bg-opacity-70 p-6 sm:p-10 rounded-2xl shadow-2xl">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-gray-800 right-farsi">
           تماس با ما
         </h1>
 
@@ -21,7 +21,7 @@ export default function Contact() {
             </label>
             <input
               type="text"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="نام خود را وارد کنید"
             />
           </div>
@@ -33,7 +33,9 @@ export default function Contact() {
             </label>
             <input
               type="tel"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 right-farsi"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              className="w-full text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="شماره تماس"
             />
           </div>
@@ -45,7 +47,7 @@ export default function Contact() {
             </label>
             <input
               type="email"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="ایمیل"
             />
           </div>
@@ -57,7 +59,7 @@ export default function Contact() {
             </label>
             <textarea
               rows="4"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="پیشنهادات خود را بنویسید..."
             ></textarea>
           </div>
@@ -65,7 +67,7 @@ export default function Contact() {
           {/* Submit */}
           <button
             type="button"
-            className="w-full py-2 bg-pigment_green text-eggshell rounded-lg hover:bg-sea_green transition"
+            className="w-full py-3 text-base sm:text-lg bg-pigment_green text-eggshell rounded-lg hover:bg-sea_green transition"
           >
             ارسال
           </button>

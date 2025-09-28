@@ -70,8 +70,8 @@ export default function UpdateProductModal({ isOpen, onClose, product, onSuccess
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
-        <h2 className="text-xl font-bold mb-4 right-farsi">ویرایش محصول</h2>
+      <div className="bg-white rounded-lg shadow-lg w-[90%] sm:w-full max-w-md p-4 sm:p-6 relative">
+        <h2 className="text-lg sm:text-xl font-bold mb-4 right-farsi">ویرایش محصول</h2>
 
         <form className="space-y-4 right-farsi">
           <label className="block mb-1 font-medium">نام محصول</label>
@@ -80,7 +80,7 @@ export default function UpdateProductModal({ isOpen, onClose, product, onSuccess
             placeholder="نام محصول"
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="w-full border rounded p-2"
+            className="mt-1 block w-full border rounded p-2 text-sm sm:text-base right-farsi"
           />
           <label className="block mb-1 font-medium">نوع محصول</label>
           <input
@@ -88,7 +88,7 @@ export default function UpdateProductModal({ isOpen, onClose, product, onSuccess
             placeholder="نوع محصول"
             value={form.type}
             onChange={(e) => setForm({ ...form, type: e.target.value })}
-            className="w-full border rounded p-2"
+            className="mt-1 block w-full border rounded p-2 text-sm sm:text-base right-farsi"
           />
           <label className="block mb-1 font-medium">قیمت (تومان)</label>
           <input
@@ -96,7 +96,7 @@ export default function UpdateProductModal({ isOpen, onClose, product, onSuccess
             placeholder="قیمت"
             value={form.price}
             onChange={(e) => setForm({ ...form, price: e.target.value })}
-            className="w-full border rounded p-2"
+            className="mt-1 block w-full border rounded p-2 text-sm sm:text-base right-farsi"
           />
           <label className="block mb-1 font-medium">موجودی</label>
           <input
@@ -104,11 +104,11 @@ export default function UpdateProductModal({ isOpen, onClose, product, onSuccess
             placeholder="موجودی"
             value={form.inventory || "0"}
             onChange={(e) => setForm({ ...form, inventory: e.target.value })}
-            className="w-full border rounded p-2"
+            className="mt-1 block w-full border rounded p-2 text-sm sm:text-base right-farsi"
           />
         </form>
 
-        <div className="flex justify-between mt-6 gap-3">
+        <div className="flex flex-col sm:flex-row justify-between mt-6 gap-3">
           <button
             onClick={handleSave}
             disabled={loading}

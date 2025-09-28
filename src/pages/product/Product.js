@@ -81,7 +81,7 @@ export default function Products() {
     
     <div className="min-h-screen bg-isabelline py-10 px-5 md:px-10">
       <h1 className="text-4xl text-loop font-bold text-center mb-10">محصولات</h1>
-        <div className="bg-white p-4 rounded-lg shadow-md mb-6 flex flex-wrap items-center gap-4 right-farsi">
+        <div className="bg-white p-4 rounded-lg shadow-md mb-6 flex flex-col sm:flex-wrap sm:flex-row items-start sm:items-center gap-4 right-farsi">
           {/* نوع محصول */}
           <select
             value={filters.type}
@@ -161,11 +161,11 @@ export default function Products() {
             حذف فیلترها
           </button>
         </div>
-      <div className="grid grid-cols-2 md:grid-cols-6 gap-8 right-farsi">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
         {products.map((product) => (
           <div
             key={product.id}
-            className="bg-white rounded-xl shadow-md p-5 flex flex-col items-center transition transform hover:scale-105"
+            className="bg-white right-farsi rounded-xl shadow-md p-4 sm:p-5 flex flex-col items-center transition transform hover:scale-105 w-full"
           >
 
             <h2 className="text-lg font-semibold mb-1">
@@ -175,7 +175,7 @@ export default function Products() {
             <p className="text-gray-700 mb-1">فروشگاه: {product.shop}</p>
             <p className="text-fulvous mb-2">امتیاز: {enToFaNum(product.rate)}</p>
 
-            <p className="text-azul font-bold mb-4">
+            <p className="text-azul font-bold mb-4 left-num">
               {enToFaNum(product.price.toLocaleString())} تومان
             </p>
             <button
@@ -194,7 +194,7 @@ export default function Products() {
       {/* Popup Modal */}
       {selectedProduct && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl shadow-xl p-6 w-96 right-farsi">
+          <div className="bg-white rounded-xl shadow-xl p-4 sm:p-6 w-11/12 sm:w-96 right-farsi">
             <h2 className="text-xl font-bold mb-4 text-gray-800">جزئیات محصول: {selectedProduct.name}</h2>
             <p><span className="font-semibold">نوع محصول: </span> {selectedProduct.type}</p>
             <p><span className="font-semibold">نام فروشنده: </span> {selectedProduct.vendor}</p>
@@ -211,12 +211,13 @@ export default function Products() {
                 min={1}
                 max={selectedProduct.inventory}
                 value={count}
+                step={1}
                 onChange={(e) => setCount(Number(e.target.value))}
-                className="w-full border rounded-lg p-2 text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full sm:w-1/2 border rounded-lg p-2 text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
-            <div className="flex justify-between mt-6 gap-3">
+            <div className="flex flex-col sm:flex-row justify-between mt-6 gap-3">
               <button
                 onClick={() => setSelectedProduct(null)}
                 className="flex-1 bg-dim_gray hover:bg-jet text-eggshell py-2 rounded-lg transition"

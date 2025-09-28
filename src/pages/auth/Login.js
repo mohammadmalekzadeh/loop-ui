@@ -68,8 +68,8 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 font-myfont">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
-        <h2 className="text-3xl font-bold text-center text-loop mb-6">صفحه ورود</h2>
+      <div className="w-11/12 sm:w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-loop mb-6">صفحه ورود</h2>
 
         {!otpSent ? (
           <form className="space-y-4" onSubmit={handleLogin} method="post" action={"auth/login"}>
@@ -84,7 +84,8 @@ export default function Login() {
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="۹۱۲۳۴۵۶۷۸۹"
                   required
-                  pattern="\d{10}"
+                  pattern="9\d{9}"
+                  inputMode="numeric"
                   title="شماره تلفن خود را بدون صفر وارد کنید"
                   className="w-full px-4 py-2 border rounded-r-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-myfont"
                 />
@@ -92,7 +93,7 @@ export default function Login() {
             </div>
             <button
               type="submit"
-              className="w-full py-2 text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
+              className="w-full py-2 text-sm sm:text-base text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
             >
               ورود
             </button>
@@ -107,18 +108,22 @@ export default function Login() {
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
                 placeholder="X X X X X X"
+                inputMode="numeric"
+                maxLength={6}
+                minLength={6}
+                pattern="[0-9]*"
                 required
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-myfont"
+                className="w-full px-3 sm:px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-myfont text-center tracking-widest"
               />
             </div>
             <button
               type="submit"
-              className="w-full py-2 text-eggshell bg-pigment_green hover:bg-sea_green font-semibold rounded-lg transition"
+              className="w-full py-2 text-sm sm:text-base text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
             >
               تایید
             </button>
           </form>
-          <p className="text-center text-dim_gray font-myfont mt-4">
+          <p className="text-center text-dim_gray font-myfont mt-4 text-sm sm:text-base">
               {timeLeft > 0 ? (
                 <>زمان باقی‌مانده: {formatTime(timeLeft)}</>
               ) : (
@@ -129,7 +134,7 @@ export default function Login() {
                     setOtp("");
                     handleLogin(e);
                   }}
-                  className="text-azul hover:underline inline-flex gap-2 right-farsi flex justify-center items-center"
+                  className="w-full py-2 text-sm sm:text-base text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
                 >
                   <FaSync />
                   ارسال مجدد کد

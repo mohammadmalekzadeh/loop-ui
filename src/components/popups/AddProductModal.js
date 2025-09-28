@@ -74,8 +74,8 @@ export default function AddProductModal({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
-        <h2 className="text-xl font-bold mb-4 right-farsi">اضافه کردن محصول جدید</h2>
+      <div className="bg-white rounded-lg shadow-lg w-[90%] sm:w-full max-w-md p-4 sm:p-6 relative">
+        <h2 className="text-lg sm:text-xl font-bold mb-4 right-farsi">اضافه کردن محصول جدید</h2>
 
         {/* Form inputs */}
         <form className="space-y-4">
@@ -88,7 +88,7 @@ export default function AddProductModal({ isOpen, onClose }) {
               onChange={(e) => setProduct({ ...product, name: e.target.value })}
               required
               placeholder="اسم محصول جدیدت چیه؟"
-              className="mt-1 block w-full border rounded p-2 right-farsi"
+              className="mt-1 block w-full border rounded p-2 text-sm sm:text-base right-farsi"
             />
           </div>
 
@@ -101,7 +101,7 @@ export default function AddProductModal({ isOpen, onClose }) {
               name="type"
               required
               placeholder="نوعش چیه؟ (مثلاً نوشیدنی، تنقلات و غیره ...)"
-              className="mt-1 block w-full border rounded p-2 right-farsi"
+              className="mt-1 block w-full border rounded p-2 text-sm sm:text-base right-farsi"
             />
           </div>
 
@@ -114,7 +114,7 @@ export default function AddProductModal({ isOpen, onClose }) {
               onChange={(e) => setProduct({ ...product, price: e.target.value })}
               required
               placeholder="چقدر میخوای بفروشیش؟ (به تومان)"
-              className="mt-1 block w-full border rounded p-2 right-farsi"
+              className="mt-1 block w-full border rounded p-2 text-sm sm:text-base right-farsi"
             />
           </div>
           
@@ -128,13 +128,13 @@ export default function AddProductModal({ isOpen, onClose }) {
               onChange={(e) => setProduct({ ...product, inventory: e.target.value })}
               required
               placeholder="چقدر موجودی داری؟"
-              className="mt-1 block w-full border rounded p-2 right-farsi"
+              className="mt-1 block w-full border rounded p-2 text-sm sm:text-base right-farsi"
             />
           </div>
         </form>
 
         {/* Buttons */}
-        <div className="flex justify-between mt-6 gap-3">
+        <div className="flex flex-col sm:flex-row justify-between mt-6 gap-3">
           <button
             onClick={handleSave}
             disabled={loading}

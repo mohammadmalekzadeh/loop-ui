@@ -5,5 +5,5 @@ export default function GoHome() {
     const navigate = useNavigate();
     useEffect(() => {
         navigate("/home");
-    })
+    }, [])
 }

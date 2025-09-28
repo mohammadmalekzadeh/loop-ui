@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <footer className="w-full bg-gray-900 text-gray-300 py-6 px-8 flex flex-col md:flex-row justify-between items-center
-                      font-myfont right-farsi bg-jet">
+                      font-myfont right-farsi bg-jet gap-4 w-full">
       
       {/* Left Section */}
       <div className="text-center md:text-left mb-4 md:mb-0 right-farsi items-center justify-center text-eggshell">
@@ -35,7 +35,7 @@ export default function Footer() {
           className="flex items-center space-x-2 hover:text-pink-500 transition"
         >
           <FaInstagram className="text-lg" />
-          <span>Instagram</span>
+          <span className="hidden sm:inline">Instagram</span>
           {/* <span> اینستاگرام </span> */}
         </a>
         <a
@@ -45,7 +45,7 @@ export default function Footer() {
           className="flex items-center space-x-2 hover:text-blue-400 transition"
         >
           <FaTelegramPlane className="text-lg" />
-          <span>Telegram</span>
+          <span className="hidden sm:inline">Telegram</span>
           {/* <span> تلگرام </span> */}
         </a>
         <a
@@ -55,11 +55,11 @@ export default function Footer() {
           className="flex items-center space-x-2 hover:text-red-500 transition"
         >
           <FaEnvelope className="text-lg" />
-          <span>Email</span>
+          <span className="hidden sm:inline">Email</span>
           {/* <span> ایمیل </span> */}
         </a>
-        <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=653285&Code=RaAwR5KPF65j3auqo1ipoHjAb4FAEujk' className="w-16">
-          <img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=653285&Code=RaAwR5KPF65j3auqo1ipoHjAb4FAEujk' alt='' style={{'cursor':'pointer'}} className="w-16" code='RaAwR5KPF65j3auqo1ipoHjAb4FAEujk' />
+        <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=653285&Code=RaAwR5KPF65j3auqo1ipoHjAb4FAEujk' className="w-8 sm:w-16">
+          <img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=653285&Code=RaAwR5KPF65j3auqo1ipoHjAb4FAEujk' alt='' style={{'cursor':'pointer'}} className="w-8 sm:w-16" code='RaAwR5KPF65j3auqo1ipoHjAb4FAEujk' />
         </a>
       </div>
     </footer>

@@ -119,9 +119,9 @@ export default function Settings() {
       <h2 className="text-2xl font-bold mb-6 text-gray-800 right-farsi">⚙️ تنظیمات</h2>
 
       {user.role === "vendors" && (
-        <div className="flex flex-col items-center justify-center gap-4 p-4 rounded-xl shadow-md max-w-xs mx-auto">
+        <div className="flex flex-col items-center justify-center gap-4 p-4 rounded-xl shadow-md max-w-xs mx-auto mb-6">
           {/* Avatar Image */}
-          <div className="w-32 h-32 mb-2 rounded-full overflow-hidden border-2 border-pigment_green shadow-lg">
+          <div className="w-32 h-32 mb-2 rounded-lg overflow-hidden border-2 border-pigment_green shadow-lg">
             <img
               src={formData.avatar || "/vendors/default.jpg"}
               alt={formData.shop_name || "Avatar"}
@@ -192,6 +192,7 @@ export default function Settings() {
               name="phone"
               value={formData.phone || ""}
               onChange={handleChange}
+              disabled
               pattern="\d{10}"
               title="شماره تلفن جدید خود را بدون صفر وارد کنید"
               className="w-full px-4 py-2 border rounded-r-lg focus:outline-none focus:ring-2 focus:ring-blue-500"

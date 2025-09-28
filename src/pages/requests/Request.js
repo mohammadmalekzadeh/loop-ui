@@ -36,8 +36,6 @@ export default function Request() {
         const requests = await getRequests(filters, token);
         setUserRole(currentUser.role);
         setRequests(requests);
-        console.log(userRole);
-        console.log(requests);
       } catch (err) {
         console.error("Error fetching requests:", err);
       } finally {
@@ -75,7 +73,7 @@ export default function Request() {
       await sendRate(selectedRequestId, rate, token);
       toast.success("امتیاز ثبت شد!");
     } catch (err) {
-      toast.err("خطا در ثبت امتیاز!");
+      toast.error("خطا در ثبت امتیاز!");
       console.error(err);
     }
   };
@@ -87,7 +85,7 @@ export default function Request() {
       <div className="bg-white shadow rounded-lg p-6">
         <h2 className="text-2xl text-loop font-bold mb-6 text-center">درخواست های شما</h2>
 
-        <div className="bg-white p-4 rounded-lg shadow-md mb-6 flex flex-wrap items-center gap-4 right-farsi">
+        <div className="bg-white p-4 rounded-lg shadow-md mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 right-farsi">
           {/* status */}
           <select
             value={filters.status}
@@ -135,7 +133,7 @@ export default function Request() {
             {requests.length > 0 ? (
               <div className="space-y-4">
                 {requests.map((req) => (
-                  <div key={req.id} className="p-4 border rounded-lg flex justify-between items-center right-farsi">
+                  <div key={req.id} className="p-4 border rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center right-farsi">
                     <div>
                       <p className="font-semibold">
                         محصول: {req.product_name} به تعداد: {req.count}
@@ -169,13 +167,12 @@ export default function Request() {
             {requests.length > 0 ? (
               <div className="space-y-4">
                 {requests.map((req) => (
-                  <div key={req.id} className="p-4 border rounded-lg flex justify-between items-center right-farsi">
+                  <div key={req.id} className="p-4 border rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center right-farsi">
                     <div>
                       <p className="font-semibold">
                         محصول: {req.product_name} به تعداد: {req.count}
                       </p>
-                      <p className="text-sm text-gray-600">فروشنده: {req.vendors_name}</p>
-                      <p className="text-sm text-gray-600">آدرس: {req.address}</p>
+                      <p className="text-sm text-gray-600">فروشنده: {req.shop_name}</p>
                       <p className="text-sm text-gray-600 font-semibold">کد: {enToFaNum(req.code)}</p>
                       <p className="text-sm text-azul font-bold">قیمت کل: {enToFaNum(req.price.toLocaleString())} تومان</p>
                       <p className="text-xs text-gray-500">{enToFaNum(req.jalali_date)}</p>

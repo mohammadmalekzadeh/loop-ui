@@ -51,7 +51,7 @@ export default function Home() {
                       فروشگاه: {p.shop}
                     </p>
                     <p className="text-sm sm:text-base text-azul mt-1">
-                      قیمت: {enToFaNum(p.price.toLocaleString())} تومان
+                      {enToFaNum(p.price.toLocaleString())} تومان
                     </p>
                   </div>
                 ))}

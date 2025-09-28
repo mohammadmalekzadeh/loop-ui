@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.7fb9a16b.css",
-    "main.js": "./static/js/main.3340ca69.js",
+    "main.css": "./static/css/main.ae903912.css",
+    "main.js": "./static/js/main.afd6caf7.js",
     "static/media/Morabba-ExtraBold.woff": "./static/media/Morabba-ExtraBold.45ad7ed2bc22f4cf655f.woff",
     "static/media/Morabba-Bold.woff": "./static/media/Morabba-Bold.167064a7d858f4ab8848.woff",
     "static/media/Morabba-Regular.woff": "./static/media/Morabba-Regular.cdc78626106bd40e227c.woff",
@@ -21,11 +21,11 @@
     "static/media/Morabba-Heavy.woff2": "./static/media/Morabba-Heavy.4c88121bee16c447ff85.woff2",
     "static/media/Morabba-UltraLight.woff2": "./static/media/Morabba-UltraLight.999293a36d687936fa21.woff2",
     "index.html": "./index.html",
-    "main.7fb9a16b.css.map": "./static/css/main.7fb9a16b.css.map",
-    "main.3340ca69.js.map": "./static/js/main.3340ca69.js.map"
+    "main.ae903912.css.map": "./static/css/main.ae903912.css.map",
+    "main.afd6caf7.js.map": "./static/js/main.afd6caf7.js.map"
   },
   "entrypoints": [
-    "static/css/main.7fb9a16b.css",
-    "static/js/main.3340ca69.js"
+    "static/css/main.ae903912.css",
+    "static/js/main.afd6caf7.js"
   ]
 }

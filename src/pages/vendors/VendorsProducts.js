@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { getVendorsProducts } from "../../routes/vendors/vendors";
+import { getVendorsProducts } from "../../services/vendors/vendors";
 import { enToFaNum } from "../../utlis/NumConvertor";
-import { createRequest } from "../../routes/request/request";
+import { createRequest } from "../../services/request/request";
 import { getCurrentUser } from "../../utlis/currentUser"; 
 import { FaClipboardCheck } from "react-icons/fa";
 import Loading from "../../components/ui/Loading";

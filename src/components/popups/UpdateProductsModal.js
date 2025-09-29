@@ -1,6 +1,6 @@
 // src/components/popups/UpdateProductModal.js
 import React, { useState, useEffect } from "react";
-import { updateProducts } from "../../routes/product/product";
+import { updateProducts } from "../../services/product/product";
 import { toast } from "react-toastify";
 
 export default function UpdateProductModal({ isOpen, onClose, product, onSuccess }) {

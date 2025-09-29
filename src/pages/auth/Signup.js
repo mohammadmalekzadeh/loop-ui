@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signup, verify } from "../../routes/auth/auth";
+import { signup, verify } from "../../services/auth/auth";
 import { toast } from "react-toastify";
 import { FaSync } from "react-icons/fa";
 export default function Signup() {

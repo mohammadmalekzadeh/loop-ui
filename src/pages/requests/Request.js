@@ -2,11 +2,11 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { enToFaNum } from "../../utlis/NumConvertor";
-import { getRequests } from "../../routes/request/request";
+import { getRequests } from "../../services/request/request";
 import { getCurrentUser } from "../../utlis/currentUser";
-import { updateRequestStatus } from "../../routes/request/request";
+import { updateRequestStatus } from "../../services/request/request";
 import RateModal from "../../components/popups/RateModal";
-import { sendRate } from "../../routes/request/request";
+import { sendRate } from "../../services/request/request";
 import Loading from "../../components/ui/Loading";
 import { toast } from "react-toastify";
 

@@ -5,8 +5,8 @@ import { FaCog, FaPlus, FaChevronRight, FaChevronDown, FaEdit } from "react-icon
 import AddProductModal from "../../components/popups/AddProductModal";
 import { enToFaNum, faToEnNum } from "../../utlis/NumConvertor";
 import { getCurrentUser } from "../../utlis/currentUser";
-import { getUserDashboard } from "../../routes/dashboard/dashboard";
-import { updateActiveProducts } from "../../routes/product/product";
+import { getUserDashboard } from "../../services/dashboard/dashboard";
+import { updateActiveProducts } from "../../services/product/product";
 import UpdateProductModal from "../../components/popups/UpdateProductsModal";
 import Loading from "../../components/ui/Loading";
 import { toast } from "react-toastify";

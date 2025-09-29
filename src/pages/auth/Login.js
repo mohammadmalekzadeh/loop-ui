@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { login, verify } from "../../routes/auth/auth";
+import { login, verify } from "../../services/auth/auth";
 import { getCurrentUser } from "../../utlis/currentUser";
 import { toast } from "react-toastify";
 import { FaSync } from "react-icons/fa";

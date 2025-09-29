@@ -1,6 +1,6 @@
 // src/components/AddProductModal.js
 import React, { useState, } from "react";
-import { postProducts } from "../../routes/product/product";
+import { postProducts } from "../../services/product/product";
 import { toast } from "react-toastify";
 
 export default function AddProductModal({ isOpen, onClose }) {

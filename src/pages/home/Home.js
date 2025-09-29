@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaSignInAlt } from "react-icons/fa";
 import { enToFaNum } from "../../utlis/NumConvertor";
-import { getProducts } from "../../routes/product/product";
+import { getProducts } from "../../services/product/product";
 
 export default function Home() {
   const [newestProducts, setNewestProducts] = useState([]);

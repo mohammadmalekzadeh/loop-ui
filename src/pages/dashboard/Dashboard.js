@@ -93,7 +93,7 @@ export default function Dashboard() {
             <p className="text-gray-800 right-farsi">از روز {request.start_day} تا روز {request.end_day}</p>
             <p className="text-gray-800 left-num">از ساعت {enToFaNum(request.start_time)} تا ساعت {enToFaNum(request.end_time)}</p>
             <p className="text-fulvous mb-2">امتیاز: {enToFaNum(request.rate)}</p>
-            <p className="text-azul mb-2">درآمد: {enToFaNum(request.income.toLocaleString())}</p>
+            <p className="text-azul mb-2">درآمد: {enToFaNum(request.income.toLocaleString())}  تومان</p>
             </div>
             </>
             ) : ("")}

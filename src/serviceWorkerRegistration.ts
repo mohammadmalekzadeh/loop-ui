@@ -1,39 +1,36 @@
-// src/serviceWorkerRegistration.js
+type ServiceWorkerRegistrationWithUpdate = ServiceWorkerRegistration & {
+  installing?: ServiceWorker;
+};
 
-export function register() {
+export function register(): void {
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
       navigator.serviceWorker
         .register("../public/service-worker.js")
-        .then((registration) => {
+        .then((registration: ServiceWorkerRegistration) => {
           console.log("Service Worker registered with scope:", registration.scope);
-
           registration.onupdatefound = () => {
             const installingWorker = registration.installing;
             if (installingWorker) {
               installingWorker.onstatechange = () => {
                 if (installingWorker.state === "installed") {
-                  if (navigator.serviceWorker.controller) {
-                    console.log("New content is available; please refresh.");
-                  } else {
-                    console.log("Content is cached for offline use.");
-                  }
+                  console.log("New content is available; please refresh.");
                 }
               };
             }
           };
         })
-        .catch((error) => {
+        .catch((error: unknown) => {
           console.error("Service Worker registration failed:", error);
         });
     });
   }
 }
 
-export function unregister() {
+export function unregister(): void {
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.ready
       .then((registration) => registration.unregister())
-      .catch((error) => console.error(error));
+      .catch((error: unknown) => console.error(error));
   }
 }

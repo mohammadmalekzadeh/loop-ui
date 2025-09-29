@@ -44,6 +44,8 @@ export default function VendorsProducts () {
         const currentUser = await getCurrentUser();
         setUser(currentUser);
 
+        if (count > selectedProduct.inventory) return toast.warn("نمیشه که!");
+
         const data = {
           product_id: selectedProduct.id,
           count: count,

@@ -18,23 +18,22 @@ It provides a modern, responsive user interface built with **TailwindCSS**, and 
 
 ```bash
 loop-ui/
+├── public/
+│    ├── index.html
+│    ├── manifest.json
+│    ├── robots.txt
+│    └── assets/
+└── src/
+│    ├── assets/fonts/
+│    ├── components/
+│    ├── pages/
+│    ├── utils/
+│    ├── App.js
+│    └── index.js
 ├── package.json
 ├── tailwind.config.js
-├── postcss.config.js
-│
-├── public/
-│ ├── index.html
-│ ├── manifest.json
-│ ├── robots.txt
-│ └── assets/
-│
-└── src/
-├── assets/fonts/
-├── components/
-├── pages/
-├── utils/
-├── App.js
-└── index.js
+├── tsconfig.json
+└─── postcss.config.js
 ```
 
 ---

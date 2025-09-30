@@ -7,11 +7,11 @@ It provides a modern, responsive user interface built with **TailwindCSS**, and 
 
 ## 📌 Technologies Used
 
-- **Framework:** React.js  
-- **Styling:** TailwindCSS  
-- **Build Tool:** Create React App (CRA)  
-- **Package Management:** npm 
-- **Language**: JavaScript/TypeScript
+- **Framework:** React.js
+- **Styling:** TailwindCSS
+- **Build Tool:** Create React App (CRA)
+- **Package Management:** npm
+- **Language**: JavaScript / TypeScript
 
 ---
 

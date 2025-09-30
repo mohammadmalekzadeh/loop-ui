@@ -1,4 +1,4 @@
-import { FaInstagram, FaTelegramPlane, FaGithub, FaInfoCircle, FaPhoneAlt, FaEnvelope, FaTrademark } from "react-icons/fa";
+import { FaInstagram, FaTelegramPlane, FaGithub, FaInfoCircle, FaPhoneAlt, FaEnvelope, FaTrademark, FaCommentAlt, FaComment } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -10,12 +10,15 @@ export default function Footer() {
       <div className="text-center md:text-left mb-4 md:mb-0 right-farsi items-center justify-center text-eggshell">
         <p className="font-bold text-lg items-center justify-center justify-between flex">لووپ <FaTrademark />  ۲۰۲۵</p>
         <div className="flex items-center gap-4 justify-center md:justify-start mt-2">
-          <Link to="/contact-us" className="hover:text-mantis flex items-center gap-2 right-farsi">
+          {/* <Link to="/contact-us" className="hover:text-mantis flex items-center gap-2 right-farsi">
             <FaPhoneAlt /> تماس با ما
-          </Link>
+          </Link> */}
           <Link to="/about-us" className="hover:text-mantis flex items-center gap-2 right-farsi">
             <FaInfoCircle /> درباره ما
           </Link>
+          <a href="https://t.me/lloop_ir?direct" target="_blank" rel="noopener noreferrer" className="hover:text-mantis flex items-center gap-2 right-farsi">
+            <FaComment /> پشتیبانی تلگرام
+          </a>
         </div>
       </div>
 
@@ -39,7 +42,7 @@ export default function Footer() {
           {/* <span> اینستاگرام </span> */}
         </a>
         <a
-          href="https://t.me"
+          href="https://t.me/lloop_ir"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center space-x-2 hover:text-blue-400 transition"

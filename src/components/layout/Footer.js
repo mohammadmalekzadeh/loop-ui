@@ -1,4 +1,4 @@
-import { FaInstagram, FaTelegramPlane, FaGithub, FaInfoCircle, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { FaInstagram, FaTelegramPlane, FaGithub, FaInfoCircle, FaPhoneAlt, FaEnvelope, FaTrademark } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -8,7 +8,7 @@ export default function Footer() {
       
       {/* Left Section */}
       <div className="text-center md:text-left mb-4 md:mb-0 right-farsi items-center justify-center text-eggshell">
-        <p className="font-bold text-lg items-center justify-center flex">لووپ © ۲۰۲۵</p>
+        <p className="font-bold text-lg items-center justify-center justify-between flex">لووپ <FaTrademark />  ۲۰۲۵</p>
         <div className="flex items-center gap-4 justify-center md:justify-start mt-2">
           <Link to="/contact-us" className="hover:text-mantis flex items-center gap-2 right-farsi">
             <FaPhoneAlt /> تماس با ما

@@ -61,7 +61,6 @@ export default function Login() {
     } catch (err) {
         toast.error("کد وارد شده اشتباه است!");
         console.error(err);
-      }
     }
     setLoading(false);
   };

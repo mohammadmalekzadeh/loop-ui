@@ -213,7 +213,7 @@ export default function Products() {
                 value={count}
                 step={1}
                 onChange={(e) => setCount(Number(e.target.value))}
-                className="w-full sm:w-1/2 border rounded-lg p-2 text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border rounded-lg p-2 text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 

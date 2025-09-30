@@ -141,7 +141,7 @@ export default function Request() {
                       <p className="text-sm text-gray-600">مشتری: {req.customer_name}</p>
                       <p className="text-sm text-gray-600 font-semibold">کد: {enToFaNum(req.code)}</p>
                       <p className="text-sm text-azul font-bold">قیمت کل: {enToFaNum(req.price.toLocaleString())} تومان</p>
-                      <p className="text-xs text-gray-500">{enToFaNum(req.date)}</p>
+                      <p className="text-xs text-gray-500">{enToFaNum(req.jalali_date)}</p>
                       {req.status === "pending" && (
                         <p className="text-sm text- mt-2 font-semibold">در اسرع وقت تحویل داده شود!</p>
                       )}

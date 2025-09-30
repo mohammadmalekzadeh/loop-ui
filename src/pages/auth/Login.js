@@ -12,6 +12,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [user, setUser] = useState();
   const [timeLeft, setTimeLeft] = useState(0);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -30,6 +31,7 @@ export default function Login() {
   
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await login(phone);
       setOtpSent(true);
@@ -39,10 +41,12 @@ export default function Login() {
       toast.warning("خطا در ارسال شماره!");
       console.error(err);
     }
+    setLoading(false);
   };
 
   const handleVerify = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await verify(phone, otp);
       localStorage.setItem("token", res.access_token);
@@ -58,6 +62,7 @@ export default function Login() {
         console.error(err);
       }
     }
+    setLoading(false);
   };
 
   const formatTime = (seconds) => {
@@ -93,6 +98,7 @@ export default function Login() {
             </div>
             <button
               type="submit"
+              disabled={loading}
               className="w-full py-2 text-sm sm:text-base text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
             >
               ورود
@@ -118,6 +124,7 @@ export default function Login() {
             </div>
             <button
               type="submit"
+              disabled={loading}
               className="w-full py-2 text-sm sm:text-base text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
             >
               تایید

@@ -83,7 +83,7 @@ export default function Dashboard() {
             className="flex items-center gap-2 px-4 py-2 bg-azul text-eggshell rounded-lg hover:bg-silver transition right-farsi"
             >
             <FaCog />
-            ویرایش اطلاعات
+            تنظیمات
           </Link>
         </div>
         <div>

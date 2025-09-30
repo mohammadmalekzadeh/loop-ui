@@ -67,7 +67,9 @@ export default function Contact() {
           {/* Submit */}
           <button
             type="button"
-            className="w-full py-3 text-base sm:text-lg bg-pigment_green text-eggshell rounded-lg hover:bg-sea_green transition"
+            disabled
+            // className="w-full py-3 text-base sm:text-lg bg-pigment_green text-eggshell rounded-lg hover:bg-sea_green transition"
+            className="w-full py-3 text-base sm:text-lg bg-dim_gray text-eggshell rounded-lg transition cursor-not-allowed"
           >
             ارسال
           </button>

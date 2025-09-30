@@ -1,6 +1,6 @@
 ![Loop](https://www.lloop.ir/icon/favicon.png)
 
-The **LOOP UI (Front-End)** is the **React.js frontend** for the LOOP platform.  
+The **LOOP UI (Front-End)** is the **React.js frontend** for the LOOP platform.
 It provides a modern, responsive user interface built with **TailwindCSS**, and communicates with the **LOOP API** for data management (products, users, etc.).
 
 ---
@@ -28,8 +28,8 @@ loop-ui/
 │    ├── components/
 │    ├── pages/
 │    ├── utils/
-│    ├── App.js
-│    └── index.js
+│    ├── App.tsx
+│    └── index.tsx
 ├── package.json
 ├── tailwind.config.js
 ├── tsconfig.json

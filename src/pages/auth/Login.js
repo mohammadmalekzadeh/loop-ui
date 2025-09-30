@@ -38,7 +38,12 @@ export default function Login() {
       setTimeLeft(300);
       toast.success("رمز یکبار مصرف برای شما ارسال گردید!");
     } catch (err) {
-      toast.warning("خطا در ارسال شماره!");
+      if (err.message.includes("404")) {
+        console.log(err);
+        toast.warn("کاربری با این شماره قبلا ثبت نشده است!");
+      } else {
+        toast.warning("خطا در ورود!");
+      }
       console.error(err);
     }
     setLoading(false);
@@ -54,10 +59,6 @@ export default function Login() {
       console.log("Access Token:", res.access_token);
       navigate("/dashboard");
     } catch (err) {
-      if (err.message.includes("404")) {
-        console.log(err);
-        toast.warn("کاربری با این شماره قبلا ثبت نشده است!");
-      } else {
         toast.error("کد وارد شده اشتباه است!");
         console.error(err);
       }

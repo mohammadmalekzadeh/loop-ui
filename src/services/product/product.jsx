@@ -1,4 +1,4 @@
-import { apiGet, apiPut, apiPost, apiDelete } from "..";
+import { apiGet, apiPut, apiPost, apiDelete } from "../api";
 
 export async function getProducts(filters = {}) {
   const params = new URLSearchParams();

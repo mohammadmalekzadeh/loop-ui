@@ -1,4 +1,4 @@
-import { apiPost } from "../index";
+import { apiPost } from "../api";
 
 export async function login(phone) {
   return apiPost("auth/login", { phone });

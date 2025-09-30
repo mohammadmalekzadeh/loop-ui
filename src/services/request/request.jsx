@@ -1,4 +1,4 @@
-import { apiGet, apiPost, apiPut } from "../index";
+import { apiGet, apiPost, apiPut } from "../api";
 
 export async function getRequests(filters = {}, token) {
   const params = new URLSearchParams();

@@ -7,6 +7,7 @@ import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import Products from "./pages/product/Product";
 import NotFound from "./pages/NotFound";
+import ServerNotAvailable from "./pages/ServerNotAvailable";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Settings from "./pages/dashboard/Settings";
 import Request from "./pages/requests/Request";
@@ -24,7 +25,7 @@ function App(): JSX.Element {
     <>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<MainLayout><Home /></MainLayout>} />
+        {/* <Route path="/" element={<MainLayout><Home /></MainLayout>} />
         <Route path="/home" element={<MainLayout><Home /></MainLayout>} />
         <Route path="/login" element={<MainLayout><Login /></MainLayout>} />
         <Route path="/signup" element={<MainLayout><Signup /></MainLayout>} />
@@ -38,7 +39,8 @@ function App(): JSX.Element {
         <Route path="/about-us" element={<MainLayout><About /></MainLayout>} />
         <Route path="/contact-us" element={<MainLayout><Contact /></MainLayout>} />
         <Route path="/404" element={<MainLayout><NotFound /></MainLayout>} />
-        <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />
+        <Route path="*" element={<MainLayout><NotFound /></MainLayout>} /> */}
+        <Route path="*" element={<MainLayout><ServerNotAvailable /></MainLayout>} />
       </Routes>
 
       <div style={{ display: "none" }}>loop</div>

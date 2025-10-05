@@ -44,7 +44,7 @@ export default function ServerNotAvailable() {
           سرور در دسترس نیست!
         </h2>
         <p className="mb-8 text-eggshell right-farsi">
-          سرور در حال بروزرسانی است، لطفا منتظر بمانید...
+          سرور در حال بروزرسانی یا موقتا خاموش است، لطفا منتظر بمانید...
         </p>
       </div>
     </div>

@@ -1,7 +1,21 @@
 ![Loop](https://www.lloop.ir/icon/favicon.png)
 
-The **LOOP UI (Front-End)** is the **React.js frontend** for the LOOP platform.
-It provides a modern, responsive user interface built with **TailwindCSS**, and communicates with the **LOOP API** for data management (products, users, etc.).
+The **Loop UI** is the frontend application for the [Loop Platform](https://lloop.ir/home), built with **React**, **TypeScript**, and **TailwindCSS**.
+It provides a modern, responsive interface for user authentication, vendor dashboards, product management, and more — all powered by the [Loop API](https://github.com/mohammadmalekzadeh/loop-api).
+
+---
+
+## ✨ Features
+
+- ⚛️ Built with **React** + **TypeScript**
+- 💨 Styled using **TailwindCSS**
+- 🔄 **Axios-based API integration** with Loop backend
+- 📱 **Responsive** & **PWA-ready** design
+- 🧱 Organized modular folder structure
+- 🐳 **Dockerized** for easy development and production
+- ⚙️ Configurable via `.env`
+- ☁️ **Vercel deployment ready**
+- 💾 Local service worker for offline support
 
 ---
 
@@ -19,22 +33,34 @@ It provides a modern, responsive user interface built with **TailwindCSS**, and 
 
 ```bash
 loop-ui/
-├── public/
-│    ├── index.html
-│    ├── manifest.json
-│    ├── robots.txt
-│    └── assets/
-└── src/
-│    ├── assets/fonts/
-│    ├── components/
-│    ├── pages/
-│    ├── utils/
-│    ├── App.tsx
-│    └── index.tsx
-├── package.json
-├── tailwind.config.js
-├── tsconfig.json
-└─── postcss.config.js
+│
+├── .env.example             # Example environment configuration
+├── Dockerfile.dev           # Dockerfile for development
+├── Dockerfile.prod          # Dockerfile for production
+├── docker-compose.yml       # Docker Compose setup
+├── vercel.json              # Vercel deployment config
+├── nginx.conf               # Nginx config for production
+│
+├── public/                  # Public static files
+│   ├── icon/                # App icons & favicons
+│   ├── vendors/             # Vendor placeholder images
+│   ├── manifest.json        # PWA manifest
+│   └── index.html           # App entry HTML
+│
+├── src/                     # Main application source
+│   ├── assets/fonts/        # Custom web fonts
+│   ├── components/          # Shared UI and layout components
+│   ├── context/             # React context providers
+│   ├── hooks/               # Custom React hooks
+│   ├── pages/               # Page-level components (Home, Login, Dashboard, etc.)
+│   ├── services/            # API service modules (Axios)
+│   ├── styles/              # CSS & animation styles
+│   └── utils/               # Utility functions (user session, number conversion, etc.)
+│
+├── build/                   # Compiled production build
+│
+└── README.Docker.md         # Docker usage documentation
+
 ```
 
 ---
@@ -43,15 +69,37 @@ loop-ui/
 
 ---
 
-## 🔄 CI/CD
+## 🧩 Local Development Setup
 
-This project includes a **GitHub Actions** workflow for:  
-- Running tests  
-- Building the app  
-- Deploying to hosting providers (e.g., Render, Liara or custom servers)  
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/mohammadmalekzadeh/loop-ui.git
+cd loop-ui
+```
 
-Workflow configuration is stored in `.github/workflows/`.
+### 2️⃣ Create your environment file
+```bash
+cp .env.example .env
+```
+*Edit `.env` and set your API base URL, for example:*
 
+### 3️⃣ Install dependencies
+```bash
+npm install
+```
+
+### 4️⃣ Run the development server or 🐳 Run with Docker
+```bash
+npm run start
+```
+OR
+```bash
+docker compose up -d loop-ui-prod
+```
+*This uses `loop-ui-dev` and mounts your local files for live reloading.*
+
+**Your app will run on:**
+- 👉 http://localhost:3000/
 ---
 
 ## 📜 License

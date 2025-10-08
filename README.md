@@ -100,8 +100,34 @@ docker compose up -d loop-ui-prod
 
 **Your app will run on:**
 - 👉 http://localhost:3000/
+
 ---
 
+## 🧱 Deployment
+
+### Build for Production
+```bash
+npm run build
+```
+*The production-ready files will be generated in the `/build` directory.*
+
+### Docker
+Use the provided `nginx.conf` for optimized production hosting:
+```bash
+docker build -f Dockerfile.prod -t loop-ui .
+docker run -d -p 80:80 loop-ui
+```
+
+---
+
+## 💾 Progressive Web App (PWA)
+
+Loop UI supports offline mode and "install as app" via:
+- `manifest.json`
+- `serviceWorkerRegistration.ts`
+*You can test this by visiting the deployed app on Chrome and clicking Install App.*
+
+---
 ## 📜 License
 
 This project is licensed under the [Apache 2.0 License](LICENSE).

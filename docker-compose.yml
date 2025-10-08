@@ -1,9 +1,28 @@
-version: "3.9"
+version: '3.9'
 
 services:
-  web:
+  loop-ui-dev:
+    container_name: loop-ui-dev
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=x
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: ["npm", "start"]
+    restart: unless-stopped
+
+  loop-ui-prod:
+    container_name: loop-ui-prod
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
     ports:
       - "80:80"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped

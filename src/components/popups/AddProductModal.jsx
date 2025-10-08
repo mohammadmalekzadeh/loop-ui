@@ -1,4 +1,3 @@
-// src/components/AddProductModal.js
 import React, { useState, } from "react";
 import { postProducts } from "../../services/product/product";
 import { toast } from "react-toastify";

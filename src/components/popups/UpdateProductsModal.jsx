@@ -1,4 +1,3 @@
-// src/components/popups/UpdateProductModal.js
 import React, { useState, useEffect } from "react";
 import { updateProducts } from "../../services/product/product";
 import { toast } from "react-toastify";

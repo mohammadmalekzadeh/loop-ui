@@ -12,6 +12,7 @@ export default function Signup() {
   const [otp, setOtp] = useState("");
   const [user, setUser] = useState();
   const [timeLeft, setTimeLeft] = useState(0);
+  const [resend, setResend] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -33,8 +34,11 @@ export default function Signup() {
     try {
       const res = await signup({ phone, name, role })
       setOtpSent(true);
-      setTimeLeft(300);
+      setTimeLeft(60);
       toast.success("رمز یکبار مصرف برای شما ارسال گردید!");
+      if (resend) {
+        toast.info(`رمز یکبار مصرف شما: ${res.otp}`);
+      }
     } catch (err) {
       if (err.message.includes("400")) {
         toast.warn("کاربری با این شماره قبلا ثبت شده است!");
@@ -174,8 +178,9 @@ export default function Signup() {
                     (e) => {
                     setOtp("");
                     handleSignup(e);
+                    setResend(true);
                   }}
-                  className="w-full py-2 text-sm sm:text-base text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
+                  className="flex inline-flex right-farsi items-center gap-3 justify-center w-full py-2 text-sm sm:text-base text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
                 >
                   <FaSync />
                   ارسال مجدد کد

@@ -12,7 +12,8 @@ export default function Login() {
   const navigate = useNavigate();
   const [user, setUser] = useState();
   const [timeLeft, setTimeLeft] = useState(0);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [resend, setResend] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -35,8 +36,11 @@ export default function Login() {
     try {
       const res = await login(phone);
       setOtpSent(true);
-      setTimeLeft(300);
+      setTimeLeft(60);
       toast.success("رمز یکبار مصرف برای شما ارسال گردید!");
+      if (resend) {
+        toast.info(`رمز یکبار مصرف شما: ${res.otp}`);
+      }
     } catch (err) {
       if (err.message.includes("404")) {
         console.log(err);
@@ -140,8 +144,9 @@ export default function Login() {
                     (e) => {
                     setOtp("");
                     handleLogin(e);
+                    setResend(true);
                   }}
-                  className="w-full py-2 text-sm sm:text-base text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
+                  className="flex inline-flex right-farsi items-center gap-3 justify-center w-full py-2 text-sm sm:text-base text-eggshell font-semibold rounded-lg bg-pigment_green hover:bg-sea_green transition"
                 >
                   <FaSync />
                   ارسال مجدد کد

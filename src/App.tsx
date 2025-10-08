@@ -47,7 +47,7 @@ function App(): JSX.Element {
 
       <Analytics />
       <SpeedInsights />
-      <ToastContainer position="top-right" autoClose={5000} className="right-farsi" />
+      <ToastContainer position="top-right" autoClose={5000} className="right-farsi" style={{userSelect: "text"}} />
     </>
   );
 }

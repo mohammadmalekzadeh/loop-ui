@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaHome, FaTrash, FaSignOutAlt, FaFileUpload, FaUpload } from "react-icons/fa";
-import { enToFaNum, faToEnNum } from "../../utlis/NumConvertor";
+import { enToFaNum, faToEnNum } from "../../utils/NumConvertor";
 import { updateUserInfo, updateVendorsInfo, getUserDashboard } from "../../services/dashboard/dashboard";
 import { uploadAvatar } from "../../services/upload-avatar/upload";
-import { getCurrentUser } from "../../utlis/currentUser";
+import { getCurrentUser } from "../../utils/currentUser";
 import { toast } from "react-toastify";
 
 export default function Settings() {

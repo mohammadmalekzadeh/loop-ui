@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { enToFaNum } from "../../utlis/NumConvertor";
+import { enToFaNum } from "../../utils/NumConvertor";
 import { toast } from "react-toastify";
 
 export default function RateModal({ isOpen, onClose, onSubmit }) {

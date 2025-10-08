@@ -1,5 +1,5 @@
 import React from "react";
-import { enToFaNum } from "../../utlis/NumConvertor";
+import { enToFaNum } from "../../utils/NumConvertor";
 
 export default function About() {
   return (

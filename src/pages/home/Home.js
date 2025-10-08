@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaSignInAlt } from "react-icons/fa";
-import { enToFaNum } from "../../utlis/NumConvertor";
+import { enToFaNum } from "../../utils/NumConvertor";
 import { getProducts } from "../../services/product/product";
 
 export default function Home() {

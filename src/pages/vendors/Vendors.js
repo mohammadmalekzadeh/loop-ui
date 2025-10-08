@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getVendors } from "../../services/vendors/vendors";
-import { enToFaNum } from "../../utlis/NumConvertor";
+import { enToFaNum } from "../../utils/NumConvertor";
 import Loading from "../../components/ui/Loading";
 
 export default function Vendors () {

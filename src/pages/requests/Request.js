@@ -1,9 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { enToFaNum } from "../../utlis/NumConvertor";
+import { enToFaNum } from "../../utils/NumConvertor";
 import { getRequests } from "../../services/request/request";
-import { getCurrentUser } from "../../utlis/currentUser";
+import { getCurrentUser } from "../../utils/currentUser";
 import { updateRequestStatus } from "../../services/request/request";
 import RateModal from "../../components/popups/RateModal";
 import { sendRate } from "../../services/request/request";

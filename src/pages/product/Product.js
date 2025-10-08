@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { FaClipboardCheck } from "react-icons/fa";
-import { enToFaNum, faToEnNum } from "../../utlis/NumConvertor";
+import { enToFaNum, faToEnNum } from "../../utils/NumConvertor";
 import { createRequest } from "../../services/request/request";
 import { useNavigate } from "react-router-dom";
-import { getCurrentUser } from "../../utlis/currentUser"; 
+import { getCurrentUser } from "../../utils/currentUser"; 
 import { getProducts } from "../../services/product/product";
 import Loading from "../../components/ui/Loading";
 import { toast } from "react-toastify";
